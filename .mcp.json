@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y", "chrome-devtools-mcp@1.12.0",
+        "--headless", "--isolated",
+        "--executablePath", "/opt/pw-browsers/chromium-1243/chrome-linux64/chrome",
+        "--chromeArg=--no-sandbox",
+        "--usageStatistics=false", "--performanceCrux=false",
+        "--viewport", "1280x900"
+      ]
+    },
+    "reddit": {
+      "command": "uvx",
+      "args": ["--python", "3.12", "--with", "httpx", "--from", "git+https://github.com/adhikasp/mcp-reddit.git", "mcp-reddit"]
+    }
+  }
+}
