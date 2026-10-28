@@ -180,9 +180,9 @@ pages:
   rows: [[1.1, [1]], [1, [1, 1]], [0.9, [1]]]
   panels:
   - kind: art
-    shot: "WIDE — Riku strikes"
-    art: "Riku slams his hand on Kota's desk and snatches Kota's notebook. Nearby students turn."
-    gen: "2boys, {RIKU}, slamming desk, grabbing notebook, angry, {KOTA}, sitting, flinch, classroom, school desk, motion lines"
+    shot: "WIDE, POV (Kota) — Riku strikes"
+    art: "From Kota's seat: Riku slams his hand on the desk and snatches Kota's notebook."
+    gen: "{RIKU}, slamming hand on desk, grabbing notebook, angry, pov, from below, classroom, school desk, motion lines"
     text:
     - {t: sfx, say: "BAM!"}
     - {t: speech, who: RIKU, say: "What's this?"}
@@ -200,9 +200,9 @@ pages:
     text:
     - {t: speech, who: KOTA, say: "Give it back."}
   - kind: art
-    shot: "HIGH ANGLE — Riku looms"
-    art: "Riku leans over Kota, menacing."
-    gen: "2boys, {RIKU}, leaning over, menacing, smirk, {KOTA}, sitting, from above, classroom"
+    shot: "POV (Kota) — Riku looms"
+    art: "From Kota's seat: Riku leans over him, menacing."
+    gen: "{RIKU}, leaning over viewer, menacing, smirk, pov, from below, classroom"
     text:
     - {t: speech, who: RIKU, say: "Or what?"}
 
@@ -223,9 +223,9 @@ pages:
     text:
     - {t: speech, who: RIKU, say: "Huh?! You want to go?"}
   - kind: art
-    shot: "TWO-SHOT — Aoi and Mio"
-    art: "Aoi watches the confrontation. Mio leans toward Aoi and speaks quietly."
-    gen: "2girls, {AOI}, watching, serious, {MIO}, leaning, whispering, sitting, classroom, upper body"
+    shot: "CLOSE — Mio"
+    art: "Mio leans toward Aoi (off-panel) and speaks quietly."
+    gen: "{MIO}, whispering, leaning to the side, worried, sitting, classroom, upper body"
     text:
     - {t: speech, who: MIO, say: "Don't get involved."}
   - kind: art
@@ -484,9 +484,9 @@ pages:
     text:
     - {t: speech, who: AOI, say: "This isn't a school door someone modified."}
   - kind: art
-    shot: "TWO-SHOT — Aoi and Mio"
-    art: "Aoi stands. Mio behind Aoi, uneasy."
-    gen: "2girls, {AOI}, standing, serious, {MIO}, uneasy, worried, concrete room, dim lighting, upper body"
+    shot: "MEDIUM — Aoi"
+    art: "Aoi stands, serious."
+    gen: "{AOI}, standing, serious, looking at viewer, concrete room, dim lighting, upper body"
     text:
     - {t: speech, who: AOI, say: "This room was built... for us."}
     note: "Aoi's conclusion (bible 3.7). It is an observation, not proof of who built it."

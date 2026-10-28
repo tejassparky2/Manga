@@ -129,8 +129,8 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 
 ### PAGE 6
 
-**PANEL 1 — WIDE — Riku strikes**
-- Art: Riku slams his hand on Kota's desk and snatches Kota's notebook. Nearby students turn.
+**PANEL 1 — WIDE, POV (Kota) — Riku strikes**
+- Art: From Kota's seat: Riku slams his hand on the desk and snatches Kota's notebook.
 - SFX: BAM!
 - RIKU: "What's this?" †
 - Continuity note: Bible: Riku 'takes or mocks' the notebook. This draft has him take it (PROPOSAL).
@@ -143,8 +143,8 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 - Art: Kota, seated, fists clenched on the desk, eyes down.
 - KOTA: "Give it back." †
 
-**PANEL 4 — HIGH ANGLE — Riku looms**
-- Art: Riku leans over Kota, menacing.
+**PANEL 4 — POV (Kota) — Riku looms**
+- Art: From Kota's seat: Riku leans over him, menacing.
 - RIKU: "Or what?" †
 
 ### PAGE 7
@@ -157,8 +157,8 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 - Art: Riku turns on Gō, teeth bared.
 - RIKU: "Huh?! You want to go?" †
 
-**PANEL 3 — TWO-SHOT — Aoi and Mio**
-- Art: Aoi watches the confrontation. Mio leans toward Aoi and speaks quietly.
+**PANEL 3 — CLOSE — Mio**
+- Art: Mio leans toward Aoi (off-panel) and speaks quietly.
 - MIO: "Don't get involved." †
 
 **PANEL 4 — CLOSE — Aoi's glasses**
@@ -346,8 +346,8 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 - Art: Aoi's glasses catch the light.
 - AOI: "This isn't a school door someone modified." †
 
-**PANEL 4 — TWO-SHOT — Aoi and Mio**
-- Art: Aoi stands. Mio behind Aoi, uneasy.
+**PANEL 4 — MEDIUM — Aoi**
+- Art: Aoi stands, serious.
 - AOI: "This room was built... for us." †
 - Continuity note: Aoi's conclusion (bible 3.7). It is an observation, not proof of who built it.
 
