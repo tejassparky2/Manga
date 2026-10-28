@@ -593,10 +593,10 @@ pages:
   - kind: art
     shot: "HIGH — alone among them"
     art: "Ren stands apart from the others, small, in the ring."
-    gen: "{REN}, standing apart, alone, multiple boys, multiple girls, distance, from above, concrete floor, dim, wide shot"
-    negative_extra: "crowd"
+    gen: "{REN}, from behind, standing apart, alone, multiple boys, multiple girls, distance, metal lockers, locker room, dim, wide shot"
+    negative_extra: "crowd, balls"
     sketch: sketches/p20_2.png
-    strength: 0.62
+    strength: 0.75
     text:
     - {t: caption, who: REN, say: "I didn't know anyone in this room anymore.", canon: true}
   - kind: art
