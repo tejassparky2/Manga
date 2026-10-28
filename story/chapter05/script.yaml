@@ -399,8 +399,10 @@ pages:
     - {t: speech, who: REN, say: "No. He didn't.", canon: true}
   - kind: art
     shot: "MEDIUM — Ren"
-    art: "Ren, one finger raised."
-    gen: "{REN}, explaining, index finger raised, upper body, locker room, dim"
+    art: "Ren, explaining, steady."
+    gen: "{REN}, explaining, serious, looking at viewer, upper body, locker room, dim"
+    negative_extra: "v sign, hand up"
+    seed: 51303
     text:
     - {t: speech, who: REN, say: "I found mine in nine. A loop of nine leaves ten lockers. No room for a loop longer than ten.", canon: true}
   - kind: board
