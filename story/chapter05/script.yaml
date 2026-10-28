@@ -93,9 +93,10 @@ pages:
   panels:
   - kind: art
     shot: "CLOSE — Ren"
-    art: "Ren, staring at the card in his hand."
-    gen: "{REN}, holding card, looking at card, wide eyes, close-up, locker room, dim"
-    negative_extra: "text, letters"
+    art: "Ren, wide-eyed, working it out. (Card kept out of frame: the render drew a phone with an eye on it.)"
+    gen: "{REN}, wide eyes, realization, looking down, close-up, portrait, locker room, dim"
+    negative_extra: "text, letters, card, phone, holding"
+    seed: 50301
     text:
     - {t: caption, who: REN, say: "Nine. A loop of nine leaves ten lockers. There's no room left for a loop longer than ten.", canon: true}
   - kind: art
