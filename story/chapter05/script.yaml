@@ -71,7 +71,7 @@ pages:
     plates:
     - {at: [0.5, 0.2], w: 0.5, text: "KURODA REN"}
     text:
-    - {t: caption, who: REN, say: "My locker. A card. A name. The next locker. Another name.", canon: true}
+    - {t: caption, who: REN, say: "My locker. A card. A name. The next locker. Another name.", canon: true, at: [0.3, 0.88]}
   - kind: namecard
     shot: "INSERT — the first card"
     art: "Inside: one white card."
