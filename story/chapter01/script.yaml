@@ -736,7 +736,9 @@ pages:
   - kind: art
     shot: "CLOSE — Momo"
     art: "Momo smiles and says nothing."
-    gen: "{MOMO}, smile, closed mouth, close-up, black eyes, creepy, cute"
+    gen: "{MOMO}, smile, closed mouth, close-up, black eyes, cute, staring, dark background"
+    negative_extra: "extra eyes, cape"
+    seed: 25020
     text:
     - {t: speech, who: MOMO, say: "......"}
   - kind: art
