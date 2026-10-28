@@ -7,6 +7,7 @@ the model draws the people and the detail.
 
   python tools/manga/sketches.py          # writes story/chapterNN/sketches/*.png
 """
+import math
 import random
 import sys
 from pathlib import Path
@@ -331,11 +332,107 @@ def empty_hands(w=832, h=1216, seed=3142):
     return vignette(img.filter(ImageFilter.GaussianBlur(6)), 60)  # soft, or the figures stay mannequins
 
 
+def locker_ring(w=1344, h=768, seed=4031, cam=(0.0, 1.5, -2.0), pitch=8, fov=1.0, figure=False, crowd=0):
+    """The Game 3 locker room in perspective: twenty lockers (0.9 x 1.8 m) standing
+    shoulder to shoulder in a ring, facing in, the painted line running round the
+    floor inside them. `cam` is the camera position in metres (ring centre at the
+    origin, y up), `pitch` how far it looks down in degrees; `figure` puts one
+    student walking in, seen from behind; `crowd` stands students inside the ring."""
+    rnd = random.Random(seed)
+    R, LW, LH = 2.95, 0.88, 1.8
+    phi = math.radians(pitch)
+    F = w * 0.5 / math.tan(fov * 0.5 * 1.2)
+
+    def proj(x, y, z):
+        px, py, pz = x - cam[0], y - cam[1], z - cam[2]
+        yc = py * math.cos(phi) + pz * math.sin(phi)
+        zc = -py * math.sin(phi) + pz * math.cos(phi)
+        if zc < 0.05:
+            return None
+        return (w / 2 + F * px / zc, h / 2 - F * yc / zc, zc)
+
+    img = Image.new("RGB", (w, h), (22, 22, 22))
+    d = ImageDraw.Draw(img)
+    rim = [(R * 1.15 * math.cos(t / 90 * math.pi), R * 1.15 * math.sin(t / 90 * math.pi)) for t in range(180)]
+    if cam[1] < LH:                                       # eye level: floor from the far arc down to the frame
+        far = sorted(q[:2] for q in (proj(x, 0, z) for x, z in rim if z > cam[2] + 0.5) if q)
+        d.polygon(far + [(w, h), (0, h)], fill=(84, 84, 84))
+    else:
+        d.polygon([q[:2] for q in (proj(x, 0, z) for x, z in rim) if q], fill=(84, 84, 84))
+    img = light_pool(img, w // 2, int(h * 0.7), int(w * 0.35), int(h * 0.25), 60)
+    d = ImageDraw.Draw(img)
+    line = [proj(R * 0.8 * math.cos(t / 180 * math.pi), 0.0, R * 0.8 * math.sin(t / 180 * math.pi)) for t in range(361)]
+    for a, b in zip(line, line[1:]):
+        if a and b:
+            d.line([a[:2], b[:2]], fill=(236, 236, 236), width=max(3, int(F * 0.03 / a[2])))
+    items = []
+    for k in range(20):
+        a = 2 * math.pi * (k + 0.5) / 20
+        cx, cz = R * math.cos(a), R * math.sin(a)
+        tx, tz = -math.sin(a), math.cos(a)
+        nx, nz = -math.cos(a), -math.sin(a)               # faces the centre
+        dist = math.hypot(cx - cam[0], cz - cam[2])
+        items.append((dist, "locker", (cx, cz, tx, tz, nx, nz)))
+    for n in range(crowd):
+        r, t = R * 0.62 * math.sqrt(rnd.random()), rnd.uniform(0, 2 * math.pi)
+        x, z = r * math.cos(t), r * math.sin(t)
+        items.append((math.hypot(x - cam[0], z - cam[2]), "student", (x, z, n)))
+    for dist, kind, v in sorted(items, reverse=True):
+        if kind == "student":
+            q = proj(v[0], 0, v[1])
+            if q:
+                student(d, q[0], q[1], F * 0.0155 / q[2], v[2] % 2 == 1, rnd)
+            continue
+        cx, cz, tx, tz, nx, nz = v
+
+        def quad(u0, v0, u1, v1, depth=0.0):
+            pts = [proj(cx + tx * u * LW + nx * depth, vv * LH, cz + tz * u * LW + nz * depth)
+                   for u, vv in ((u0, v0), (u1, v0), (u1, v1), (u0, v1))]
+            return None if None in pts else [p[:2] for p in pts]
+
+        front = (cam[0] - cx) * nx + (cam[2] - cz) * nz > 0
+        body = quad(-0.5, 0, 0.5, 1)
+        if not body:
+            continue
+        if cam[1] > LH:                                    # from above: the top of the cabinet shows
+            top = [proj(cx + tx * u * LW - nx * dd, LH, cz + tz * u * LW - nz * dd)
+                   for u, dd in ((-0.5, 0), (0.5, 0), (0.5, 0.5), (-0.5, 0.5))]
+            if None not in top:
+                d.polygon([p[:2] for p in top], fill=(120, 120, 120), outline=(30, 30, 30))
+        if not front:
+            d.polygon(body, fill=(44, 44, 44), outline=(18, 18, 18))
+            continue
+        d.polygon(body, fill=(150, 150, 150), outline=(26, 26, 26))
+        d.line([body[0], body[3]], fill=(26, 26, 26), width=3)
+        for k in range(4):                                # vent slits
+            vy = 0.9 - k * 0.025
+            seg = quad(-0.3, vy, 0.3, vy + 0.008)
+            if seg:
+                d.polygon(seg, fill=(60, 60, 60))
+        plate = quad(-0.28, 0.70, 0.28, 0.76)
+        if plate:
+            d.polygon(plate, fill=(228, 228, 228))
+        handle = quad(0.3, 0.45, 0.38, 0.56)
+        if handle:
+            d.polygon(handle, fill=(46, 46, 46))
+    if figure:                                            # one student walking in, from behind: no face
+        sc = h / 520
+        x, y = w * 0.5, h * 1.02
+        d.rounded_rectangle([x - 34 * sc, y - 120 * sc, x + 34 * sc, y + 40 * sc], 12 * sc, fill=GAKURAN)
+        d.ellipse([x - 20 * sc, y - 160 * sc, x + 20 * sc, y - 116 * sc], fill=HAIR)
+    img = img.filter(ImageFilter.GaussianBlur(5))
+    return vignette(img, 110)
+
 SKETCHES = {
     "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class,
                   "p21_2.png": lambda: frozen_class(1152, 896, seed=2102), "p23_1.png": key_case, "p23_2.png": key_closeup},
     "chapter02": {"p01_1.png": key_title, "p10_1.png": lambda: chamber_wide(seed=2101)},  # same chamber as Ch1 p15_1
     "chapter03": {"p13_2.png": coin_in_palm, "p14_2.png": empty_hands},
+    "chapter04": {"p03_1.png": lambda: locker_ring(1152, 896, cam=(0, 1.6, -2.2), pitch=10),
+                  "p12_1.png": lambda: locker_ring(1344, 768, cam=(0, 6.5, -5.0), pitch=48)},
+    "chapter05": {"p01_2.png": lambda: locker_ring(1024, 1024, cam=(0, 1.5, -2.6), pitch=4, figure=True),
+                  "p09_1.png": lambda: locker_ring(1344, 768, cam=(0.3, 1.5, -2.6), pitch=4, figure=True),
+                  "p12_2.png": lambda: locker_ring(1344, 768, cam=(0, 4.5, -4.5), pitch=35, crowd=17)},
 }
 
 
