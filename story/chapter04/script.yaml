@@ -228,6 +228,7 @@ pages:
     gen: "{MIO}, bitter, frown, looking to the side, close-up, portrait, white room, bright"
     negative_extra: "holding, book, magazine, hands"
     seed: 40812
+    retouch: "Render w10 0728a16: a glossy rectangle in the corner bloomed out to white light (retouch.py)."
     text:
     - {t: speech, who: MIO, say: "Then he walks out, and we flip coins.", canon: true}
   - kind: art

@@ -177,7 +177,16 @@ def ch05_p20_2(im):
     return im
 
 
-RETOUCH = {"ch04/p01_1": ch04_p01_1, "ch04/p19_1": ch04_p19_1, "ch04/p09_3": ch04_p09_3, "ch04/p02_3": ch04_p02_3, "ch04/p03_2": ch04_p03_2, "ch05/p16_3": ch05_p16_3, "ch05/p04_3": ch05_p04_3, "ch05/p20_2": ch05_p20_2}
+def ch04_p08_2(im):
+    """A glossy flat rectangle (reads as a tablet) sits in Mio's bottom-left corner. The white room
+    is bright: bloom that corner out into soft white light."""
+    mask = Image.new("L", im.size, 0)
+    ImageDraw.Draw(mask).polygon([(60, 955), (490, 955), (455, 1216), (0, 1216), (0, 1100)], fill=255)
+    mask = mask.filter(ImageFilter.GaussianBlur(28))
+    return Image.composite(Image.new("RGB", im.size, (246, 246, 246)), im, mask)
+
+
+RETOUCH = {"ch04/p01_1": ch04_p01_1, "ch04/p19_1": ch04_p19_1, "ch04/p09_3": ch04_p09_3, "ch04/p02_3": ch04_p02_3, "ch04/p03_2": ch04_p03_2, "ch05/p16_3": ch05_p16_3, "ch05/p04_3": ch05_p04_3, "ch05/p20_2": ch05_p20_2, "ch04/p08_2": ch04_p08_2}
 
 
 def main(root=Path("output")):
