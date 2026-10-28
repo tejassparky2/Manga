@@ -91,7 +91,32 @@ def ch04_p03_2(im):
     return im
 
 
-RETOUCH = {"ch04/p01_1": ch04_p01_1, "ch04/p19_1": ch04_p19_1, "ch04/p09_3": ch04_p09_3, "ch04/p02_3": ch04_p02_3, "ch04/p03_2": ch04_p03_2}
+def ch05_p16_3(im):
+    """The coin in Kota's notebook rendered as a shiny sphere (reads as a pearl). Repaint the page
+    behind it, then draw a flat coin lying in the gutter: edge, face, rim, a glint."""
+    x0, y0, x1, y1 = 343, 565, 486, 706
+    # the page four ruled lines (4 x 42 px) higher, through a soft round mask the size of the sphere
+    patch = im.crop((x0, y0 - 168, x1, y1 - 168))
+    mask = Image.new("L", patch.size, 0)
+    ImageDraw.Draw(mask).ellipse([413.5 - x0 - 70, 634.5 - y0 - 70, 413.5 - x0 + 70, 634.5 - y0 + 70], fill=255)
+    im.paste(patch, (x0, y0), mask.filter(ImageFilter.GaussianBlur(3)))
+    k, box = 4, (x0, y0, x1, y1)
+    big = im.crop(box).resize(((x1 - x0) * k, (y1 - y0) * k), Image.LANCZOS)
+    d = ImageDraw.Draw(big)
+    cx, cy, rx, ry = (413 - x0) * k, (630 - y0) * k, 58 * k, 46 * k
+
+    def ell(dx, dy, sx, sy):
+        return [cx + dx - sx, cy + dy - sy, cx + dx + sx, cy + dy + sy]
+    d.ellipse(ell(6 * k, 12 * k, rx, ry), fill=(206, 206, 206))                      # shadow on the page
+    d.ellipse(ell(0, 7 * k, rx, ry), fill=(70, 70, 70))                             # the coin's edge
+    d.ellipse(ell(0, 0, rx, ry), fill=(168, 168, 168), outline=(35, 35, 35), width=3 * k)
+    d.ellipse(ell(0, 0, rx * 0.78, ry * 0.78), outline=(95, 95, 95), width=2 * k)   # raised rim
+    d.arc(ell(0, 0, rx * 0.9, ry * 0.9), 200, 290, fill=(245, 245, 245), width=3 * k)  # glint
+    im.paste(big.filter(ImageFilter.GaussianBlur(k * 0.6)).resize((x1 - x0, y1 - y0), Image.LANCZOS), box[:2])
+    return im
+
+
+RETOUCH = {"ch04/p01_1": ch04_p01_1, "ch04/p19_1": ch04_p19_1, "ch04/p09_3": ch04_p09_3, "ch04/p02_3": ch04_p02_3, "ch04/p03_2": ch04_p03_2, "ch05/p16_3": ch05_p16_3}
 
 
 def main(root=Path("output")):

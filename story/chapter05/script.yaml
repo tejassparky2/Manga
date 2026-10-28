@@ -502,6 +502,7 @@ pages:
     negative_extra: "face, multiple coins, text, ring"
     sketch: sketches/p16_3.png
     strength: 0.8
+    retouch: "Render w10 ba8ab29 drew the coin as a sphere; tools/manga/retouch.py repaints it as a flat coin."
   - kind: art
     shot: "CLOSE — Kota"
     art: "Kota, crying."
