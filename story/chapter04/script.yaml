@@ -39,8 +39,10 @@ pages:
   - kind: art
     shot: "SPLASH — the door"
     art: "The white room. A door stands open in the far wall, dark beyond. The students stand back from it, seen from behind."
-    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, standing, open door, dark doorway, white room, bright, wide shot"
-    negative_extra: "window, stairs"
+    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, standing still, dark doorway, white room, white walls, bright, wide shot"
+    negative_extra: "window, stairs, corridor, hallway, walking"
+    sketch: sketches/p01_1.png
+    strength: 0.85
     title: true
     text:
     - {t: caption, who: REN, say: "A door opened in the white room. Nobody moved first.", canon: true, at: [0.5, 0.93]}

@@ -423,12 +423,49 @@ def locker_ring(w=1344, h=768, seed=4031, cam=(0.0, 1.5, -2.0), pitch=8, fov=1.0
     img = img.filter(ImageFilter.GaussianBlur(5))
     return vignette(img, 110)
 
+def back_view(d, x, y, s, girl):
+    """A student seen from behind, feet at (x, y), about 300*s px tall: no face."""
+    d.rounded_rectangle([x - 48 * s, y - 230 * s, x + 48 * s, y - 70 * s], 18 * s, fill=GAKURAN)    # back
+    if girl:
+        d.polygon([(x - 46 * s, y - 95 * s), (x + 46 * s, y - 95 * s), (x + 58 * s, y - 40 * s),
+                   (x - 58 * s, y - 40 * s)], fill=(50, 50, 50))                                       # skirt
+        d.rectangle([x - 26 * s, y - 40 * s, x - 10 * s, y], fill=SKIN)
+        d.rectangle([x + 10 * s, y - 40 * s, x + 26 * s, y], fill=SKIN)
+        d.rounded_rectangle([x - 34 * s, y - 300 * s, x + 34 * s, y - 175 * s], 30 * s, fill=HAIR)   # long hair
+    else:
+        d.rectangle([x - 40 * s, y - 75 * s, x - 6 * s, y], fill=GAKURAN)
+        d.rectangle([x + 6 * s, y - 75 * s, x + 40 * s, y], fill=GAKURAN)
+        d.ellipse([x - 30 * s, y - 296 * s, x + 30 * s, y - 228 * s], fill=HAIR)
+
+
+def white_room_door(w=832, h=1216, seed=4101):
+    """Ch4 opening: the white room, one dark doorway open in the far wall, the class
+    standing back from it, seen from behind. Nobody walks toward it."""
+    rnd = random.Random(seed)
+    img = Image.new("RGB", (w, h), (238, 238, 238))
+    d = ImageDraw.Draw(img)
+    horizon = int(h * 0.56)
+    for y in range(horizon, h):                                            # floor, a touch darker toward us
+        t = (y - horizon) / (h - horizon)
+        d.line([(0, y), (w, y)], fill=(int(222 - 18 * t),) * 3)
+    d.line([(0, horizon), (w, horizon)], fill=(200, 200, 200), width=3)
+    dx0, dx1, dy0 = w * 0.42, w * 0.58, h * 0.33
+    d.rectangle([dx0, dy0, dx1, horizon], fill=(18, 18, 18))                # the open doorway
+    d.polygon([(dx1, dy0), (dx1 + w * 0.05, dy0 + h * 0.012), (dx1 + w * 0.05, horizon + h * 0.01),
+               (dx1, horizon)], fill=(205, 205, 205))                       # the door, swung open
+    for row, (feet, s, n) in enumerate(((h * 0.80, 0.55, 5), (h * 1.02, 0.9, 4))):
+        for k in range(n):
+            x = w * (k + 0.5) / n + rnd.uniform(-w * 0.03, w * 0.03)
+            back_view(d, x, feet, s * h / 1216, (k + row) % 2 == 1)
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 40)
+
 SKETCHES = {
     "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class,
                   "p21_2.png": lambda: frozen_class(1152, 896, seed=2102), "p23_1.png": key_case, "p23_2.png": key_closeup},
     "chapter02": {"p01_1.png": key_title, "p10_1.png": lambda: chamber_wide(seed=2101)},  # same chamber as Ch1 p15_1
     "chapter03": {"p13_2.png": coin_in_palm, "p14_2.png": empty_hands},
-    "chapter04": {"p03_1.png": lambda: locker_ring(1152, 896, cam=(0, 1.6, -2.2), pitch=10),
+    "chapter04": {"p01_1.png": white_room_door,
+                  "p03_1.png": lambda: locker_ring(1152, 896, cam=(0, 1.6, -2.2), pitch=10),
                   "p12_1.png": lambda: locker_ring(1344, 768, cam=(0, 6.5, -5.0), pitch=48)},
     "chapter05": {"p01_2.png": lambda: locker_ring(1024, 1024, cam=(0, 1.5, -2.6), pitch=4, figure=True),
                   "p09_1.png": lambda: locker_ring(1344, 768, cam=(0.3, 1.5, -2.6), pitch=4, figure=True),
