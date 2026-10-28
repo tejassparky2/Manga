@@ -271,7 +271,7 @@ pages:
   - kind: art
     shot: "WIDE — students at the windows"
     art: "Students crowd the windows, pointing."
-    gen: "multiple boys, multiple girls, crowd, pointing, looking up, window, classroom, from behind"
+    gen: "multiple boys, multiple girls, gakuran, serafuku, crowding at window, pointing at sky, looking up, from behind, classroom, bright sky outside"
     text:
     - {t: speech, who: STUDENT A, say: "A plane?"}
     - {t: speech, who: STUDENT B, say: "It's way too fast—"}
@@ -289,7 +289,9 @@ pages:
   - kind: art
     shot: "WIDE — the meteor"
     art: "The meteor burns bright over the town."
-    gen: "no humans, scenery, noon, single giant meteor, solo, fireball, burning, daytime sky, city, rooftops, dramatic, wide shot"
+    gen: "no humans, scenery, noon, single giant meteor, solo, huge fireball in sky, clearly visible, burning trail, daytime sky, city, rooftops, dramatic, wide shot"
+    negative_extra: "meteor shower, multiple meteors"
+    seed: 9040
     text:
     - {t: shout, who: STUDENT C, say: "It's a meteor!!"}
 
