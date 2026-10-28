@@ -486,6 +486,241 @@ def draw_token(w, h):
     return img.resize((w, h), Image.LANCZOS)
 
 
+# ------------------------------------------------------------------ Game 3 drawn panels
+
+def draw_board(w, h, spec):
+    """The Game 3 results board: one row per entry slot, filled as players finish.
+
+    spec: {show: [first, last], rows: {slot: [name, opened, result]}, focus: [slots], summary: str}
+    A name of "?" is drawn out of focus (an unnamed student; their names are not canon).
+    """
+    img = screen_base(w, h)
+    d = ImageDraw.Draw(img)
+    first, last = spec.get("show", [1, 19])
+    rows = {int(k): v for k, v in spec.get("rows", {}).items()}
+    focus = set(spec.get("focus", []))
+    n = last - first + 1
+    top = int(h * 0.05)
+    head = int(min(h * 0.07, w * 0.05))
+    d.text((int(w * 0.05), top), "FIND YOURSELF", font=font("sans", head), fill=RED)
+    cols = (0.05, 0.13, 0.57, 0.71)
+    y0 = top + int(head * 1.5)
+    fh = font("sans", int(head * 0.55))
+    for c, t in zip(cols, ("#", "NAME", "OPENED", "RESULT")):
+        d.text((w * c, y0), t, font=fh, fill=(150, 150, 150))
+    y0 += int(head * 1.0)
+    bottom = h - int(h * (0.16 if spec.get("summary") else 0.05))
+    row_h = (bottom - y0) / n
+    s = int(min(row_h * 0.62, w * 0.045))
+    while font("sans", s).getlength("NOT FOUND") > w * (0.97 - cols[3]) and s > 8:
+        s -= 1
+    f = font("sans", s)
+    for i, slot in enumerate(range(first, last + 1)):
+        y = y0 + i * row_h + (row_h - s) / 2
+        r = rows.get(slot)
+        dim = (238, 238, 238) if (not focus or slot in focus) else (120, 120, 120)
+        d.text((w * cols[0], y), f"{slot:02d}", font=f, fill=dim)
+        if not r:
+            d.text((w * cols[1], y), "— — —", font=f, fill=(70, 70, 70))
+            continue
+        name, opened, result = r
+        if name == "?":
+            img.paste(dim, (int(w * cols[1]), int(y)), blurred_text(int(w * 0.40), s, s, slot * 7))
+        else:
+            fn = f
+            ns = s
+            while fn.getlength(name) > w * (cols[2] - cols[1] - 0.02) and ns > 8:
+                ns -= 1
+                fn = font("sans", ns)
+            d.text((w * cols[1], y + (s - ns) / 2), name, font=fn, fill=dim)
+        d.text((w * cols[2], y), f"{opened}", font=f, fill=dim)
+        d.text((w * cols[3], y), result, font=f, fill=RED if result == "NOT FOUND" else dim)
+    if spec.get("summary"):
+        fs = font("sans", int(min(h * 0.07, w * 0.055)))
+        t = spec["summary"]
+        d.text(((w - fs.getlength(t)) / 2, h - int(h * 0.12)), t, font=fs, fill=(238, 238, 238))
+    return img
+
+
+def notebook_paper(w, h, seed=0):
+    img = Image.new("RGB", (w, h), (246, 246, 242))
+    d = ImageDraw.Draw(img)
+    gap = max(28, h // 16)
+    for y in range(gap, h, gap):
+        d.line((0, y, w, y), fill=(205, 205, 205), width=2)
+    d.line((int(w * 0.09), 0, int(w * 0.09), h), fill=(150, 150, 150), width=3)
+    return img
+
+
+def _arrow(d, a, b, width, fill, head=18, shrink=0.0):
+    (x0, y0), (x1, y1) = a, b
+    dx, dy = x1 - x0, y1 - y0
+    L = math.hypot(dx, dy) or 1
+    ux, uy = dx / L, dy / L
+    x0, y0, x1, y1 = x0 + ux * shrink, y0 + uy * shrink, x1 - ux * shrink, y1 - uy * shrink
+    d.line((x0, y0, x1, y1), fill=fill, width=width)
+    px, py = -uy, ux
+    d.polygon([(x1, y1), (x1 - ux * head + px * head * 0.55, y1 - uy * head + py * head * 0.55),
+               (x1 - ux * head - px * head * 0.55, y1 - uy * head - py * head * 0.55)], fill=fill)
+
+
+TOY = {"A": "C", "B": "D", "C": "E", "D": "A", "E": "B"}   # one loop: A→C→E→B→D→A
+
+
+def draw_notebook(w, h, mode):
+    """Ren's sketch of five lockers A–E (Ch4): 'boxes', 'arrows', or 'path' (B follows the chain)."""
+    ss = 2
+    W, H = w * ss, h * ss
+    img = notebook_paper(W, H)
+    d = ImageDraw.Draw(img)
+    pencil = (45, 45, 45)
+    cx, cy, R = W * 0.54, H * 0.52, min(W, H) * 0.33
+    bw, bh = min(W, H) * 0.15, min(W, H) * 0.19
+    pos = {}
+    for k, name in enumerate("ABCDE"):
+        a = -math.pi / 2 + 2 * math.pi * k / 5
+        pos[name] = (cx + R * math.cos(a), cy + R * math.sin(a))
+    fl, fc = font("dialogue", int(bh * 0.32)), font("dialogue", int(bh * 0.30))
+    path = ["B", "D", "A", "C", "E"]
+    if mode in ("arrows", "path"):
+        for k in "ABCDE":
+            hot = mode == "path" and k in path[:-1] or (mode == "path" and k == "E" and False)
+            col = (0, 0, 0) if hot else (150, 150, 150) if mode == "path" else pencil
+            _arrow(d, pos[k], pos[TOY[k]], 8 if hot else 5, col, head=30, shrink=bh * 0.62)
+    for k, (x, y) in pos.items():
+        box = (x - bw / 2, y - bh / 2, x + bw / 2, y + bh / 2)
+        d.rectangle(box, outline=pencil, width=6)
+        d.text((x - fl.getlength(k) / 2, box[1] - bh * 0.45), k, font=fl, fill=pencil)
+        cw, ch = bw * 0.62, bh * 0.42
+        card = (x - cw / 2, y - ch / 2 + bh * 0.08, x + cw / 2, y + ch / 2 + bh * 0.08)
+        d.rectangle(card, fill=(255, 255, 255), outline=pencil, width=3)
+        t = TOY[k]
+        d.text((x - fc.getlength(t) / 2, card[1] + ch * 0.05), t, font=fc, fill=pencil)
+    if mode == "path":
+        fn = font("dialogue", int(bh * 0.28))
+        for n, k in enumerate(path, start=1):
+            x, y = pos[k]
+            d.ellipse((x + bw * 0.42, y - bh * 0.62, x + bw * 0.42 + bh * 0.34, y - bh * 0.28), outline=(0, 0, 0), width=4)
+            d.text((x + bw * 0.42 + bh * 0.09, y - bh * 0.61), str(n), font=fn, fill=(0, 0, 0))
+        x, y = pos["E"]
+        d.ellipse((x - bw * 0.48, y - bh * 0.22, x + bw * 0.48, y + bh * 0.42), outline=(0, 0, 0), width=7)
+    return img.resize((w, h), Image.LANCZOS)
+
+
+def draw_loop(w, h, mode):
+    """Nineteen lockers as dots (Ch4): 'one' big loop, 'cut' (first and tenth marked), 'split' (9 + 10)."""
+    ss = 2
+    W, H = w * ss, h * ss
+    img = notebook_paper(W, H)
+    d = ImageDraw.Draw(img)
+    pencil = (40, 40, 40)
+    r = min(W, H) * 0.018
+    fn = font("dialogue", int(min(W, H) * 0.07))
+
+    def ring(cx, cy, R, n, start=-math.pi / 2):
+        pts = [(cx + R * math.cos(start + 2 * math.pi * k / n), cy + R * math.sin(start + 2 * math.pi * k / n))
+               for k in range(n)]
+        for k in range(n):
+            _arrow(d, pts[k], pts[(k + 1) % n], 4, pencil, head=16, shrink=r * 1.6)
+        for x, y in pts:
+            d.ellipse((x - r, y - r, x + r, y + r), fill=pencil)
+        return pts
+
+    if mode in ("one", "cut"):
+        cx, cy, R = W * 0.54, H * 0.5, min(W, H) * 0.36
+        pts = ring(cx, cy, R, 19)
+        t = "19"
+        d.text((cx - fn.getlength(t) / 2, cy - fn.size * 0.6), t, font=fn, fill=pencil)
+        if mode == "cut":
+            fs = font("dialogue", int(min(W, H) * 0.045))
+            for k, label in ((0, "1st"), (9, "10th")):
+                x, y = pts[k]
+                d.ellipse((x - r * 3, y - r * 3, x + r * 3, y + r * 3), outline=(0, 0, 0), width=7)
+                ly = y - r * 3 - fs.size * 1.3 if k == 0 else y + r * 3.5
+                lx = x - fs.getlength(label) / 2
+                d.rectangle((lx - 8, ly - 4, lx + fs.getlength(label) + 8, ly + fs.size * 1.15), fill=(246, 246, 242))
+                d.text((lx, ly), label, font=fs, fill=(0, 0, 0))
+            (x0, y0), (x1, y1) = pts[0], pts[9]
+            d.line((x0, y0 + r * 3, x1, y1 - r * 3), fill=(0, 0, 0), width=6)
+            t2 = "SWAP"
+            d.text(((x0 + x1) / 2 + r * 2, (y0 + y1) / 2 - fs.size), t2, font=fs, fill=(0, 0, 0))
+    else:
+        R1, R2 = min(W * 0.17, H * 0.3), min(W * 0.19, H * 0.33)
+        for cx, R, n in ((W * 0.29, R1, 9), (W * 0.73, R2, 10)):
+            ring(cx, H * 0.5, R, n)
+            t = str(n)
+            d.text((cx - fn.getlength(t) / 2, H * 0.5 - fn.size * 0.6), t, font=fn, fill=pencil)
+    return img.resize((w, h), Image.LANCZOS)
+
+
+def draw_namecard(w, h, name):
+    """A name card lying in a dark locker, close up."""
+    ss = 2
+    W, H = w * ss, h * ss
+    img = tone(W, H, step=12, r=2.6, bg=60)
+    d = ImageDraw.Draw(img)
+    for k in range(6):                                   # locker shelf edges
+        y = H * (0.08 + 0.17 * k)
+        d.line((0, y, W, y), fill=(35, 35, 35), width=6)
+    cw, ch = W * 0.78, H * 0.36
+    card = Image.new("RGBA", (int(cw), int(ch)), (250, 250, 250, 255))
+    cd = ImageDraw.Draw(card)
+    cd.rectangle((0, 0, cw - 1, ch - 1), outline=(20, 20, 20), width=8)
+    size = int(ch * 0.3)
+    f = font("sans", size)
+    while f.getlength(name) > cw * 0.86:
+        size -= 4
+        f = font("sans", size)
+    cd.text(((cw - f.getlength(name)) / 2, (ch - size * 1.2) / 2), name, font=f, fill=(15, 15, 15))
+    card = card.rotate(-4, expand=True, resample=Image.BICUBIC)
+    shadow = Image.new("L", card.size, 0)
+    shadow.paste(140, (0, 0), card.split()[3])
+    img.paste((10, 10, 10), (int((W - card.width) / 2 + 22), int((H - card.height) / 2 + 26)),
+              shadow.filter(ImageFilter.GaussianBlur(14)))
+    img.paste(card, (int((W - card.width) / 2), int((H - card.height) / 2)), card)
+    return img.resize((w, h), Image.LANCZOS)
+
+
+def draw_offer(w, h, lines):
+    """Momo's private offer on the small locker-room screen, with a tiny Momo icon."""
+    img = screen_base(w, h)
+    band = int(h * 0.26)
+    text = draw_screen(w, h - band, lines)
+    img.paste(text.crop((0, 0, w, h - band)), (0, band))
+    d = ImageDraw.Draw(img)
+    s = min(w, h) * 0.075
+    x, y = w * 0.5, band * 0.42
+    for ex in (-0.9, 0.9):                               # ears
+        d.ellipse((x + ex * s - s * 0.7, y - s * 0.9, x + ex * s + s * 0.7, y + s * 0.5), fill=(235, 235, 235))
+    d.ellipse((x - s, y - s * 0.6, x + s, y + s * 1.2), fill=(245, 245, 245))
+    for ex in (-0.38, 0.38):
+        d.ellipse((x + ex * s - s * 0.16, y + s * 0.1, x + ex * s + s * 0.16, y + s * 0.45), fill=(10, 10, 10))
+    d.polygon([(x - s * 0.5, y + s * 1.25), (x, y + s * 1.05), (x + s * 0.5, y + s * 1.25),
+               (x + s * 0.5, y + s * 0.85), (x, y + s * 1.05), (x - s * 0.5, y + s * 0.85)], fill=(10, 10, 10))
+    return img
+
+
+def draw_plates(page, rect, plates):
+    """Name plates drawn onto locker art (panel fractions: center x, center y, width)."""
+    x0, y0, x1, y1 = rect
+    w, h = x1 - x0, y1 - y0
+    d = ImageDraw.Draw(page)
+    for p in plates:
+        cx, cy = x0 + p["at"][0] * w, y0 + p["at"][1] * h
+        pw = p.get("w", 0.3) * w
+        size = int(pw * 0.12)
+        f = font("sans", size)
+        while f.getlength(p["text"]) > pw * 0.84:
+            size -= 2
+            f = font("sans", size)
+        ph = size * 1.9
+        box = (cx - pw / 2, cy - ph / 2, cx + pw / 2, cy + ph / 2)
+        d.rectangle(box, fill=(236, 236, 236), outline=(25, 25, 25), width=max(3, int(size * 0.12)))
+        for sx in (box[0] + size * 0.35, box[2] - size * 0.35):          # screws
+            d.ellipse((sx - size * 0.12, cy - size * 0.12, sx + size * 0.12, cy + size * 0.12), fill=(60, 60, 60))
+        d.text((cx - f.getlength(p["text"]) / 2, cy - size * 0.62), p["text"], font=f, fill=(15, 15, 15))
+
+
 def render_panel(panel, w, h, art_dir, pid):
     kind = panel.get("kind", "art")
     if kind == "art":
@@ -517,6 +752,16 @@ def render_panel(panel, w, h, art_dir, pid):
         return draw_phone(w, h, panel["mode"])
     if kind == "token":
         return draw_token(w, h)
+    if kind == "board":
+        return draw_board(w, h, panel["board"])
+    if kind == "notebook":
+        return draw_notebook(w, h, panel["mode"])
+    if kind == "loop":
+        return draw_loop(w, h, panel["mode"])
+    if kind == "namecard":
+        return draw_namecard(w, h, panel["name"])
+    if kind == "offer":
+        return draw_offer(w, h, panel["lines"])
     raise ValueError(f"unknown panel kind {kind}")
 
 
@@ -533,6 +778,8 @@ def compose_page(page_spec, art_dir, chapter):
             ox, oy = x0 + ((x1 - x0) - tw) // 2, y0 + int((y1 - y0) * 0.05)
             page.paste(draw_timer(tw, th, panel["overlay_timer"]), (ox, oy))
             d.rectangle((ox, oy, ox + tw, oy + th), outline="black", width=4)
+        if panel.get("plates"):
+            draw_plates(page, rect, panel["plates"])
         if panel.get("kind") != "white":
             d.rectangle(rect, outline="black", width=BORDER)
         if panel.get("title"):
