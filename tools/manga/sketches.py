@@ -80,6 +80,9 @@ def student(d, x, y, s, girl, rnd):
     face = rnd.choice((-1, 0, 1))  # which way the student is looking
     fx = x + face * head * 0.45
     d.ellipse([fx - head * 0.55, top + head * 0.8, fx + head * 0.55, top + head * 1.9], fill=SKIN)
+    if s >= 1.5:  # close enough to see: wide, frightened eyes
+        for ex in (fx - head * 0.25, fx + head * 0.25):
+            d.ellipse([ex - head * 0.11, top + head * 1.15, ex + head * 0.11, top + head * 1.4], fill=(30, 30, 30))
 
 
 def chamber_wide(w=1152, h=896, seed=1501):
@@ -154,6 +157,26 @@ def door_push(w=1344, h=768, seed=1604):
     return vignette(img, 140)
 
 
+def frozen_class(w=1536, h=640, seed=2004):
+    """Ch1 p20_4 and p21_2: the class standing frozen in two loose rows, facing the
+    viewer (and Momo), in the dark concrete chamber with light on their faces.
+    The sealed door stays out of frame."""
+    rnd = random.Random(seed)
+    k = h / 640
+    n = max(4, round(7 * w / 1536 / k))
+    img = concrete(w, h, 62, seed)
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, int(h * 0.72), w, h], fill=(92, 92, 92))
+    img = light_pool(img, w // 2, int(h * 0.62), int(w * 0.45), int(h * 0.4), gain=45)
+    d = ImageDraw.Draw(img)
+    figures = [(h * 0.8, w * (i + 0.5) / n + rnd.uniform(-25, 25) * k, 2.6 * k) for i in range(n)]
+    figures += [(h + 40 * k, w * (i + 1) / n + rnd.uniform(-25, 25) * k, 3.4 * k) for i in range(n - 1)]
+    for idx, (y, x, s) in enumerate(figures):
+        student(d, x, y, s, idx % 3 == 1, rnd)
+    # Soften the flat shapes, or the model keeps them as faceless mannequins.
+    return vignette(img.filter(ImageFilter.GaussianBlur(5 * k)), 120)
+
+
 def old_key(length, angle=0, tone=(200, 200, 200)):
     """An old metal key on a transparent layer: ring bow, shaft, toothed bit."""
     L = int(length)
@@ -181,7 +204,7 @@ def key_case(w=1152, h=896, seed=2301):
     img = Image.composite(Image.new("RGB", (w, h), (255, 255, 255)), img, beam.filter(ImageFilter.GaussianBlur(30)))
     img = light_pool(img, w // 2, int(h * 0.8), int(w * 0.3), int(h * 0.09), gain=90)
     d = ImageDraw.Draw(img)
-    px0, px1, ptop, pbot = int(w * 0.37), int(w * 0.63), int(h * 0.56), int(h * 0.8)
+    px0, px1, ptop, pbot = int(w * 0.33), int(w * 0.67), int(h * 0.56), int(h * 0.8)
     d.rectangle([px0, ptop, px1, pbot], fill=(120, 120, 120), outline=(30, 30, 30), width=3)  # pedestal
     d.polygon([(px0, ptop), (px1, ptop), (px1 - 14, ptop - 18), (px0 + 14, ptop - 18)], fill=(170, 170, 170))
     gx0, gx1, gtop = px0 + 18, px1 - 18, int(h * 0.22)
@@ -190,8 +213,8 @@ def key_case(w=1152, h=896, seed=2301):
     gd.rectangle([gx0, gtop, gx1, ptop - 18], fill=(220, 220, 220, 40), outline=(235, 235, 235, 255), width=3)
     gd.line([(gx0 + 20, gtop + 30), (gx0 + 60, gtop + 120)], fill=(255, 255, 255, 160), width=6)  # reflection
     img = Image.alpha_composite(img.convert("RGBA"), glass)
-    key = old_key((gx1 - gx0) * 0.8, angle=0)
-    img.alpha_composite(key, (int((gx0 + gx1 - key.width) / 2), int(ptop - 18 - key.height * 0.85)))
+    key = old_key((gx1 - gx0) * 0.9, angle=0)
+    img.alpha_composite(key, (int((gx0 + gx1 - key.width) / 2), int(ptop - 18 - key.height * 0.8)))
     img = img.convert("RGB")
     d = ImageDraw.Draw(img)
     for k in range(10):  # empty transparent token containers on the floor, either side
@@ -205,6 +228,29 @@ def key_case(w=1152, h=896, seed=2301):
         d.ellipse([x - cw, y - ch - cw * 0.35, x + cw, y - ch + cw * 0.35], outline=(220, 220, 220), width=3)
         d.ellipse([x - cw, y - cw * 0.35, x + cw, y + cw * 0.35], outline=(150, 150, 150), width=3)
     return vignette(img, 160)
+
+
+def key_title(w=832, h=1216, seed=2011):
+    """Ch2 p01_1 (title splash): the exit key on a pedestal behind glass, one
+    spotlight from above, dark room. The top third stays clear for the title."""
+    img = concrete(w, h, 40, seed)
+    beam = Image.new("L", (w, h), 0)
+    ImageDraw.Draw(beam).polygon([(w * 0.38, 0), (w * 0.62, 0), (w * 0.86, h * 0.9), (w * 0.14, h * 0.9)], fill=60)
+    img = Image.composite(Image.new("RGB", (w, h), (255, 255, 255)), img, beam.filter(ImageFilter.GaussianBlur(40)))
+    img = light_pool(img, w // 2, int(h * 0.88), int(w * 0.4), int(h * 0.06), gain=90)
+    d = ImageDraw.Draw(img)
+    px0, px1, ptop, pbot = int(w * 0.25), int(w * 0.75), int(h * 0.6), int(h * 0.88)
+    d.rectangle([px0, ptop, px1, pbot], fill=(70, 70, 70), outline=(20, 20, 20), width=3)
+    d.polygon([(px0, ptop), (px1, ptop), (px1 - 16, ptop - 22), (px0 + 16, ptop - 22)], fill=(150, 150, 150))
+    gx0, gx1, gtop = px0 + 20, px1 - 20, int(h * 0.34)
+    glass = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    gd = ImageDraw.Draw(glass)
+    gd.rectangle([gx0, gtop, gx1, ptop - 22], fill=(220, 220, 220, 36), outline=(235, 235, 235, 255), width=3)
+    gd.line([(gx0 + 24, gtop + 30), (gx0 + 70, gtop + 150)], fill=(255, 255, 255, 150), width=7)
+    img = Image.alpha_composite(img.convert("RGBA"), glass)
+    key = old_key((gx1 - gx0) * 0.85)
+    img.alpha_composite(key, (int((w - key.width) / 2), int(ptop - 22 - key.height * 0.8)))
+    return vignette(img.convert("RGB"), 150)
 
 
 def key_closeup(w=896, h=1152, seed=2302):
@@ -250,7 +296,7 @@ def coin_in_palm(w=832, h=1216, seed=3132):
     d.ellipse([w * 0.55, h * 0.3, w * 0.8, h * 0.47], fill=(196, 196, 196))  # his hand
     finger(d, w * 0.6, h * 0.42, cx + 30, cy - 70, 44, fill=(196, 196, 196))  # index finger to the coin
     finger(d, w * 0.66, h * 0.45, cx + 70, cy - 30, 44, fill=(196, 196, 196))  # thumb
-    return img.filter(ImageFilter.GaussianBlur(1))
+    return img.filter(ImageFilter.GaussianBlur(6))  # soft, or the model keeps the flat shapes
 
 
 def empty_hands(w=832, h=1216, seed=3142):
@@ -281,11 +327,13 @@ def empty_hands(w=832, h=1216, seed=3142):
                     for f in range(4):
                         fx = hx - 27 * s + f * 18 * s
                         finger(d, fx, hy - 10 * s, fx + side * 4 * s, hy - 52 * s, 13 * s)
-    return vignette(img, 60)
+    return vignette(img.filter(ImageFilter.GaussianBlur(6)), 60)  # soft, or the figures stay mannequins
 
 
 SKETCHES = {
-    "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p23_1.png": key_case, "p23_2.png": key_closeup},
+    "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class,
+                  "p21_2.png": lambda: frozen_class(1152, 896, seed=2102), "p23_1.png": key_case, "p23_2.png": key_closeup},
+    "chapter02": {"p01_1.png": key_title, "p10_1.png": lambda: chamber_wide(seed=2101)},  # same chamber as Ch1 p15_1
     "chapter03": {"p13_2.png": coin_in_palm, "p14_2.png": empty_hands},
 }
 

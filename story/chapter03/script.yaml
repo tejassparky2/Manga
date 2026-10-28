@@ -340,7 +340,7 @@ pages:
     gen: "hands, close-up, giving coin, single coin, open palm, hand focus, white background"
     negative_extra: "coin stack, multiple coins"
     sketch: sketches/p13_2.png
-    strength: 0.68
+    strength: 0.85
     text:
     - {t: caption, who: REN, say: "He put one token in her hand.", canon: true}
   - kind: art
@@ -374,7 +374,7 @@ pages:
     gen: "multiple boys, multiple girls, gakuran, serafuku, horrified, empty hands, showing palms, white room, white background, bright"
     negative_extra: "corridor, window, table, paintings"
     sketch: sketches/p14_2.png
-    strength: 0.72
+    strength: 0.85
     text:
     - {t: caption, who: REN, say: "None of us had a single token left to stop it.", canon: true}
   - kind: art
