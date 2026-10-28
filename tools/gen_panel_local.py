@@ -11,7 +11,8 @@ import time
 from pathlib import Path
 
 import torch
-from diffusers import EulerAncestralDiscreteScheduler, StableDiffusionXLPipeline, UNet2DConditionModel
+from diffusers import (EulerAncestralDiscreteScheduler, StableDiffusionXLImg2ImgPipeline, StableDiffusionXLPipeline,
+                       UNet2DConditionModel)
 
 MODEL = Path(__file__).resolve().parent.parent / "models" / "animagine-xl-4.0"
 # CLIP reads only 77 tokens, so the style tags lead and the quality tags trail.
@@ -50,22 +51,35 @@ def load_pipeline():
     # Denoise through a view of the same modules without the text encoders: with
     # text_encoder_2 present the pipeline recasts prompt embeds to its dtype (bf16),
     # which breaks the fp32 UNet. No weights are copied.
-    pipe.denoiser = StableDiffusionXLPipeline(**{**pipe.components, "text_encoder": None, "text_encoder_2": None,
-                                                 "tokenizer": None, "tokenizer_2": None})
+    no_text = {"text_encoder": None, "text_encoder_2": None, "tokenizer": None, "tokenizer_2": None}
+    pipe.denoiser = StableDiffusionXLPipeline(**{**pipe.components, **no_text})
+    # Same modules again, for panels repainted from a drawn layout sketch.
+    pipe.repainter = StableDiffusionXLImg2ImgPipeline(**{**pipe.components, **no_text})
     print(f"unet dtype: {pipe.unet.dtype}", flush=True)
     return pipe
 
 
-def generate(pipe, prompt, width=832, height=1216, steps=20, cfg=5.0, seed=0, negative=NEGATIVE):
+def generate(pipe, prompt, width=832, height=1216, steps=20, cfg=5.0, seed=0, negative=NEGATIVE,
+             sketch=None, strength=0.65):
+    """Text-to-image, or with `sketch` (a PIL image) repaint that layout: lower
+    strength keeps more of the sketch's composition."""
     dtype = pipe.unet.dtype
+    generator = torch.Generator().manual_seed(seed)
     with torch.no_grad():
         embeds = pipe.encode_prompt(full_prompt(prompt), device="cpu", num_images_per_prompt=1,
                                     do_classifier_free_guidance=True, negative_prompt=negative)
         pe, npe, ppe, nppe = (e.to(dtype) for e in embeds)
-        latents = pipe.denoiser(prompt_embeds=pe, negative_prompt_embeds=npe, pooled_prompt_embeds=ppe,
-                       negative_pooled_prompt_embeds=nppe, width=width, height=height,
-                       num_inference_steps=steps, guidance_scale=cfg, output_type="latent",
-                       generator=torch.Generator().manual_seed(seed)).images
+        common = dict(prompt_embeds=pe, negative_prompt_embeds=npe, pooled_prompt_embeds=ppe,
+                      negative_pooled_prompt_embeds=nppe, num_inference_steps=steps, guidance_scale=cfg,
+                      output_type="latent", generator=generator)
+        if sketch is None:
+            latents = pipe.denoiser(width=width, height=height, **common).images
+        else:
+            # Encode the sketch with the fp32 VAE here: the img2img pipeline would
+            # otherwise recast the VAE to bf16 after encoding.
+            image = pipe.image_processor.preprocess(sketch.convert("RGB").resize((width, height))).to(torch.float32)
+            init = pipe.vae.encode(image).latent_dist.sample(generator) * pipe.vae.config.scaling_factor
+            latents = pipe.repainter(image=init.to(dtype), strength=strength, **common).images
         latents = latents.to(torch.float32) / pipe.vae.config.scaling_factor
         return pipe.image_processor.postprocess(pipe.vae.decode(latents).sample)[0]
 
