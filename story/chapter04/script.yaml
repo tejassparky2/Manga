@@ -472,7 +472,10 @@ pages:
   - kind: art
     shot: "WIDE — the class and Riku"
     art: "The class, seen from behind, faces Riku across the white room."
-    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, facing one boy, standoff, white room, bright, wide shot"
+    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, facing one boy, standoff, white room, white walls, bright, wide shot"
+    negative_extra: "crowd, stadium, arena, audience, ceiling"
+    sketch: sketches/p19_1.png
+    strength: 0.85
     text:
     - {t: caption, who: REN, say: "Nine of us dead on average. One of us dead for sure. Or none of us, if he keeps his word.", canon: true}
   - kind: art
