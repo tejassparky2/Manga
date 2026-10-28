@@ -80,6 +80,9 @@ def student(d, x, y, s, girl, rnd):
     face = rnd.choice((-1, 0, 1))  # which way the student is looking
     fx = x + face * head * 0.45
     d.ellipse([fx - head * 0.55, top + head * 0.8, fx + head * 0.55, top + head * 1.9], fill=SKIN)
+    if s >= 1.5:  # close enough to see: wide, frightened eyes
+        for ex in (fx - head * 0.25, fx + head * 0.25):
+            d.ellipse([ex - head * 0.11, top + head * 1.15, ex + head * 0.11, top + head * 1.4], fill=(30, 30, 30))
 
 
 def chamber_wide(w=1152, h=896, seed=1501):
@@ -170,7 +173,8 @@ def frozen_class(w=1536, h=640, seed=2004):
     figures += [(h + 40 * k, w * (i + 1) / n + rnd.uniform(-25, 25) * k, 3.4 * k) for i in range(n - 1)]
     for idx, (y, x, s) in enumerate(figures):
         student(d, x, y, s, idx % 3 == 1, rnd)
-    return vignette(img, 120)
+    # Soften the flat shapes, or the model keeps them as faceless mannequins.
+    return vignette(img.filter(ImageFilter.GaussianBlur(5 * k)), 120)
 
 
 def old_key(length, angle=0, tone=(200, 200, 200)):

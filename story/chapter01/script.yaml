@@ -613,7 +613,7 @@ pages:
     gen: "multiple boys, multiple girls, gakuran, serafuku, shocked, wide-eyed, frozen, standing still, looking at viewer, dark concrete room, dim light"
     negative_extra: "hologram, ghost, crystal, glass, ruins"
     sketch: sketches/p20_4.png
-    strength: 0.7
+    strength: 0.82
 
 - page: 21
   scene: 9
@@ -632,7 +632,7 @@ pages:
     gen: "multiple boys, multiple girls, gakuran, serafuku, silent, shocked, standing still, looking at viewer, dark concrete room, dim light"
     negative_extra: "door, doorway, corridor, tablet, screens"
     sketch: sketches/p21_2.png
-    strength: 0.7
+    strength: 0.82
     text:
     - {t: speech, who: STUDENTS, say: "......"}
   - kind: art
