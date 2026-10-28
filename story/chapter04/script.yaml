@@ -393,13 +393,15 @@ pages:
     mode: split
     center: [0.5, 0.62]
     text:
-    - {t: offpanel, who: REN, say: "One loop of nine. The other is what's left. Nineteen minus nine is ten.", canon: true, at: [0.5, 0.15]}
+    - {t: offpanel, who: REN, say: "One loop of nine. The other is what's left. Nineteen minus nine is ten.", canon: true, at: [0.76, 0.14]}
   - kind: art
     shot: "CLOSE — Aoi"
     art: "Aoi, a flicker of hope."
-    gen: "{AOI}, surprised, hopeful, upper body, white room, bright"
+    gen: "{AOI}, surprised, hopeful, looking up, upper body, white room, bright"
+    negative_extra: "book, holding, paper, notebook"
+    seed: 41502
     text:
-    - {t: speech, who: AOI, say: "Ten or shorter. Everyone after you finds their name.", canon: true}
+    - {t: speech, who: AOI, say: "Ten or shorter. Everyone after you finds their name.", canon: true, at: [0.3, 0.14], size: 27}
   - kind: art
     shot: "CLOSE — Ren"
     art: "Ren, grim, eyes down."
@@ -441,10 +443,10 @@ pages:
   panels:
   - kind: art
     shot: "MEDIUM — Riku's tokens"
-    art: "Riku weighs a handful of coins, looking at them. (His face is shown, so this is never confused with the hidden hand on page 2.)"
-    gen: "{RIKU}, smirk, looking down at open palm, many small coins in palm, upper body, white room, bright"
-    negative_extra: "coin stack, medal, pendant, chain, picture, large coin"
-    seed: 41701
+    art: "Riku, half-lidded, a small smile: he knows what he holds. (No coins drawn: renders of coins in his hand kept failing.)"
+    gen: "{RIKU}, smirk, half-closed eyes, looking down, close-up, white room, bright"
+    negative_extra: "coin, hand, bubbles, orbs, light particles"
+    seed: 41711
     text:
     - {t: caption, who: REN, say: "Ten free. Nine more makes nineteen. Whoever goes first with nine tokens sees everything.", canon: true}
   - kind: art
@@ -456,9 +458,9 @@ pages:
   - kind: art
     shot: "CLOSE — Riku"
     art: "Riku closes his fist."
-    gen: "{RIKU}, cold eyes, expressionless, one hand clenched over coins, hand at chest, upper body, white room, bright"
-    negative_extra: "fighting stance, punching, boxing, two fists"
-    seed: 41703
+    gen: "{RIKU}, cold eyes, expressionless, hand in pocket, upper body, white room, bright"
+    negative_extra: "fighting stance, table, coin, reaching"
+    seed: 41713
     text:
     - {t: speech, who: RIKU, say: "My tokens don't leave my hands. I go first.", canon: true}
 

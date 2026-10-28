@@ -500,8 +500,10 @@ pages:
   - kind: art
     shot: "INSERT — one coin"
     art: "The notebook, opened: one coin between the pages."
-    gen: "hand focus, close-up, open notebook, single coin, coin between pages, holding notebook, black sleeves, dim"
-    negative_extra: "face, multiple coins, text"
+    gen: "hand focus, close-up, small open notebook, single coin lying on page, black sleeve, from above, dim"
+    negative_extra: "face, multiple coins, text, ring"
+    sketch: sketches/p16_3.png
+    strength: 0.8
   - kind: art
     shot: "CLOSE — Kota"
     art: "Kota, crying."
