@@ -130,6 +130,31 @@
     }
    ]
   },
+  "12": {
+   "image": "pages/page_12.jpg",
+   "panels": [
+    {
+     "id": "p12_1",
+     "kind": "timer",
+     "box": [
+      80,
+      90,
+      1520,
+      907
+     ]
+    },
+    {
+     "id": "p12_2",
+     "kind": "art",
+     "box": [
+      80,
+      939,
+      1520,
+      2164
+     ]
+    }
+   ]
+  },
   "15": {
    "image": "pages/page_15.jpg",
    "panels": [
