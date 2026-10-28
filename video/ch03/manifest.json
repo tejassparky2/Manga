@@ -1,0 +1,25 @@
+{
+ "pages": {
+  "1": {
+   "image": "pages/page_01.jpg",
+   "panels": [
+    {
+     "id": "p01_1",
+     "kind": "art",
+     "box": [
+      80,
+      90,
+      1520,
+      2164
+     ]
+    }
+   ]
+  }
+ },
+ "page_size": [
+  1600,
+  2264
+ ],
+ "reading_order": "right-to-left",
+ "source_spec": "story/chapter03/script.yaml"
+}
