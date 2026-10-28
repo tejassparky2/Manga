@@ -1,6 +1,6 @@
 # DEAD MAN'S ALGORITHM — Game 3 proposal v3: "Find Yourself"
 
-**Status: PROPOSAL — NOT CANON.** None of it is canon until you approve it in this chat. Nothing gets drawn before that.
+**Status: APPROVED 2026-10-28** ("Approved, go with Haruto and Gō, draw it"). The canon text is now `story/continuation_v6_approved.md`.
 
 - **Replaces:** v1/v2 "The Verdict" (`game03_the_verdict.md`). You said that game was too simple and its escape was written into a rule ("if tied, nobody dies"). This version has no escape rule. The way out is hidden in what the rules *allow*.
 - **Requested:** 2026-10-28. "The loophole should be hard and clever to find… more tension, more dark, more psychology, more clever, more hard", with references like Tomodachi Game, Alice in Borderland and The Genius. Then: "Both game and story should be psychological, hard, thrilling, tension, clever, good plots, mysterious, human emotions, playing with mind."
