@@ -21,7 +21,7 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 - AOI: 1girl, black hair, bob cut, glasses, serafuku
 - MIO: 1girl, light brown hair, long wavy hair, earrings, serafuku
 - SAKI: 1girl, black hair, short hair, hair over one eye, quiet, serafuku
-- MOMO: no humans, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot
+- MOMO: no humans, solo, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot
 
 ### PAGE 1
 

@@ -23,7 +23,7 @@ characters:
   AOI: "1girl, black hair, bob cut, glasses, serafuku"
   MIO: "1girl, light brown hair, long wavy hair, earrings, serafuku"
   SAKI: "1girl, black hair, short hair, hair over one eye, quiet, serafuku"
-  MOMO: "no humans, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot"
+  MOMO: "no humans, solo, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot"
 
 character_negatives:
   MOMO: "multiple mice, 2others"
@@ -214,7 +214,8 @@ pages:
   - kind: art
     shot: "CLOSE — Ren"
     art: "Ren, very still."
-    gen: "{REN}, shocked, realization, close-up, white room, bright"
+    gen: "{REN}, solo, shocked, realization, wide-eyed, upper body, white room, bright"
+    negative_extra: "multiple faces, extra face"
     text:
     - {t: caption, who: REN, say: "Not any player. Anyone.", canon: true}
   - kind: art
@@ -236,7 +237,8 @@ pages:
   - kind: art
     shot: "MEDIUM — Ren explains"
     art: "Ren turns to the class."
-    gen: "{REN}, speaking, explaining, determined, upper body, white room, bright"
+    gen: "{REN}, solo, speaking, explaining, determined, hand raised, upper body, white room, bright"
+    negative_extra: "book, holding book"
     text:
     - {t: speech, who: REN, say: "Momo isn't a player. Give Momo everything, and there are no players. And nobody dies.", canon: true}
   - kind: art
@@ -257,8 +259,9 @@ pages:
   panels:
   - kind: art
     shot: "WIDE — the giving"
-    art: "One by one, students drop their coins in front of Momo."
-    gen: "multiple boys, multiple girls, gakuran, serafuku, from behind, giving coins, pile of coins, {MOMO}, white room, bright, wide shot"
+    art: "Students' hands drop coins onto a growing pile beside Momo."
+    gen: "hands dropping coins onto pile of coins, {MOMO}, sitting beside coin pile, white floor, white room, bright"
+    negative_extra: "paper"
     text:
     - {t: caption, who: REN, say: "One by one, we gave Momo everything.", canon: true}
   - kind: art
@@ -415,7 +418,8 @@ pages:
   - kind: art
     shot: "FULL — Momo announces"
     art: "Momo, bright and cheerful."
-    gen: "{MOMO}, arms up, announcing, happy, full body, white room, bright"
+    gen: "{MOMO}, solo, arms up, announcing, happy, full body, white room, bright"
+    negative_extra: "letters"
     text:
     - {t: speech, who: MOMO, say: "Time's up! Kanzaki Riku, sixty-nine. Nishida Saki, one!", canon: true}
   - kind: black
@@ -430,7 +434,8 @@ pages:
   - kind: art
     shot: "WIDE — the empty spot"
     art: "The white floor where Saki stood. A single coin lies there. No one."
-    gen: "no humans, white room, empty floor, single coin on floor, bright, eerie, wide shot, from above"
+    gen: "no humans, single small round coin lying on bare white floor, empty white room, bright, eerie, minimalist, from above"
+    negative_extra: "tablet, box, wood floor"
     text:
     - {t: caption, who: REN, say: "When they came back, Saki was gone. Her token lay on the floor.", canon: true}
   - kind: screen
@@ -453,6 +458,7 @@ pages:
   - kind: art
     shot: "CLOSE — Ren"
     art: "Ren, hollow."
-    gen: "{REN}, hollow eyes, devastated, close-up, white room"
+    gen: "{REN}, solo, devastated, dull eyes, teary eyes, trembling lips, close-up, white room"
+    negative_extra: "empty eyes, no pupils, horror"
     text:
     - {t: caption, who: REN, say: "I found the loophole. Riku found the loophole in my loophole.", canon: true}
