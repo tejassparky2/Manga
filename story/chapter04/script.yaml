@@ -222,6 +222,8 @@ pages:
     shot: "CLOSE — Mio"
     art: "Mio, bitter."
     gen: "{MIO}, bitter, frown, arms crossed, upper body, white room, bright"
+    negative_extra: "cards, playing card, holding, book"
+    seed: 40802
     text:
     - {t: speech, who: MIO, say: "Then he walks out, and we flip coins.", canon: true}
   - kind: art
@@ -374,9 +376,9 @@ pages:
     shot: "DIAGRAM — the cut"
     art: "Ren's diagram: the first and tenth lockers circled, a swap."
     mode: cut
-    center: [0.32, 0.5]
+    center: [0.29, 0.5]
     text:
-    - {t: offpanel, who: REN, say: "Swap the card in your first locker with the card in your tenth. The loop breaks in two.", canon: true, at: [0.8, 0.17]}
+    - {t: offpanel, who: REN, say: "Swap the card in your first locker with the card in your tenth. The loop breaks in two.", canon: true, at: [0.795, 0.5], size: 27}
 
 - page: 15
   rows: [[1.1, [1]], [1, [1, 1]]]

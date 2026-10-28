@@ -220,12 +220,13 @@ pages:
              4: ["FUJIMOTO AOI", 9, "FOUND"], 5: ["AOYAMA MIO", 10, "FOUND"]}
       focus: [4, 5]
   - kind: art
-    shot: "MEDIUM — Aoi and Mio"
-    art: "Aoi (glasses, bob) on the right, Mio (wavy light hair) on the left."
-    gen: "2girls, black hair, bob cut, glasses, light brown hair, long wavy hair, serafuku, side by side, upper body, white room, bright"
+    shot: "MEDIUM — Aoi; Mio off-panel"
+    art: "Aoi, tired, quiet. Mio answers from off-panel. (One figure: two girls in one render swap their features.)"
+    gen: "{AOI}, tired, quiet, looking to the side, upper body, white room, bright"
+    seed: 50704
     text:
-    - {t: speech, who: AOI, say: "Me too.", canon: true, at: [0.75, 0.15]}
-    - {t: speech, who: MIO, say: "Same.", canon: true, at: [0.25, 0.15]}
+    - {t: speech, who: AOI, say: "Me too.", canon: true, at: [0.72, 0.14]}
+    - {t: offpanel, who: MIO, say: "Same.", canon: true, at: [0.2, 0.3], tail: [-0.05, 0.36]}
   - kind: art
     shot: "WIDE — apart"
     art: "The finished room: students sit apart along the walls, nobody looking at anyone."
