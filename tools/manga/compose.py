@@ -644,7 +644,8 @@ def draw_loop(w, h, mode, center=(0.54, 0.5)):
         cx, cy, R = W * center[0], H * center[1], min(W, H) * 0.36
         pts = ring(cx, cy, R, 19)
         t = "19"
-        d.text((cx - fn.getlength(t) / 2, cy - fn.size * 0.6), t, font=fn, fill=pencil)
+        tx = cx - fn.getlength(t) / 2 - (R * 0.4 if mode == "cut" else 0)   # clear of the swap line
+        d.text((tx, cy - fn.size * 0.6), t, font=fn, fill=pencil)
         if mode == "cut":
             fs = font("dialogue", int(min(W, H) * 0.045))
             for k, label in ((0, "1st"), (9, "10th")):
