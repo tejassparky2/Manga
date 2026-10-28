@@ -148,13 +148,17 @@ pages:
   - kind: art
     shot: "MEDIUM — Riku"
     art: "Riku, looking up, unbothered."
-    gen: "{RIKU}, sitting, smirk, looking up, upper body, white room, bright"
+    gen: "{RIKU}, sitting on floor, against wall, smirk, looking up, upper body, white room, bright"
+    negative_extra: "chair, desk, book"
+    seed: 50502
     text:
     - {t: speech, who: RIKU, say: "Fifty. To leave the loop whole.", canon: true}
   - kind: art
     shot: "CLOSE — Ren"
     art: "Ren, frowning."
     gen: "{REN}, frown, upper body, white room, bright"
+    negative_extra: "book, holding, paper"
+    seed: 50503
     text:
     - {t: speech, who: REN, say: "Why didn't you take it?", canon: true}
   - kind: art
