@@ -12,7 +12,7 @@ Reconstruction draft 1, generated from `script.yaml`.
 
 The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's strength and Momo's design.
 
-- REN: 1boy, black hair, messy hair, hair between eyes, gakuran
+- REN: 1boy, black hair, short hair, messy hair, hair between eyes, gakuran
 - YUI: 1girl, long hair, black hair, straight hair, blunt bangs, serafuku
 - HARUTO: 1boy, blonde hair, spiky hair, gakuran
 - RIKU: 1boy, black hair, slicked back hair, sharp eyes, gakuran
