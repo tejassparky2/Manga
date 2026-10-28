@@ -148,13 +148,14 @@ def door_push(w=1344, h=768, seed=1604):
         sh = 62 * s if broad else 50 * s
         d.polygon([(x - sh, top + 70 * s), (x + sh, top + 70 * s), (x + 40 * s, base - 160 * s),
                    (x - 40 * s, base - 160 * s)], fill=GAKURAN)  # back of the jacket
-        for side in (-1, 1):  # arms up, palms flat on the door
-            hx = x + side * (sh + 30 * s)
-            d.line([(x + side * sh * 0.8, top + 80 * s), (hx, top + 10 * s)], fill=GAKURAN, width=int(30 * s))
-            d.ellipse([hx - 13 * s, top - 6 * s, hx + 13 * s, top + 22 * s], fill=SKIN)
+        for side in (-1, 1):  # arms forward at shoulder height, palms flat on the door
+            hx = x + side * (sh + 45 * s)
+            d.line([(x + side * sh * 0.8, top + 85 * s), (hx, top + 60 * s)], fill=GAKURAN, width=int(30 * s))
+            d.ellipse([hx - 13 * s, top + 45 * s, hx + 13 * s, top + 75 * s], fill=SKIN)
         r = 30 * s if broad else 33 * s
         d.ellipse([x - r, top - 4 * s, x + r, top + 2 * r - 4 * s], fill=(40, 40, 40) if broad else HAIR)
-    return vignette(img, 140)
+    # Soften the flat shapes, or the model keeps the boys as cartoon cut-outs.
+    return vignette(img.filter(ImageFilter.GaussianBlur(4)), 140)
 
 
 def frozen_class(w=1536, h=640, seed=2004):
@@ -296,7 +297,7 @@ def coin_in_palm(w=832, h=1216, seed=3132):
     d.ellipse([w * 0.55, h * 0.3, w * 0.8, h * 0.47], fill=(196, 196, 196))  # his hand
     finger(d, w * 0.6, h * 0.42, cx + 30, cy - 70, 44, fill=(196, 196, 196))  # index finger to the coin
     finger(d, w * 0.66, h * 0.45, cx + 70, cy - 30, 44, fill=(196, 196, 196))  # thumb
-    return img.filter(ImageFilter.GaussianBlur(1))
+    return img.filter(ImageFilter.GaussianBlur(6))  # soft, or the model keeps the flat shapes
 
 
 def empty_hands(w=832, h=1216, seed=3142):
@@ -327,7 +328,7 @@ def empty_hands(w=832, h=1216, seed=3142):
                     for f in range(4):
                         fx = hx - 27 * s + f * 18 * s
                         finger(d, fx, hy - 10 * s, fx + side * 4 * s, hy - 52 * s, 13 * s)
-    return vignette(img, 60)
+    return vignette(img.filter(ImageFilter.GaussianBlur(6)), 60)  # soft, or the figures stay mannequins
 
 
 SKETCHES = {
