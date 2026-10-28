@@ -678,6 +678,7 @@ SKETCHES = {
                   "p09_1.png": lambda: locker_ring(1344, 768, cam=(0.3, 1.5, -2.6), pitch=4, figure=True),
                   "p12_2.png": lambda: locker_ring(1344, 768, cam=(0, 4.5, -4.5), pitch=35, crowd=10, blur=2),
                   "p14_3.png": surrounded,
+                  "p16_3.png": lambda: coin_notebook(seed=5163),   # rhymes with Ch4 p02_2: the same notebook, the same coin
                   "p06_2.png": waiting_board, "p07_5.png": wall_sitters, "p11_2.png": heads_turn,
                   "p20_2.png": apart},
 }
