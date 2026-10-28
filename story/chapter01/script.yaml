@@ -15,14 +15,14 @@ chapter: 1
 title: "12:17"
 
 characters:
-  REN: "1boy, black hair, messy hair, gakuran"
-  YUI: "1girl, long black hair, serafuku"
+  REN: "1boy, black hair, messy hair, hair between eyes, gakuran"
+  YUI: "1girl, long hair, black hair, straight hair, blunt bangs, serafuku"
   HARUTO: "1boy, blonde hair, spiky hair, gakuran"
   RIKU: "1boy, black hair, slicked back hair, sharp eyes, gakuran"
   GO: "1boy, black hair, buzz cut, tall, broad shoulders, stoic, buttoned gakuran"
   KOTA: "1boy, black hair, bowl cut, thin, timid, gakuran"
-  AOI: "1girl, bob cut, glasses, serafuku"
-  MIO: "1girl, long wavy hair, earrings, serafuku"
+  AOI: "1girl, black hair, bob cut, glasses, serafuku"
+  MIO: "1girl, light brown hair, long wavy hair, earrings, serafuku"
   MOMO: "no humans, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot"
 
 pages:
@@ -114,7 +114,7 @@ pages:
   - kind: art
     shot: "WIDE — Yui arrives"
     art: "Yui sets a carton of milk on Ren's desk. Ren seated; Haruto at the next desk."
-    gen: "1girl, 2boys, {YUI}, standing, placing milk carton on desk, smile, {REN}, sitting, school desk, classroom, window"
+    gen: "1girl, 2boys, {YUI}, standing, placing milk carton on desk, smile, {REN}, sitting, classroom"
     text:
     - {t: speech, who: YUI, say: "Here."}
     - {t: sfx, say: "tap"}
