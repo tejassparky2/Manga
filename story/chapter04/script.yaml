@@ -72,6 +72,7 @@ pages:
     negative_extra: "window, stairs, corridor, hallway, walking, crowd"
     sketch: sketches/p02_3.png
     strength: 0.85
+    retouch: "Render w2 9251eb3: a tiny girl inside the doorway was painted out (tools/manga/retouch.py)."
     text:
     - {t: caption, who: REN, say: "Nobody saw who took it.", canon: true}
 
@@ -489,6 +490,8 @@ pages:
     shot: "LOW — Riku"
     art: "Riku from below, looking down on them."
     gen: "{RIKU}, smug, looking down, from below, upper body, white room, bright"
+    negative_extra: "book, holding, paper"
+    seed: 41804
     text:
     - {t: speech, who: RIKU, say: "Eighteen lives for nine tokens. Every one of you owes me.", canon: true}
 
