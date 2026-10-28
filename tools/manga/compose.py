@@ -421,9 +421,13 @@ def draw_title(page, rect):
 
 
 def draw_streak(img, spec):
-    """One glowing streak from (x0, y0) to its head at (x1, y1), in panel fractions."""
+    """One glowing streak from (x0, y0) to its head at (x1, y1), in panel fractions.
+
+    An optional fifth value scales the trail width and head size (a near fireball).
+    """
     w, h = img.size
     x0, y0, x1, y1 = spec[0] * w, spec[1] * h, spec[2] * w, spec[3] * h
+    k_size = spec[4] if len(spec) > 4 else 1.0
     glow = Image.new("L", (w, h), 0)
     core = Image.new("L", (w, h), 0)
     gd, cd = ImageDraw.Draw(glow), ImageDraw.Draw(core)
@@ -431,14 +435,14 @@ def draw_streak(img, spec):
     for k in range(n):
         t0, t1 = k / n, (k + 1) / n
         seg = (x0 + (x1 - x0) * t0, y0 + (y1 - y0) * t0, x0 + (x1 - x0) * t1, y0 + (y1 - y0) * t1)
-        gd.line(seg, fill=int(255 * t1), width=int(4 + 18 * t1))
-        cd.line(seg, fill=int(255 * t1), width=int(1 + 5 * t1))
-    r = max(6, int(min(w, h) * 0.012))
+        gd.line(seg, fill=int(255 * t1), width=int((4 + 18 * t1) * k_size))
+        cd.line(seg, fill=int(255 * t1), width=int((1 + 5 * t1) * k_size))
+    r = max(6, int(min(w, h) * 0.012 * k_size))
     gd.ellipse((x1 - 3 * r, y1 - 3 * r, x1 + 3 * r, y1 + 3 * r), fill=255)
     cd.ellipse((x1 - r, y1 - r, x1 + r, y1 + r), fill=255)
     shade = glow.filter(ImageFilter.MaxFilter(9)).filter(ImageFilter.GaussianBlur(6)).point(lambda v: v * 0.55)
     img.paste((30, 30, 30), (0, 0), shade)   # dark edge so the streak reads on a light sky
-    img.paste((255, 255, 255), (0, 0), glow.filter(ImageFilter.GaussianBlur(10)))
+    img.paste((255, 255, 255), (0, 0), glow.filter(ImageFilter.GaussianBlur(10 * k_size)))
     img.paste((255, 255, 255), (0, 0), core)
     return img
 
