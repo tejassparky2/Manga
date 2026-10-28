@@ -423,16 +423,263 @@ def locker_ring(w=1344, h=768, seed=4031, cam=(0.0, 1.5, -2.0), pitch=8, fov=1.0
     img = img.filter(ImageFilter.GaussianBlur(5))
     return vignette(img, 110)
 
+def back_view(d, x, y, s, girl):
+    """A student seen from behind, feet at (x, y), about 300*s px tall: no face."""
+    d.rounded_rectangle([x - 48 * s, y - 230 * s, x + 48 * s, y - 70 * s], 18 * s, fill=GAKURAN)    # back
+    if girl:
+        d.polygon([(x - 46 * s, y - 95 * s), (x + 46 * s, y - 95 * s), (x + 58 * s, y - 40 * s),
+                   (x - 58 * s, y - 40 * s)], fill=(50, 50, 50))                                       # skirt
+        d.rectangle([x - 26 * s, y - 40 * s, x - 10 * s, y], fill=SKIN)
+        d.rectangle([x + 10 * s, y - 40 * s, x + 26 * s, y], fill=SKIN)
+        d.rounded_rectangle([x - 34 * s, y - 300 * s, x + 34 * s, y - 175 * s], 30 * s, fill=HAIR)   # long hair
+    else:
+        d.rectangle([x - 40 * s, y - 75 * s, x - 6 * s, y], fill=GAKURAN)
+        d.rectangle([x + 6 * s, y - 75 * s, x + 40 * s, y], fill=GAKURAN)
+        d.ellipse([x - 30 * s, y - 296 * s, x + 30 * s, y - 228 * s], fill=HAIR)
+
+
+def white_room_door(w=832, h=1216, seed=4101):
+    """Ch4 opening: the white room, one dark doorway open in the far wall, the class
+    standing back from it, seen from behind. Nobody walks toward it."""
+    rnd = random.Random(seed)
+    img = Image.new("RGB", (w, h), (238, 238, 238))
+    d = ImageDraw.Draw(img)
+    horizon = int(h * 0.56)
+    for y in range(horizon, h):                                            # floor, a touch darker toward us
+        t = (y - horizon) / (h - horizon)
+        d.line([(0, y), (w, y)], fill=(int(222 - 18 * t),) * 3)
+    d.line([(0, horizon), (w, horizon)], fill=(200, 200, 200), width=3)
+    dx0, dx1, dy0 = w * 0.42, w * 0.58, h * 0.33
+    d.rectangle([dx0, dy0, dx1, horizon], fill=(18, 18, 18))                # the open doorway
+    d.polygon([(dx1, dy0), (dx1 + w * 0.05, dy0 + h * 0.012), (dx1 + w * 0.05, horizon + h * 0.01),
+               (dx1, horizon)], fill=(205, 205, 205))                       # the door, swung open
+    for row, (feet, s, n) in enumerate(((h * 0.80, 0.55, 5), (h * 1.02, 0.9, 4))):
+        for k in range(n):
+            x = w * (k + 0.5) / n + rnd.uniform(-w * 0.03, w * 0.03)
+            back_view(d, x, feet, s * h / 1216, (k + row) % 2 == 1)
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 40)
+
+def standoff(w=1216, h=832, seed=4191):
+    """Ch4 p19: the class, backs to us, faces one boy standing alone across the white room."""
+    rnd = random.Random(seed)
+    img = Image.new("RGB", (w, h), (238, 238, 238))
+    d = ImageDraw.Draw(img)
+    horizon = int(h * 0.42)
+    for y in range(horizon, h):
+        t = (y - horizon) / (h - horizon)
+        d.line([(0, y), (w, y)], fill=(int(224 - 16 * t),) * 3)
+    d.line([(0, horizon), (w, horizon)], fill=(205, 205, 205), width=3)
+    sc = h / 1216
+    x, y = w * 0.5, h * 0.62                                # the boy facing them: dark coat, a face
+    d.ellipse([x - 40 * sc, y - 8 * sc, x + 40 * sc, y + 8 * sc], fill=(150, 150, 150))
+    d.rounded_rectangle([x - 36 * sc, y - 190 * sc, x + 36 * sc, y - 50 * sc], 14 * sc, fill=GAKURAN)
+    d.rectangle([x - 30 * sc, y - 55 * sc, x - 5 * sc, y], fill=GAKURAN)
+    d.rectangle([x + 5 * sc, y - 55 * sc, x + 30 * sc, y], fill=GAKURAN)
+    d.ellipse([x - 24 * sc, y - 245 * sc, x + 24 * sc, y - 188 * sc], fill=SKIN)
+    d.pieslice([x - 26 * sc, y - 250 * sc, x + 26 * sc, y - 200 * sc], 180, 360, fill=HAIR)
+    for row, (feet, s, n) in enumerate(((h * 1.0, 1.6, 5), (h * 1.3, 2.4, 4))):
+        for k in range(n):
+            if row == 0 and k == 2:
+                continue                                    # a gap: the boy stays visible between them
+            bx = w * (k + 0.5) / n + rnd.uniform(-w * 0.02, w * 0.02)
+            back_view(d, bx, feet, s * sc, (k + row) % 2 == 1)
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 40)
+
+def silent_class(w=1536, h=640, seed=4161):
+    """Ch4 p16: the class standing apart in the white room, nobody facing anybody."""
+    rnd = random.Random(seed)
+    img = Image.new("RGB", (w, h), (238, 238, 238))
+    d = ImageDraw.Draw(img)
+    horizon = int(h * 0.45)
+    for y in range(horizon, h):
+        t = (y - horizon) / (h - horizon)
+        d.line([(0, y), (w, y)], fill=(int(224 - 16 * t),) * 3)
+    d.line([(0, horizon), (w, horizon)], fill=(205, 205, 205), width=3)
+    sc = h / 1216
+    spots = [(0.08 + 0.84 * k / 8 + rnd.uniform(-0.03, 0.03), rnd.choice((0.70, 0.82, 0.95))) for k in range(9)]
+    for fx, fy in sorted(spots, key=lambda p: p[1]):
+        s = sc * (1.1 + 1.6 * (fy - 0.6))
+        back_view(d, w * fx, h * fy, s, rnd.random() < 0.5)
+    return vignette(img.filter(ImageFilter.GaussianBlur(4)), 40)
+
+def coin_pickup(w=832, h=1216, seed=4021):
+    """Ch4 p02_1: from above, a hand in a black sleeve reaches down to one coin on the white floor."""
+    img = Image.new("RGB", (w, h), (236, 236, 236))
+    d = ImageDraw.Draw(img)
+    cx, cy, r = w * 0.42, h * 0.70, w * 0.075
+    d.ellipse([cx - r * 1.3, cy + r * 0.2, cx + r * 1.5, cy + r * 1.1], fill=(205, 205, 205))      # shadow
+    d.ellipse([cx - r, cy - r * 0.75, cx + r, cy + r * 0.75], fill=(150, 150, 150), outline=(70, 70, 70), width=4)
+    d.ellipse([cx - r * 0.6, cy - r * 0.45, cx + r * 0.6, cy + r * 0.45], outline=(110, 110, 110), width=3)
+    d.polygon([(w * 1.05, -h * 0.02), (w * 0.62, -h * 0.02), (w * 0.50, h * 0.42), (w * 0.80, h * 0.47)],
+              fill=GAKURAN)                                                                          # sleeve
+    d.ellipse([w * 0.43, h * 0.38, w * 0.74, h * 0.56], fill=SKIN)                                  # back of hand
+    finger(d, w * 0.50, h * 0.50, cx + r * 0.3, cy - r * 0.7, w * 0.045)                            # index
+    finger(d, w * 0.47, h * 0.45, cx - r * 0.5, cy - r * 0.6, w * 0.045)                            # thumb
+    finger(d, w * 0.60, h * 0.53, w * 0.58, h * 0.62, w * 0.045)
+    finger(d, w * 0.67, h * 0.52, w * 0.68, h * 0.60, w * 0.04)
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 30)
+
+
+def coin_notebook(w=832, h=1216, seed=4022):
+    """Ch4 p02_2: a small notebook held open, one coin lying in the gutter; black sleeve, no face."""
+    img = Image.new("RGB", (w, h), (236, 236, 236))
+    d = ImageDraw.Draw(img)
+    x0, y0, x1, y1 = w * 0.12, h * 0.30, w * 0.88, h * 0.78
+    gx = (x0 + x1) / 2
+    d.rectangle([x0 - 8, y0 - 8, x1 + 8, y1 + 10], fill=(60, 60, 60))                              # cover
+    d.polygon([(x0, y0), (gx, y0 + 18), (gx, y1 + 4), (x0, y1)], fill=(250, 250, 250))
+    d.polygon([(gx, y0 + 18), (x1, y0), (x1, y1), (gx, y1 + 4)], fill=(244, 244, 244))
+    for k in range(1, 9):                                                                          # ruled lines
+        yy = y0 + (y1 - y0) * k / 9
+        d.line([(x0 + 20, yy), (gx - 20, yy + 10)], fill=(200, 200, 200), width=2)
+        d.line([(gx + 20, yy + 10), (x1 - 20, yy)], fill=(200, 200, 200), width=2)
+    d.line([(gx, y0 + 18), (gx, y1 + 4)], fill=(150, 150, 150), width=4)
+    cx, cy, r = gx, (y0 + y1) / 2, w * 0.07
+    d.ellipse([cx - r, cy - r * 0.8, cx + r, cy + r * 0.8], fill=(150, 150, 150), outline=(70, 70, 70), width=4)
+    d.ellipse([cx - r * 0.6, cy - r * 0.48, cx + r * 0.6, cy + r * 0.48], outline=(110, 110, 110), width=3)
+    d.polygon([(w * 1.05, h * 0.92), (w * 1.05, h * 1.05), (w * 0.70, h * 1.05), (w * 0.62, h * 0.86)], fill=GAKURAN)
+    d.ellipse([w * 0.66, h * 0.72, w * 0.92, h * 0.90], fill=SKIN)                                  # hand holding the edge
+    finger(d, w * 0.72, h * 0.76, w * 0.80, h * 0.68, w * 0.04)
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 30)
+
+def surrounded(w=832, h=1216, seed=5143):
+    """Ch5 p14_3: from above, one student alone in the middle, a loose ring of classmates around him."""
+    rnd = random.Random(seed)
+    img = concrete(w, h, 70, seed)
+    img = light_pool(img, w // 2, int(h * 0.52), int(w * 0.36), int(h * 0.26), 60)
+    d = ImageDraw.Draw(img)
+
+    def top(x, y, s, hair):
+        d.ellipse([x - 34 * s, y - 16 * s, x + 34 * s, y + 22 * s], fill=GAKURAN)    # shoulders
+        d.ellipse([x - 17 * s, y - 20 * s, x + 17 * s, y + 12 * s], fill=hair)       # head from above
+    for k in range(12):
+        a = 2 * math.pi * k / 12 + rnd.uniform(-0.12, 0.12)
+        r = rnd.uniform(0.82, 1.0)
+        top(w / 2 + w * 0.38 * r * math.cos(a), h * 0.52 + h * 0.30 * r * math.sin(a), w / 520, HAIR)
+    top(w / 2, h * 0.52, w / 430, (200, 200, 200))                                     # the light-haired one
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 90)
+
+def white_room(w, h, horizon=0.5):
+    """The bare white room: pale wall, slightly darker floor."""
+    img = Image.new("RGB", (w, h), (238, 238, 238))
+    d = ImageDraw.Draw(img)
+    hz = int(h * horizon)
+    for y in range(hz, h):
+        t = (y - hz) / (h - hz)
+        d.line([(0, y), (w, y)], fill=(int(224 - 16 * t),) * 3)
+    d.line([(0, hz), (w, hz)], fill=(205, 205, 205), width=3)
+    return img, d, hz
+
+
+def seated_back(d, x, y, s, girl):
+    """A student sitting on the floor, seen from behind: no face."""
+    d.ellipse([x - 52 * s, y - 30 * s, x + 52 * s, y + 6 * s], fill=(60, 60, 60) if girl else GAKURAN)  # seat, legs
+    d.rounded_rectangle([x - 40 * s, y - 150 * s, x + 40 * s, y - 15 * s], 16 * s, fill=GAKURAN)
+    if girl:
+        d.rounded_rectangle([x - 28 * s, y - 205 * s, x + 28 * s, y - 110 * s], 26 * s, fill=HAIR)
+    else:
+        d.ellipse([x - 26 * s, y - 200 * s, x + 26 * s, y - 145 * s], fill=HAIR)
+
+
+def seated_front(d, x, y, s, girl):
+    """A student sitting against the wall, knees drawn up, facing us (small, far away)."""
+    d.rounded_rectangle([x - 34 * s, y - 120 * s, x + 34 * s, y - 10 * s], 14 * s, fill=GAKURAN)    # torso
+    d.polygon([(x - 34 * s, y - 50 * s), (x + 34 * s, y - 50 * s), (x + 40 * s, y), (x - 40 * s, y)],
+              fill=(60, 60, 60) if girl else GAKURAN)                                                 # knees
+    d.ellipse([x - 22 * s, y - 165 * s, x + 22 * s, y - 118 * s], fill=SKIN)
+    d.pieslice([x - 24 * s, y - 170 * s, x + 24 * s, y - 128 * s], 180, 360, fill=HAIR)
+    if girl:
+        d.rectangle([x - 24 * s, y - 150 * s, x - 16 * s, y - 100 * s], fill=HAIR)
+        d.rectangle([x + 16 * s, y - 150 * s, x + 24 * s, y - 100 * s], fill=HAIR)
+
+
+def waiting_board(w=1344, h=768, seed=5062):
+    """Ch5 p06_2: the class sits on the white floor, backs to us, faces up to a screen on the far wall."""
+    rnd = random.Random(seed)
+    img, d, hz = white_room(w, h, 0.5)
+    d.rectangle([w * 0.36, h * 0.12, w * 0.64, h * 0.36], fill=(24, 24, 24))                     # the board
+    for k in range(6):
+        d.line([(w * 0.39, h * (0.16 + k * 0.032)), (w * 0.58, h * (0.16 + k * 0.032))], fill=(170, 170, 170), width=3)
+    for row, (y, s, n) in enumerate(((h * 0.68, 0.55, 6), (h * 0.84, 0.75, 5), (h * 1.04, 1.0, 4))):
+        for k in range(n):
+            seated_back(d, w * (k + 0.5) / n + rnd.uniform(-w * 0.03, w * 0.03), y, s * h / 768, (k + row) % 2 == 1)
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 40)
+
+
+def wall_sitters(w=1536, h=640, seed=5075, gaps=(0.08, 0.26, 0.41, 0.6, 0.77, 0.93)):
+    """Ch5 p07_5: the finished room. Students sit against the far wall, far apart, knees up."""
+    rnd = random.Random(seed)
+    img, d, hz = white_room(w, h, 0.62)
+    for k, fx in enumerate(gaps):
+        seated_front(d, w * fx, hz + h * 0.02, h / 640 * 0.95, rnd.random() < 0.5)
+    return vignette(img.filter(ImageFilter.GaussianBlur(4)), 40)
+
+
+def heads_turn(w=1344, h=768, seed=5112):
+    """Ch5 p11_2: classmates, backs to us, all turned to one boy sitting against the far wall."""
+    rnd = random.Random(seed)
+    img, d, hz = white_room(w, h, 0.55)
+    seated_front(d, w * 0.5, hz + h * 0.04, h / 640 * 1.05, False)                                 # Riku
+    for k, fx in enumerate((0.08, 0.24, 0.76, 0.92)):
+        back_view(d, w * fx, h * 1.02, h / 768 * 1.25, k % 2 == 1)
+    for k, fx in enumerate((0.16, 0.34, 0.66, 0.84)):
+        back_view(d, w * fx, h * 0.86, h / 768 * 0.85, k % 2 == 0)
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 40)
+
+
+def apart(w=896, h=1152, seed=5202):
+    """Ch5 p20_2: from above, the class in a loose group on one side; one boy alone on the other."""
+    rnd = random.Random(seed)
+    img = concrete(w, h, 70, seed)
+    img = light_pool(img, w // 2, h // 2, int(w * 0.42), int(h * 0.36), 50)
+    d = ImageDraw.Draw(img)
+
+    def top(x, y, s):
+        d.ellipse([x - 34 * s, y - 16 * s, x + 34 * s, y + 22 * s], fill=GAKURAN)
+        d.ellipse([x - 17 * s, y - 20 * s, x + 17 * s, y + 12 * s], fill=HAIR)
+    for k in range(11):
+        top(w * rnd.uniform(0.12, 0.48), h * rnd.uniform(0.18, 0.62), w / 560)
+    top(w * 0.74, h * 0.78, w / 520)                                                                 # Ren, alone
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 90)
+
+def floor_line(w=896, h=1152, seed=4033):
+    """Ch4 p03_3: low and close, the feet of the lockers curving away, and the painted line on the
+    concrete running alongside them in one smooth, unbroken arc."""
+    img = concrete(w, h, 150, seed, grain=10)
+    d = ImageDraw.Draw(img)
+    def arc(r_off):                                       # a curve sweeping from lower left to upper right
+        return [(w * (-0.1 + 1.2 * t), h * (0.42 + r_off) - h * 0.30 * t + h * 0.22 * (t - 0.5) ** 2 * 4 * 0.3)
+                for t in [k / 40 for k in range(41)]]
+    base = arc(0.0)
+    d.polygon([(x, y) for x, y in base] + [(w, 0), (0, 0)], fill=(70, 70, 70))                  # locker fronts
+    for k in range(1, 9):                                 # the gaps between lockers
+        x, y = base[k * 5]
+        d.line([(x, y), (x + w * 0.05, y - h * 0.4)], fill=(30, 30, 30), width=6)
+    d.line(base, fill=(40, 40, 40), width=10)                                                    # kick plate shadow
+    line = arc(0.16)
+    d.line(line, fill=(250, 250, 250), width=int(w * 0.035), joint="curve")                      # the painted line
+    return vignette(img.filter(ImageFilter.GaussianBlur(4)), 60)
+
 SKETCHES = {
     "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class,
                   "p21_2.png": lambda: frozen_class(1152, 896, seed=2102), "p23_1.png": key_case, "p23_2.png": key_closeup},
     "chapter02": {"p01_1.png": key_title, "p10_1.png": lambda: chamber_wide(seed=2101)},  # same chamber as Ch1 p15_1
     "chapter03": {"p13_2.png": coin_in_palm, "p14_2.png": empty_hands},
-    "chapter04": {"p03_1.png": lambda: locker_ring(1152, 896, cam=(0, 1.6, -2.2), pitch=10),
-                  "p12_1.png": lambda: locker_ring(1344, 768, cam=(0, 6.5, -5.0), pitch=48)},
+    "chapter04": {"p01_1.png": white_room_door,
+                  "p02_1.png": coin_pickup, "p02_2.png": coin_notebook,
+                  "p02_3.png": lambda: white_room_door(1216, 832, seed=4023),
+                  "p03_3.png": floor_line,
+                  "p03_1.png": lambda: locker_ring(1152, 896, cam=(0, 1.6, -2.2), pitch=10),
+                  "p12_1.png": lambda: locker_ring(1344, 768, cam=(0, 4.2, -4.2), pitch=34),
+                  "p13_1.png": lambda: silent_class(1216, 832, seed=4131),
+                  "p16_1.png": silent_class,
+                  "p19_1.png": standoff},
     "chapter05": {"p01_2.png": lambda: locker_ring(1024, 1024, cam=(0, 1.5, -2.6), pitch=4, figure=True),
                   "p09_1.png": lambda: locker_ring(1344, 768, cam=(0.3, 1.5, -2.6), pitch=4, figure=True),
-                  "p12_2.png": lambda: locker_ring(1344, 768, cam=(0, 4.5, -4.5), pitch=35, crowd=17)},
+                  "p12_2.png": lambda: locker_ring(1344, 768, cam=(0, 4.5, -4.5), pitch=35, crowd=10),
+                  "p14_3.png": surrounded,
+                  "p06_2.png": waiting_board, "p07_5.png": wall_sitters, "p11_2.png": heads_turn,
+                  "p20_2.png": apart},
 }
 
 
