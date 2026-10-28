@@ -629,8 +629,10 @@ pages:
   - kind: art
     shot: "WIDE — silence"
     art: "No one moves."
-    gen: "multiple boys, multiple girls, gakuran, serafuku, silent, shocked, standing still, dark concrete room, dim light, wide shot"
-    negative_extra: "tablet, arcade, screens"
+    gen: "multiple boys, multiple girls, gakuran, serafuku, silent, shocked, standing still, looking at viewer, dark concrete room, dim light"
+    negative_extra: "door, doorway, corridor, tablet, screens"
+    sketch: sketches/p21_2.png
+    strength: 0.7
     text:
     - {t: speech, who: STUDENTS, say: "......"}
   - kind: art
