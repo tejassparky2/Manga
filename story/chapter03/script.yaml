@@ -314,7 +314,8 @@ pages:
   - kind: art
     shot: "WIDE — Riku crosses the room"
     art: "Riku walks across the white room, seen from behind."
-    gen: "{RIKU}, from behind, walking, white room, empty room, bright, wide shot"
+    gen: "{RIKU}, from behind, walking across large bare white room, bright, wide shot"
+    negative_extra: "corridor, hallway, tunnel"
     text:
     - {t: caption, who: REN, say: "He walked across the room. To Saki.", canon: true}
 
