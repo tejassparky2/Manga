@@ -214,7 +214,8 @@ pages:
   - kind: art
     shot: "CLOSE — Ren"
     art: "Ren, very still."
-    gen: "{REN}, shocked, realization, close-up, white room, bright"
+    gen: "{REN}, solo, shocked, realization, wide-eyed, upper body, white room, bright"
+    negative_extra: "multiple faces, extra face"
     text:
     - {t: caption, who: REN, say: "Not any player. Anyone.", canon: true}
   - kind: art
@@ -236,7 +237,8 @@ pages:
   - kind: art
     shot: "MEDIUM — Ren explains"
     art: "Ren turns to the class."
-    gen: "{REN}, speaking, explaining, determined, upper body, white room, bright"
+    gen: "{REN}, solo, speaking, explaining, determined, hand raised, upper body, white room, bright"
+    negative_extra: "book, holding book"
     text:
     - {t: speech, who: REN, say: "Momo isn't a player. Give Momo everything, and there are no players. And nobody dies.", canon: true}
   - kind: art
@@ -257,8 +259,9 @@ pages:
   panels:
   - kind: art
     shot: "WIDE — the giving"
-    art: "One by one, students drop their coins in front of Momo."
-    gen: "multiple boys, multiple girls, gakuran, serafuku, from behind, giving coins, pile of coins, {MOMO}, white room, bright, wide shot"
+    art: "Students' hands drop coins onto a growing pile beside Momo."
+    gen: "hands dropping coins onto pile of coins, {MOMO}, sitting beside coin pile, white floor, white room, bright"
+    negative_extra: "paper, books"
     text:
     - {t: caption, who: REN, say: "One by one, we gave Momo everything.", canon: true}
   - kind: art

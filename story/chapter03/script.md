@@ -168,7 +168,7 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 ### PAGE 10
 
 **PANEL 1 — WIDE — the giving**
-- Art: One by one, students drop their coins in front of Momo.
+- Art: Students' hands drop coins onto a growing pile beside Momo.
 - CAPTION: "One by one, we gave Momo everything."
 
 **PANEL 2 — CLOSE — Saki**
