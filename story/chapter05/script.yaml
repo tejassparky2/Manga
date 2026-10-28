@@ -545,9 +545,10 @@ pages:
     - {t: speech, who: REN, say: "Kota found his in nine. Gō cut the loop before he died.", canon: true}
   - kind: art
     shot: "CLOSE — Gō's locker"
-    art: "A hand rests on Gō's dark locker door."
-    gen: "hand on locker door, hand focus, metal locker, close-up, front view, closed locker, dark, shadow, locker room"
-    negative_extra: "text, letters, face"
+    art: "Ren rests his forehead against Gō's dark locker door, eyes shut."
+    gen: "{REN}, leaning forehead against locker door, closed eyes, sad, side view, upper body, metal locker, dark, shadow, locker room"
+    negative_extra: "text, letters"
+    seed: 51803
     plates:
     - {at: [0.5, 0.2], w: 0.42, text: "SHIBATA GŌ"}
     text:
