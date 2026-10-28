@@ -542,6 +542,23 @@ def coin_notebook(w=832, h=1216, seed=4022):
     finger(d, w * 0.72, h * 0.76, w * 0.80, h * 0.68, w * 0.04)
     return vignette(img.filter(ImageFilter.GaussianBlur(5)), 30)
 
+def surrounded(w=832, h=1216, seed=5143):
+    """Ch5 p14_3: from above, one student alone in the middle, a loose ring of classmates around him."""
+    rnd = random.Random(seed)
+    img = concrete(w, h, 70, seed)
+    img = light_pool(img, w // 2, int(h * 0.52), int(w * 0.36), int(h * 0.26), 60)
+    d = ImageDraw.Draw(img)
+
+    def top(x, y, s, hair):
+        d.ellipse([x - 34 * s, y - 16 * s, x + 34 * s, y + 22 * s], fill=GAKURAN)    # shoulders
+        d.ellipse([x - 17 * s, y - 20 * s, x + 17 * s, y + 12 * s], fill=hair)       # head from above
+    for k in range(12):
+        a = 2 * math.pi * k / 12 + rnd.uniform(-0.12, 0.12)
+        r = rnd.uniform(0.82, 1.0)
+        top(w / 2 + w * 0.38 * r * math.cos(a), h * 0.52 + h * 0.30 * r * math.sin(a), w / 520, HAIR)
+    top(w / 2, h * 0.52, w / 430, (200, 200, 200))                                     # the light-haired one
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 90)
+
 SKETCHES = {
     "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class,
                   "p21_2.png": lambda: frozen_class(1152, 896, seed=2102), "p23_1.png": key_case, "p23_2.png": key_closeup},
@@ -556,7 +573,8 @@ SKETCHES = {
                   "p19_1.png": standoff},
     "chapter05": {"p01_2.png": lambda: locker_ring(1024, 1024, cam=(0, 1.5, -2.6), pitch=4, figure=True),
                   "p09_1.png": lambda: locker_ring(1344, 768, cam=(0.3, 1.5, -2.6), pitch=4, figure=True),
-                  "p12_2.png": lambda: locker_ring(1344, 768, cam=(0, 4.5, -4.5), pitch=35, crowd=17)},
+                  "p12_2.png": lambda: locker_ring(1344, 768, cam=(0, 4.5, -4.5), pitch=35, crowd=10),
+                  "p14_3.png": surrounded},
 }
 
 

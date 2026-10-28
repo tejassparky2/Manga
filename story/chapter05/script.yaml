@@ -369,22 +369,25 @@ pages:
     shot: "HIGH — back in the ring"
     art: "Everyone stands inside the locker ring again."
     gen: "6+boys, 6+girls, gakuran, serafuku, standing, locker room, metal lockers, lockers in circle, from above, dim, wide shot"
+    negative_extra: "stadium, arena, audience, crowd"
     sketch: sketches/p12_2.png
-    strength: 0.85
+    strength: 0.75
   - kind: art
     shot: "CLOSE — Saki's locker, dark"
     art: "Saki's locker, still taped shut, unlit."
     gen: "no humans, metal locker, close-up, front view, taped shut, duct tape, dark, shadow, locker room"
     negative_extra: "text, letters, caution tape"
+    shade: 0.6
     plates:
-    - {at: [0.5, 0.22], w: 0.62, text: "NISHIDA SAKI"}
+    - {at: [0.5, 0.4], w: 0.5, text: "NISHIDA SAKI"}
   - kind: art
     shot: "CLOSE — Gō's locker, dark"
     art: "Gō's locker, closed, unlit."
     gen: "no humans, metal locker, close-up, front view, closed locker, dark, shadow, locker room"
     negative_extra: "text, letters"
+    shade: 0.6
     plates:
-    - {at: [0.5, 0.22], w: 0.62, text: "SHIBATA GŌ"}
+    - {at: [0.65, 0.59], w: 0.22, text: "SHIBATA GŌ"}
 
 - page: 13
   rows: [[1, [1, 1]], [1, [1, 1]]]
@@ -448,7 +451,10 @@ pages:
   - kind: art
     shot: "WIDE — everyone turns"
     art: "Every head turns to Haruto."
-    gen: "{HARUTO}, standing, surrounded, multiple boys, multiple girls, staring at him, locker room, dim, wide shot"
+    gen: "{HARUTO}, standing, surrounded, multiple boys, multiple girls, staring at him, from above, concrete floor, dim"
+    negative_extra: "crowd, audience"
+    sketch: sketches/p14_3.png
+    strength: 0.8
 
 - page: 15
   rows: [[1, [1]], [1.2, [1]]]

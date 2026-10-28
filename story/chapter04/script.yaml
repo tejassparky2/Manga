@@ -43,6 +43,7 @@ pages:
     negative_extra: "window, stairs, corridor, hallway, walking"
     sketch: sketches/p01_1.png
     strength: 0.85
+    retouch: "Render w1 512998f: a tiny figure standing inside the doorway was painted out (nobody moved first)."
     title: true
     text:
     - {t: caption, who: REN, say: "A door opened in the white room. Nobody moved first.", canon: true, at: [0.5, 0.93]}
@@ -485,6 +486,7 @@ pages:
     negative_extra: "crowd, stadium, arena, audience, ceiling"
     sketch: sketches/p19_1.png
     strength: 0.85
+    retouch: "Render w1 512998f: the lone figure's spiky crown repainted as a smooth, slicked-back head (Riku, not Haruto)."
     text:
     - {t: caption, who: REN, say: "Nine of us dead on average. One of us dead for sure. Or none of us, if he keeps his word.", canon: true}
   - kind: art
