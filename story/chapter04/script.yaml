@@ -185,7 +185,7 @@ pages:
     art: "Aoi, pushing up her glasses, doing the sum."
     gen: "{AOI}, serious, adjusting glasses, upper body, white room, bright"
     text:
-    - {t: speech, who: AOI, say: "Ten lockers out of nineteen. On average, nine of us die.", canon: true}
+    - {t: speech, who: AOI, say: "Ten lockers out of nineteen. On average, nine of us die.", canon: true, at: [0.7, 0.15], tail: [0.66, 0.33], size: 27}
   - kind: art
     shot: "CLOSE — Haruto"
     art: "Haruto, a forced grin, sweating."
