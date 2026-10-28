@@ -72,6 +72,7 @@ pages:
     negative_extra: "window, stairs, corridor, hallway, walking, crowd"
     sketch: sketches/p02_3.png
     strength: 0.85
+    retouch: "Render w2 9251eb3: a tiny girl inside the doorway was painted out (tools/manga/retouch.py)."
     text:
     - {t: caption, who: REN, say: "Nobody saw who took it.", canon: true}
 
