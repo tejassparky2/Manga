@@ -597,7 +597,7 @@ pages:
     gen: "{REN}, from behind, standing apart, alone, multiple boys, multiple girls, distance, metal lockers, locker room, dim, wide shot"
     negative_extra: "crowd, balls"
     sketch: sketches/p20_2.png
-    strength: 0.75
+    strength: 0.65
     text:
     - {t: caption, who: REN, say: "I didn't know anyone in this room anymore.", canon: true}
   - kind: art

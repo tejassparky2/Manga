@@ -667,9 +667,9 @@ def apart_eye(w=896, h=1152, seed=5203):
     img = locker_ring(w, h, cam=(0, 1.5, -2.6), pitch=4, blur=2)
     d = ImageDraw.Draw(img)
     sc = h / 1216
-    for k in range(8):                                    # the others, together, small
-        back_view(d, w * (0.08 + 0.055 * k + rnd.uniform(-0.01, 0.01)), h * (0.70 + 0.03 * (k % 2)),
-                  0.5 * sc, k % 3 == 1)
+    for k in range(9):                                    # the others, together, in a knot by the lockers
+        back_view(d, w * (0.06 + 0.06 * k + rnd.uniform(-0.01, 0.01)), h * (0.72 + 0.04 * (k % 2)),
+                  0.75 * sc, k % 3 == 1)
     back_view(d, w * 0.76, h * 1.06, 1.55 * sc, False)  # Ren, alone, near
     return img.filter(ImageFilter.GaussianBlur(3))
 
