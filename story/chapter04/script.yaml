@@ -496,8 +496,10 @@ pages:
   panels:
   - kind: art
     shot: "MEDIUM — Ren's plan"
-    art: "Ren addresses the whole class, one hand raised."
-    gen: "{REN}, talking, raised hand, serious, upper body, white room, bright"
+    art: "Ren addresses the whole class, from a low angle."
+    gen: "{REN}, talking, commanding, serious, from below, upper body, white room, bright"
+    negative_extra: "book, tablet, holding, hand up"
+    seed: 42001
     text:
     - {t: speech, who: REN, say: "Everyone else: follow the chain. Find your name, touch nothing. Fail, cut first and tenth.", canon: true}
   - kind: art
