@@ -502,12 +502,54 @@ def silent_class(w=1536, h=640, seed=4161):
         back_view(d, w * fx, h * fy, s, rnd.random() < 0.5)
     return vignette(img.filter(ImageFilter.GaussianBlur(4)), 40)
 
+def coin_pickup(w=832, h=1216, seed=4021):
+    """Ch4 p02_1: from above, a hand in a black sleeve reaches down to one coin on the white floor."""
+    img = Image.new("RGB", (w, h), (236, 236, 236))
+    d = ImageDraw.Draw(img)
+    cx, cy, r = w * 0.42, h * 0.70, w * 0.075
+    d.ellipse([cx - r * 1.3, cy + r * 0.2, cx + r * 1.5, cy + r * 1.1], fill=(205, 205, 205))      # shadow
+    d.ellipse([cx - r, cy - r * 0.75, cx + r, cy + r * 0.75], fill=(150, 150, 150), outline=(70, 70, 70), width=4)
+    d.ellipse([cx - r * 0.6, cy - r * 0.45, cx + r * 0.6, cy + r * 0.45], outline=(110, 110, 110), width=3)
+    d.polygon([(w * 1.05, -h * 0.02), (w * 0.62, -h * 0.02), (w * 0.50, h * 0.42), (w * 0.80, h * 0.47)],
+              fill=GAKURAN)                                                                          # sleeve
+    d.ellipse([w * 0.43, h * 0.38, w * 0.74, h * 0.56], fill=SKIN)                                  # back of hand
+    finger(d, w * 0.50, h * 0.50, cx + r * 0.3, cy - r * 0.7, w * 0.045)                            # index
+    finger(d, w * 0.47, h * 0.45, cx - r * 0.5, cy - r * 0.6, w * 0.045)                            # thumb
+    finger(d, w * 0.60, h * 0.53, w * 0.58, h * 0.62, w * 0.045)
+    finger(d, w * 0.67, h * 0.52, w * 0.68, h * 0.60, w * 0.04)
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 30)
+
+
+def coin_notebook(w=832, h=1216, seed=4022):
+    """Ch4 p02_2: a small notebook held open, one coin lying in the gutter; black sleeve, no face."""
+    img = Image.new("RGB", (w, h), (236, 236, 236))
+    d = ImageDraw.Draw(img)
+    x0, y0, x1, y1 = w * 0.12, h * 0.30, w * 0.88, h * 0.78
+    gx = (x0 + x1) / 2
+    d.rectangle([x0 - 8, y0 - 8, x1 + 8, y1 + 10], fill=(60, 60, 60))                              # cover
+    d.polygon([(x0, y0), (gx, y0 + 18), (gx, y1 + 4), (x0, y1)], fill=(250, 250, 250))
+    d.polygon([(gx, y0 + 18), (x1, y0), (x1, y1), (gx, y1 + 4)], fill=(244, 244, 244))
+    for k in range(1, 9):                                                                          # ruled lines
+        yy = y0 + (y1 - y0) * k / 9
+        d.line([(x0 + 20, yy), (gx - 20, yy + 10)], fill=(200, 200, 200), width=2)
+        d.line([(gx + 20, yy + 10), (x1 - 20, yy)], fill=(200, 200, 200), width=2)
+    d.line([(gx, y0 + 18), (gx, y1 + 4)], fill=(150, 150, 150), width=4)
+    cx, cy, r = gx, (y0 + y1) / 2, w * 0.07
+    d.ellipse([cx - r, cy - r * 0.8, cx + r, cy + r * 0.8], fill=(150, 150, 150), outline=(70, 70, 70), width=4)
+    d.ellipse([cx - r * 0.6, cy - r * 0.48, cx + r * 0.6, cy + r * 0.48], outline=(110, 110, 110), width=3)
+    d.polygon([(w * 1.05, h * 0.92), (w * 1.05, h * 1.05), (w * 0.70, h * 1.05), (w * 0.62, h * 0.86)], fill=GAKURAN)
+    d.ellipse([w * 0.66, h * 0.72, w * 0.92, h * 0.90], fill=SKIN)                                  # hand holding the edge
+    finger(d, w * 0.72, h * 0.76, w * 0.80, h * 0.68, w * 0.04)
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 30)
+
 SKETCHES = {
     "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class,
                   "p21_2.png": lambda: frozen_class(1152, 896, seed=2102), "p23_1.png": key_case, "p23_2.png": key_closeup},
     "chapter02": {"p01_1.png": key_title, "p10_1.png": lambda: chamber_wide(seed=2101)},  # same chamber as Ch1 p15_1
     "chapter03": {"p13_2.png": coin_in_palm, "p14_2.png": empty_hands},
     "chapter04": {"p01_1.png": white_room_door,
+                  "p02_1.png": coin_pickup, "p02_2.png": coin_notebook,
+                  "p02_3.png": lambda: white_room_door(1216, 832, seed=4023),
                   "p03_1.png": lambda: locker_ring(1152, 896, cam=(0, 1.6, -2.2), pitch=10),
                   "p12_1.png": lambda: locker_ring(1344, 768, cam=(0, 6.5, -5.0), pitch=48),
                   "p16_1.png": silent_class,

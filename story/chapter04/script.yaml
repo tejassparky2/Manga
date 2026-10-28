@@ -53,18 +53,24 @@ pages:
   - kind: art
     shot: "INSERT — the token is taken"
     art: "Hands only: a hand in a black sleeve picks Saki's coin up off the white floor."
-    gen: "hand focus, close-up, picking up coin, single coin, black sleeve, white floor, from above"
-    negative_extra: "face, multiple coins, coin stack"
+    gen: "hand focus, close-up, reaching down, picking up coin, single coin on floor, black sleeve, white floor, from above"
+    negative_extra: "face, multiple coins, coin stack, two hands"
+    sketch: sketches/p02_1.png
+    strength: 0.8
   - kind: art
     shot: "INSERT — into the notebook"
     art: "The same hand slides the coin between the pages of a small notebook."
-    gen: "hand focus, close-up, small notebook, open book, coin between pages, black sleeve, white background"
-    negative_extra: "face, multiple coins, pen, pencil"
+    gen: "hand focus, close-up, small open notebook, single coin lying on page, black sleeve, white background, from above"
+    negative_extra: "face, multiple coins, pen, pencil, text"
+    sketch: sketches/p02_2.png
+    strength: 0.8
   - kind: art
     shot: "WIDE — eyes on the door"
     art: "Everyone faces the open door. No one is looking back."
-    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, looking at door, open door, white room, bright, wide shot"
-    negative_extra: "window, stairs"
+    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, standing still, dark doorway, white room, white walls, bright, wide shot"
+    negative_extra: "window, stairs, corridor, hallway, walking, crowd"
+    sketch: sketches/p02_3.png
+    strength: 0.85
     text:
     - {t: caption, who: REN, say: "Nobody saw who took it.", canon: true}
 

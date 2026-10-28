@@ -53,9 +53,9 @@ pages:
   - kind: art
     shot: "SPLASH — Ren walks in"
     art: "Ren, from behind, walks into the locker ring alone. The lockers wait under one light."
-    gen: "{REN}, from behind, walking, alone, locker room, metal lockers, lockers in circle, concrete floor, dim, wide shot"
+    gen: "{REN}, from behind, walking, alone, tall metal lockers, lockers in circle, concrete floor, dim, wide shot"
     sketch: sketches/p01_2.png
-    strength: 0.8
+    strength: 0.7
     title: true
     text:
     - {t: caption, who: REN, say: "My turn.", canon: true, at: [0.5, 0.9]}
