@@ -35,7 +35,8 @@ pages:
   - kind: art
     shot: "SPLASH — the key"
     art: "The key behind its glass barrier under a spotlight, in the dark concrete chamber. The timer is running."
-    gen: "no humans, key, behind glass, glass case, spotlight, dark room, concrete, dramatic lighting, close-up"
+    gen: "no humans, single old key on pedestal, inside glass box, spotlight, dark concrete room, dramatic lighting, still life"
+    negative_extra: "shelves, shop, display cabinets"
     title: true
 
 # ---------------------------------------------------------------- PART A
