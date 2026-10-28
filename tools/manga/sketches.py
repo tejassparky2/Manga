@@ -154,6 +154,22 @@ def door_push(w=1344, h=768, seed=1604):
     return vignette(img, 140)
 
 
+def frozen_class(w=1536, h=640, seed=2004):
+    """Ch1 p20_4: the class standing frozen in two loose rows, facing the viewer
+    (and Momo), in the dark concrete chamber with light falling on their faces."""
+    rnd = random.Random(seed)
+    img = concrete(w, h, 62, seed)
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, int(h * 0.72), w, h], fill=(92, 92, 92))
+    img = light_pool(img, w // 2, int(h * 0.62), int(w * 0.45), int(h * 0.4), gain=45)
+    d = ImageDraw.Draw(img)
+    figures = [(h * 0.8, w * (k + 0.5) / 7 + rnd.uniform(-25, 25), 2.6) for k in range(7)]
+    figures += [(h + 40, w * (k + 1) / 7 + rnd.uniform(-25, 25), 3.4) for k in range(6)]
+    for idx, (y, x, s) in enumerate(figures):
+        student(d, x, y, s, idx % 3 == 1, rnd)
+    return vignette(img, 120)
+
+
 def old_key(length, angle=0, tone=(200, 200, 200)):
     """An old metal key on a transparent layer: ring bow, shaft, toothed bit."""
     L = int(length)
@@ -308,7 +324,7 @@ def empty_hands(w=832, h=1216, seed=3142):
 
 
 SKETCHES = {
-    "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p23_1.png": key_case, "p23_2.png": key_closeup},
+    "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class, "p23_1.png": key_case, "p23_2.png": key_closeup},
     "chapter02": {"p01_1.png": key_title, "p10_1.png": lambda: chamber_wide(seed=2101)},  # same chamber as Ch1 p15_1
     "chapter03": {"p13_2.png": coin_in_palm, "p14_2.png": empty_hands},
 }

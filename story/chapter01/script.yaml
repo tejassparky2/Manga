@@ -610,8 +610,10 @@ pages:
   - kind: art
     shot: "WIDE — frozen"
     art: "The students stand frozen, wide-eyed."
-    gen: "multiple boys, multiple girls, gakuran, serafuku, shocked, frozen, standing still, dark concrete room, dim light, wide shot"
-    negative_extra: "hologram, screen, ghost"
+    gen: "multiple boys, multiple girls, gakuran, serafuku, shocked, wide-eyed, frozen, standing still, looking at viewer, dark concrete room, dim light"
+    negative_extra: "hologram, ghost, crystal, glass, ruins"
+    sketch: sketches/p20_4.png
+    strength: 0.7
 
 - page: 21
   scene: 9
