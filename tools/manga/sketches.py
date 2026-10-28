@@ -559,6 +559,89 @@ def surrounded(w=832, h=1216, seed=5143):
     top(w / 2, h * 0.52, w / 430, (200, 200, 200))                                     # the light-haired one
     return vignette(img.filter(ImageFilter.GaussianBlur(5)), 90)
 
+def white_room(w, h, horizon=0.5):
+    """The bare white room: pale wall, slightly darker floor."""
+    img = Image.new("RGB", (w, h), (238, 238, 238))
+    d = ImageDraw.Draw(img)
+    hz = int(h * horizon)
+    for y in range(hz, h):
+        t = (y - hz) / (h - hz)
+        d.line([(0, y), (w, y)], fill=(int(224 - 16 * t),) * 3)
+    d.line([(0, hz), (w, hz)], fill=(205, 205, 205), width=3)
+    return img, d, hz
+
+
+def seated_back(d, x, y, s, girl):
+    """A student sitting on the floor, seen from behind: no face."""
+    d.ellipse([x - 52 * s, y - 30 * s, x + 52 * s, y + 6 * s], fill=(60, 60, 60) if girl else GAKURAN)  # seat, legs
+    d.rounded_rectangle([x - 40 * s, y - 150 * s, x + 40 * s, y - 15 * s], 16 * s, fill=GAKURAN)
+    if girl:
+        d.rounded_rectangle([x - 28 * s, y - 205 * s, x + 28 * s, y - 110 * s], 26 * s, fill=HAIR)
+    else:
+        d.ellipse([x - 26 * s, y - 200 * s, x + 26 * s, y - 145 * s], fill=HAIR)
+
+
+def seated_front(d, x, y, s, girl):
+    """A student sitting against the wall, knees drawn up, facing us (small, far away)."""
+    d.rounded_rectangle([x - 34 * s, y - 120 * s, x + 34 * s, y - 10 * s], 14 * s, fill=GAKURAN)    # torso
+    d.polygon([(x - 34 * s, y - 50 * s), (x + 34 * s, y - 50 * s), (x + 40 * s, y), (x - 40 * s, y)],
+              fill=(60, 60, 60) if girl else GAKURAN)                                                 # knees
+    d.ellipse([x - 22 * s, y - 165 * s, x + 22 * s, y - 118 * s], fill=SKIN)
+    d.pieslice([x - 24 * s, y - 170 * s, x + 24 * s, y - 128 * s], 180, 360, fill=HAIR)
+    if girl:
+        d.rectangle([x - 24 * s, y - 150 * s, x - 16 * s, y - 100 * s], fill=HAIR)
+        d.rectangle([x + 16 * s, y - 150 * s, x + 24 * s, y - 100 * s], fill=HAIR)
+
+
+def waiting_board(w=1344, h=768, seed=5062):
+    """Ch5 p06_2: the class sits on the white floor, backs to us, faces up to a screen on the far wall."""
+    rnd = random.Random(seed)
+    img, d, hz = white_room(w, h, 0.5)
+    d.rectangle([w * 0.36, h * 0.12, w * 0.64, h * 0.36], fill=(24, 24, 24))                     # the board
+    for k in range(6):
+        d.line([(w * 0.39, h * (0.16 + k * 0.032)), (w * 0.58, h * (0.16 + k * 0.032))], fill=(170, 170, 170), width=3)
+    for row, (y, s, n) in enumerate(((h * 0.68, 0.55, 6), (h * 0.84, 0.75, 5), (h * 1.04, 1.0, 4))):
+        for k in range(n):
+            seated_back(d, w * (k + 0.5) / n + rnd.uniform(-w * 0.03, w * 0.03), y, s * h / 768, (k + row) % 2 == 1)
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 40)
+
+
+def wall_sitters(w=1536, h=640, seed=5075, gaps=(0.08, 0.26, 0.41, 0.6, 0.77, 0.93)):
+    """Ch5 p07_5: the finished room. Students sit against the far wall, far apart, knees up."""
+    rnd = random.Random(seed)
+    img, d, hz = white_room(w, h, 0.62)
+    for k, fx in enumerate(gaps):
+        seated_front(d, w * fx, hz + h * 0.02, h / 640 * 0.95, rnd.random() < 0.5)
+    return vignette(img.filter(ImageFilter.GaussianBlur(4)), 40)
+
+
+def heads_turn(w=1344, h=768, seed=5112):
+    """Ch5 p11_2: classmates, backs to us, all turned to one boy sitting against the far wall."""
+    rnd = random.Random(seed)
+    img, d, hz = white_room(w, h, 0.55)
+    seated_front(d, w * 0.5, hz + h * 0.04, h / 640 * 1.05, False)                                 # Riku
+    for k, fx in enumerate((0.08, 0.24, 0.76, 0.92)):
+        back_view(d, w * fx, h * 1.02, h / 768 * 1.25, k % 2 == 1)
+    for k, fx in enumerate((0.16, 0.34, 0.66, 0.84)):
+        back_view(d, w * fx, h * 0.86, h / 768 * 0.85, k % 2 == 0)
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 40)
+
+
+def apart(w=896, h=1152, seed=5202):
+    """Ch5 p20_2: from above, the class in a loose group on one side; one boy alone on the other."""
+    rnd = random.Random(seed)
+    img = concrete(w, h, 70, seed)
+    img = light_pool(img, w // 2, h // 2, int(w * 0.42), int(h * 0.36), 50)
+    d = ImageDraw.Draw(img)
+
+    def top(x, y, s):
+        d.ellipse([x - 34 * s, y - 16 * s, x + 34 * s, y + 22 * s], fill=GAKURAN)
+        d.ellipse([x - 17 * s, y - 20 * s, x + 17 * s, y + 12 * s], fill=HAIR)
+    for k in range(11):
+        top(w * rnd.uniform(0.12, 0.48), h * rnd.uniform(0.18, 0.62), w / 560)
+    top(w * 0.74, h * 0.78, w / 520)                                                                 # Ren, alone
+    return vignette(img.filter(ImageFilter.GaussianBlur(5)), 90)
+
 SKETCHES = {
     "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class,
                   "p21_2.png": lambda: frozen_class(1152, 896, seed=2102), "p23_1.png": key_case, "p23_2.png": key_closeup},
@@ -569,12 +652,15 @@ SKETCHES = {
                   "p02_3.png": lambda: white_room_door(1216, 832, seed=4023),
                   "p03_1.png": lambda: locker_ring(1152, 896, cam=(0, 1.6, -2.2), pitch=10),
                   "p12_1.png": lambda: locker_ring(1344, 768, cam=(0, 6.5, -5.0), pitch=48),
+                  "p13_1.png": lambda: silent_class(1216, 832, seed=4131),
                   "p16_1.png": silent_class,
                   "p19_1.png": standoff},
     "chapter05": {"p01_2.png": lambda: locker_ring(1024, 1024, cam=(0, 1.5, -2.6), pitch=4, figure=True),
                   "p09_1.png": lambda: locker_ring(1344, 768, cam=(0.3, 1.5, -2.6), pitch=4, figure=True),
                   "p12_2.png": lambda: locker_ring(1344, 768, cam=(0, 4.5, -4.5), pitch=35, crowd=10),
-                  "p14_3.png": surrounded},
+                  "p14_3.png": surrounded,
+                  "p06_2.png": waiting_board, "p07_5.png": wall_sitters, "p11_2.png": heads_turn,
+                  "p20_2.png": apart},
 }
 
 

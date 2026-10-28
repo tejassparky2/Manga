@@ -181,8 +181,10 @@ pages:
   - kind: art
     shot: "WIDE — the waiting room"
     art: "In the white room, the others sit and wait, faces turned up to the board."
-    gen: "6+boys, 6+girls, gakuran, serafuku, sitting, looking up, waiting, white room, bright, wide shot"
-    negative_extra: "window, chair, desk"
+    gen: "6+boys, 6+girls, gakuran, serafuku, sitting on floor, from behind, looking up at screen, waiting, white room, bright, wide shot"
+    negative_extra: "window, chair, desk, ceiling, crowd"
+    sketch: sketches/p06_2.png
+    strength: 0.85
     text:
     - {t: caption, who: REN, say: "Seventeen people were waiting to be offered a price for someone's life.", canon: true}
   - kind: art
@@ -228,7 +230,9 @@ pages:
     shot: "WIDE — apart"
     art: "The finished room: students sit apart along the walls, nobody looking at anyone."
     gen: "multiple boys, multiple girls, gakuran, serafuku, sitting on floor, against wall, far apart, silence, white room, bright, wide shot"
-    negative_extra: "window, chair, desk"
+    negative_extra: "window, chair, desk, crowd"
+    sketch: sketches/p07_5.png
+    strength: 0.85
     text:
     - {t: caption, who: REN, say: "Everyone said no. Nobody could prove it.", canon: true}
 
@@ -334,8 +338,10 @@ pages:
   - kind: art
     shot: "WIDE — every head turns"
     art: "The finished room: every student turns to look at Riku, who sits against the wall."
-    gen: "multiple boys, multiple girls, gakuran, serafuku, looking at another, staring, boy sitting against wall, white room, bright, wide shot"
-    negative_extra: "window, chair, desk"
+    gen: "multiple boys, multiple girls, gakuran, serafuku, from behind, staring, boy sitting against wall, white room, bright, wide shot"
+    negative_extra: "window, chair, desk, crowd"
+    sketch: sketches/p11_2.png
+    strength: 0.85
   - kind: art
     shot: "MEDIUM — Riku"
     art: "Riku, unmoved, points up at the board."
@@ -581,7 +587,10 @@ pages:
   - kind: art
     shot: "HIGH — alone among them"
     art: "Ren stands apart from the others, small, in the ring."
-    gen: "{REN}, standing apart, alone, multiple boys, multiple girls, distance, from above, locker room, dim, wide shot"
+    gen: "{REN}, standing apart, alone, multiple boys, multiple girls, distance, from above, concrete floor, dim, wide shot"
+    negative_extra: "crowd"
+    sketch: sketches/p20_2.png
+    strength: 0.8
     text:
     - {t: caption, who: REN, say: "I didn't know anyone in this room anymore.", canon: true}
   - kind: art

@@ -337,7 +337,10 @@ pages:
   - kind: art
     shot: "WIDE — the class"
     art: "The class stands frozen."
-    gen: "6+boys, 6+girls, gakuran, serafuku, standing, silent, despair, looking down, white room, bright, wide shot"
+    gen: "6+boys, 6+girls, gakuran, serafuku, standing, silent, despair, looking down, white room, white walls, bright, wide shot"
+    negative_extra: "crowd, ceiling, stadium"
+    sketch: sketches/p13_1.png
+    strength: 0.85
     text:
     - {t: caption, who: REN, say: "Nineteen is longer than ten.", canon: true}
   - kind: art
