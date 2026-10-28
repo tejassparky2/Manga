@@ -369,7 +369,7 @@ pages:
   - kind: art
     shot: "EXTREME CLOSE — an eye opens"
     art: "Darkness. Ren's eye slowly opens."
-    gen: "1boy, eye focus, half-closed eyes, waking up, dark, darkness, extreme close-up"
+    gen: "1boy, black hair, eye focus, half-closed eyes, waking up, dark, darkness, extreme close-up"
     text:
     - {t: speech, who: REN, say: "......"}
   - kind: art
@@ -384,7 +384,8 @@ pages:
   - kind: art
     shot: "WIDE — the chamber"
     art: "A dim underground chamber of concrete. Students lie scattered, beginning to stir."
-    gen: "multiple boys, multiple girls, lying on floor, unconscious, concrete room, underground, dim lighting, bunker, wide shot"
+    gen: "multiple boys, multiple girls, gakuran, serafuku, lying on floor, unconscious, enclosed concrete room, dim lighting, wide shot, from above"
+    negative_extra: "corridor, doorways, hangar"
     text:
     - {t: speech, who: STUDENT D, say: "Ugh..."}
 
@@ -401,9 +402,10 @@ pages:
     shot: "POV (Ren) — Yui"
     art: "Ren's point of view: Yui, sitting up on the concrete floor, reaches toward his bleeding forehead."
     gen: "{YUI}, sitting, reaching towards viewer, pov, worried, concrete floor, dim lighting, upper body"
+    negative_extra: "book, magazine, paper"
     text:
     - {t: speech, who: YUI, say: "You're bleeding—"}
-    - {t: speech, who: REN, say: "I'm fine.", tail: [0.5, 1.08]}
+    - {t: speech, who: REN, say: "I'm fine.", at: [0.3, 0.86], tail: [0.24, 0.99]}
   - kind: art
     shot: "CLOSE — relief"
     art: "Yui, eyes wet, relieved."
