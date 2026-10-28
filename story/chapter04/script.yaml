@@ -123,8 +123,9 @@ pages:
   - kind: art
     shot: "MEDIUM — Momo, tokens"
     art: "Momo holds up one coin."
-    gen: "{MOMO}, mouse ears, holding coin, single coin, smile, upper body, white room, bright"
+    gen: "{MOMO}, mouse ears, holding up coin with both hands, single coin, smile, full body, white room, bright"
     negative_extra: "coin stack"
+    seed: 40501
     text:
     - {t: speech, who: MOMO, say: "Each token you spend opens one more! You can give tokens away before someone goes in!", canon: true}
   - kind: art
@@ -142,7 +143,8 @@ pages:
   - kind: art
     shot: "CLOSE — Momo, silence"
     art: "Momo, finger to its lips."
-    gen: "{MOMO}, mouse ears, finger to lips, shushing, wink, upper body, white room, bright"
+    gen: "{MOMO}, mouse ears, index finger to mouth, shushing, one eye closed, full body, white room, bright"
+    seed: 40504
     overlay_timer: "30:00"
     text:
     - {t: speech, who: MOMO, say: "After you go in, no talking to anyone who hasn't. No signs, no notes, nothing! Thirty minutes!", canon: true, at: [0.5, 0.72]}
