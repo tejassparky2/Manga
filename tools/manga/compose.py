@@ -493,48 +493,58 @@ def draw_board(w, h, spec):
 
     spec: {show: [first, last], rows: {slot: [name, opened, result]}, focus: [slots], summary: str}
     A name of "?" is drawn out of focus (an unnamed student; their names are not canon).
+    A wide panel showing more than ten slots splits them into two side-by-side columns.
     """
     img = screen_base(w, h)
     d = ImageDraw.Draw(img)
     first, last = spec.get("show", [1, 19])
     rows = {int(k): v for k, v in spec.get("rows", {}).items()}
     focus = set(spec.get("focus", []))
-    n = last - first + 1
+    slots = list(range(first, last + 1))
+    groups = [slots[:math.ceil(len(slots) / 2)], slots[math.ceil(len(slots) / 2):]] \
+        if len(slots) > 10 and w / h > 1.4 else [slots]
+    gw = w / len(groups)
     top = int(h * 0.05)
     head = int(min(h * 0.07, w * 0.05))
     d.text((int(w * 0.05), top), "FIND YOURSELF", font=font("sans", head), fill=RED)
     cols = (0.05, 0.13, 0.57, 0.71)
     y0 = top + int(head * 1.5)
-    fh = font("sans", int(head * 0.55))
-    for c, t in zip(cols, ("#", "NAME", "OPENED", "RESULT")):
-        d.text((w * c, y0), t, font=fh, fill=(150, 150, 150))
+    hs = int(head * 0.55)
+    while font("sans", hs).getlength("OPENED") > gw * (cols[3] - cols[2] - 0.015) and hs > 8:
+        hs -= 1
+    fh = font("sans", hs)
+    for g in range(len(groups)):
+        for c, t in zip(cols, ("#", "NAME", "OPENED", "RESULT")):
+            d.text((g * gw + gw * c, y0), t, font=fh, fill=(150, 150, 150))
     y0 += int(head * 1.0)
-    bottom = h - int(h * (0.16 if spec.get("summary") else 0.05))
-    row_h = (bottom - y0) / n
-    s = int(min(row_h * 0.62, w * 0.045))
-    while font("sans", s).getlength("NOT FOUND") > w * (0.97 - cols[3]) and s > 8:
+    bottom = h - int(h * spec.get("reserve", 0.16 if spec.get("summary") else 0.05))   # reserve: room for a balloon
+    row_h = (bottom - y0) / len(groups[0])
+    s = int(min(row_h * 0.62, gw * 0.045))
+    while font("sans", s).getlength("NOT FOUND") > gw * (0.97 - cols[3]) and s > 8:
         s -= 1
     f = font("sans", s)
-    for i, slot in enumerate(range(first, last + 1)):
-        y = y0 + i * row_h + (row_h - s) / 2
-        r = rows.get(slot)
-        dim = (238, 238, 238) if (not focus or slot in focus) else (120, 120, 120)
-        d.text((w * cols[0], y), f"{slot:02d}", font=f, fill=dim)
-        if not r:
-            d.text((w * cols[1], y), "— — —", font=f, fill=(70, 70, 70))
-            continue
-        name, opened, result = r
-        if name == "?":
-            img.paste(dim, (int(w * cols[1]), int(y)), blurred_text(int(w * 0.40), s, s, slot * 7))
-        else:
-            fn = f
-            ns = s
-            while fn.getlength(name) > w * (cols[2] - cols[1] - 0.02) and ns > 8:
-                ns -= 1
-                fn = font("sans", ns)
-            d.text((w * cols[1], y + (s - ns) / 2), name, font=fn, fill=dim)
-        d.text((w * cols[2], y), f"{opened}", font=f, fill=dim)
-        d.text((w * cols[3], y), result, font=f, fill=RED if result == "NOT FOUND" else dim)
+    for g, group in enumerate(groups):
+        gx = g * gw
+        for i, slot in enumerate(group):
+            y = y0 + i * row_h + (row_h - s) / 2
+            r = rows.get(slot)
+            dim = (238, 238, 238) if (not focus or slot in focus) else (120, 120, 120)
+            d.text((gx + gw * cols[0], y), f"{slot:02d}", font=f, fill=dim)
+            if not r:
+                d.text((gx + gw * cols[1], y), "— — —", font=f, fill=(70, 70, 70))
+                continue
+            name, opened, result = r
+            if name == "?":
+                img.paste(dim, (int(gx + gw * cols[1]), int(y)), blurred_text(int(gw * 0.40), s, s, slot * 7))
+            else:
+                fn = f
+                ns = s
+                while fn.getlength(name) > gw * (cols[2] - cols[1] - 0.02) and ns > 8:
+                    ns -= 1
+                    fn = font("sans", ns)
+                d.text((gx + gw * cols[1], y + (s - ns) / 2), name, font=fn, fill=dim)
+            d.text((gx + gw * cols[2], y), f"{opened}", font=f, fill=dim)
+            d.text((gx + gw * cols[3], y), result, font=f, fill=RED if result == "NOT FOUND" else dim)
     if spec.get("summary"):
         fs = font("sans", int(min(h * 0.07, w * 0.055)))
         t = spec["summary"]
@@ -567,14 +577,16 @@ def _arrow(d, a, b, width, fill, head=18, shrink=0.0):
 TOY = {"A": "C", "B": "D", "C": "E", "D": "A", "E": "B"}   # one loop: A→C→E→B→D→A
 
 
-def draw_notebook(w, h, mode):
-    """Ren's sketch of five lockers A–E (Ch4): 'boxes', 'arrows', or 'path' (B follows the chain)."""
+def draw_notebook(w, h, mode, center=(0.54, 0.52)):
+    """Ren's sketch of five lockers A–E (Ch4): 'boxes', 'arrows', or 'path' (B follows the chain).
+
+    `center` places the drawing (fractions of the panel), leaving paper free for a balloon."""
     ss = 2
     W, H = w * ss, h * ss
     img = notebook_paper(W, H)
     d = ImageDraw.Draw(img)
     pencil = (45, 45, 45)
-    cx, cy, R = W * 0.54, H * 0.52, min(W, H) * 0.33
+    cx, cy, R = W * center[0], H * center[1], min(W, H) * 0.33
     bw, bh = min(W, H) * 0.15, min(W, H) * 0.19
     pos = {}
     for k, name in enumerate("ABCDE"):
@@ -607,8 +619,10 @@ def draw_notebook(w, h, mode):
     return img.resize((w, h), Image.LANCZOS)
 
 
-def draw_loop(w, h, mode):
-    """Nineteen lockers as dots (Ch4): 'one' big loop, 'cut' (first and tenth marked), 'split' (9 + 10)."""
+def draw_loop(w, h, mode, center=(0.54, 0.5)):
+    """Nineteen lockers as dots (Ch4): 'one' big loop, 'cut' (first and tenth marked), 'split' (9 + 10).
+
+    `center` places the drawing (for 'split', only its height counts), leaving paper free for a balloon."""
     ss = 2
     W, H = w * ss, h * ss
     img = notebook_paper(W, H)
@@ -627,7 +641,7 @@ def draw_loop(w, h, mode):
         return pts
 
     if mode in ("one", "cut"):
-        cx, cy, R = W * 0.54, H * 0.5, min(W, H) * 0.36
+        cx, cy, R = W * center[0], H * center[1], min(W, H) * 0.36
         pts = ring(cx, cy, R, 19)
         t = "19"
         d.text((cx - fn.getlength(t) / 2, cy - fn.size * 0.6), t, font=fn, fill=pencil)
@@ -647,9 +661,9 @@ def draw_loop(w, h, mode):
     else:
         R1, R2 = min(W * 0.17, H * 0.3), min(W * 0.19, H * 0.33)
         for cx, R, n in ((W * 0.29, R1, 9), (W * 0.73, R2, 10)):
-            ring(cx, H * 0.5, R, n)
+            ring(cx, H * center[1], R, n)
             t = str(n)
-            d.text((cx - fn.getlength(t) / 2, H * 0.5 - fn.size * 0.6), t, font=fn, fill=pencil)
+            d.text((cx - fn.getlength(t) / 2, H * center[1] - fn.size * 0.6), t, font=fn, fill=pencil)
     return img.resize((w, h), Image.LANCZOS)
 
 
@@ -755,9 +769,9 @@ def render_panel(panel, w, h, art_dir, pid):
     if kind == "board":
         return draw_board(w, h, panel["board"])
     if kind == "notebook":
-        return draw_notebook(w, h, panel["mode"])
+        return draw_notebook(w, h, panel["mode"], panel.get("center", (0.54, 0.52)))
     if kind == "loop":
-        return draw_loop(w, h, panel["mode"])
+        return draw_loop(w, h, panel["mode"], panel.get("center", (0.54, 0.5)))
     if kind == "namecard":
         return draw_namecard(w, h, panel["name"])
     if kind == "offer":
