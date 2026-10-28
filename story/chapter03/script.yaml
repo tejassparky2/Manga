@@ -23,7 +23,7 @@ characters:
   AOI: "1girl, black hair, bob cut, glasses, serafuku"
   MIO: "1girl, light brown hair, long wavy hair, earrings, serafuku"
   SAKI: "1girl, black hair, short hair, hair over one eye, quiet, serafuku"
-  MOMO: "no humans, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot"
+  MOMO: "no humans, solo, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot"
 
 character_negatives:
   MOMO: "multiple mice, 2others"
@@ -261,7 +261,7 @@ pages:
     shot: "WIDE — the giving"
     art: "Students' hands drop coins onto a growing pile beside Momo."
     gen: "hands dropping coins onto pile of coins, {MOMO}, sitting beside coin pile, white floor, white room, bright"
-    negative_extra: "paper, books"
+    negative_extra: "paper"
     text:
     - {t: caption, who: REN, say: "One by one, we gave Momo everything.", canon: true}
   - kind: art
