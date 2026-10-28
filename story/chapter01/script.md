@@ -220,7 +220,7 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 - SFX: GOOOOO
 
 **PANEL 2 — WIDE — chaos**
-- Art: Students scream, duck under desks, rush for the door. Riku shoves through.
+- Art: Students scream, duck under desks, rush for the door. Riku shoves through. A tight, chaotic shot of a few students; the class is 20.
 - SFX: AAAAH!
 - RIKU (shout): "MOVE!" †
 

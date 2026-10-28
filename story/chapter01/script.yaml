@@ -309,8 +309,10 @@ pages:
     - {t: sfx, say: "GOOOOO"}
   - kind: art
     shot: "WIDE — chaos"
-    art: "Students scream, duck under desks, rush for the door. Riku shoves through."
-    gen: "multiple boys, multiple girls, panic, screaming, running, ducking, under desk, crowd, classroom, motion lines, chaos"
+    art: "Students scream, duck under desks, rush for the door. Riku shoves through. A tight, chaotic shot of a few students; the class is 20."
+    gen: "4boys, 3girls, gakuran, serafuku, panic, screaming, running, ducking under desk, small classroom, bright light from window, motion lines, chaos, dutch angle"
+    negative_extra: "lecture hall, auditorium, calm, sitting still, large crowd"
+    seed: 10020
     text:
     - {t: sfx, say: "AAAAH!"}
     - {t: shout, who: RIKU, say: "MOVE!"}
