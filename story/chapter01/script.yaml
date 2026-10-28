@@ -429,8 +429,10 @@ pages:
   - kind: art
     shot: "HIGH ANGLE WIDE — the chamber"
     art: "The full chamber: concrete walls, a huge metal door, a large dark screen on one wall, students scattered."
-    gen: "multiple boys, multiple girls, gakuran, serafuku, single enclosed concrete room, huge steel door, one large dark screen on wall, from above, wide shot, dim lighting"
-    negative_extra: "atrium, multiple floors, balconies"
+    gen: "multiple boys, multiple girls, gakuran, serafuku, standing, from above, wide shot, concrete room, large metal door, black screen on wall, dim lighting"
+    negative_extra: "atrium, multiple floors, corridor, t-shirt"
+    sketch: sketches/p15_1.png
+    strength: 0.7
     text:
     - {t: thought, who: REN, say: "Eighteen. Nineteen. Twenty."}
     note: "Ren confirms all 20 members of Class 3-B are present (bible Scene 6)."
@@ -477,8 +479,10 @@ pages:
   - kind: art
     shot: "WIDE — the door"
     art: "Gō and Riku throw their shoulders into the huge metal door."
-    gen: "2boys, from behind, black hair, gakuran, pushing giant blast door, huge steel door, small figures, concrete bunker wall, dim lighting"
-    negative_extra: "wooden door, bald"
+    gen: "2boys, from behind, gakuran, hands on door, pushing door, large metal door, industrial, rivets, concrete wall, dim lighting, wide shot"
+    negative_extra: "wooden door, window, 1girl, long hair"
+    sketch: sketches/p16_4.png
+    strength: 0.65
     text:
     - {t: sfx, say: "GONG!!"}
     - {t: speech, who: RIKU, say: "Open, damn it!"}
@@ -491,16 +495,16 @@ pages:
   - kind: art
     shot: "MEDIUM — Riku kicks"
     art: "Riku kicks the door. It does not move."
-    gen: "{RIKU}, kicking giant steel blast door, angry, concrete, dim lighting, motion lines"
-    negative_extra: "wooden door"
+    gen: "{RIKU}, solo, kicking door, large metal door, industrial, rivets, angry, motion lines, dim lighting"
+    negative_extra: "wooden door, wood, window"
     text:
     - {t: sfx, say: "GAN!"}
     - {t: speech, who: RIKU, say: "Damn it!!"}
   - kind: art
     shot: "CLOSE — Aoi examines"
     art: "Aoi kneels at the door frame, studying its seams."
-    gen: "{AOI}, kneeling, touching rivets of giant steel blast door, serious, dim lighting"
-    negative_extra: "wooden door"
+    gen: "{AOI}, solo, kneeling, from side, touching door, large metal door, industrial, rivets, serious, dim lighting"
+    negative_extra: "wooden door, window, open door, doorway"
   - kind: art
     shot: "CLOSE — Aoi"
     art: "Aoi's glasses catch the light."
@@ -680,20 +684,25 @@ pages:
   - kind: art
     shot: "WIDE — the key"
     art: "A light comes on over a glass barrier in the chamber. Behind the glass, the key. Around it, the empty token containers."
-    gen: "no humans, single small key on pedestal inside one small glass box, spotlight, row of empty transparent cylinders on floor, dark concrete room, wide shot"
+    gen: "no humans, key, glass case, pedestal, spotlight, empty glass cylinders, dark concrete room, wide shot"
     negative_extra: "people inside, mannequin, shelves, shop"
+    sketch: sketches/p23_1.png
+    strength: 0.6
     text:
     - {t: sfx, say: "KA-CHUNK"}
     note: "The spotlight is a staging PROPOSAL. The number, form and function of the token containers are UNRESOLVED; do not draw exactly 20."
   - kind: art
     shot: "CLOSE — behind the glass"
     art: "The key behind thick glass."
-    gen: "no humans, close-up of one old metal key lying on pedestal, glass reflection, spotlight, black background, still life, simple background"
+    gen: "no humans, key, old key, close-up, still life, glass reflection, spotlight, black background, simple background"
     negative_extra: "shelves, shop, cabinet, books"
+    sketch: sketches/p23_2.png
+    strength: 0.6
   - kind: art
     shot: "MEDIUM — Momo"
     art: "Momo gestures at the screen with a paw."
-    gen: "{MOMO}, pointing up, happy, full body, dark room, screen glow"
+    gen: "{MOMO}, standing on floor, pointing up, happy, full body, dark room"
+    negative_extra: "hologram, floating"
     text:
     - {t: speech, who: MOMO, say: "And these are the rules."}
 
