@@ -287,7 +287,7 @@ pages:
     gen: "{AOI}, serious, looking down, holding paper, upper body, white room, bright"
     negative_extra: "book, text, letters"
     text:
-    - {t: speech, who: AOI, say: "If your loop is ten or shorter, you find it. If it's longer, everyone in that loop dies together.", canon: true}
+    - {t: speech, who: AOI, say: "If your loop is ten or shorter, you find it. If it's longer, everyone in that loop dies together.", canon: true, at: [0.7, 0.78], tail: [0.42, 0.45]}
   - kind: art
     shot: "CLOSE — Aoi"
     art: "Aoi, worried, light glinting on her glasses."
