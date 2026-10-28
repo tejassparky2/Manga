@@ -12,7 +12,7 @@ Reconstruction draft 1, generated from `script.yaml`.
 
 The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's strength and Momo's design.
 
-- REN: 1boy, black hair, messy hair, hair between eyes, gakuran
+- REN: 1boy, black hair, short hair, messy hair, hair between eyes, gakuran
 - YUI: 1girl, long hair, black hair, straight hair, blunt bangs, serafuku
 - HARUTO: 1boy, blonde hair, spiky hair, gakuran
 - RIKU: 1boy, black hair, slicked back hair, sharp eyes, gakuran
@@ -21,7 +21,7 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 - AOI: 1girl, black hair, bob cut, glasses, serafuku
 - MIO: 1girl, light brown hair, long wavy hair, earrings, serafuku
 - SAKI: 1girl, black hair, short hair, hair over one eye, quiet, serafuku
-- MOMO: no humans, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot
+- MOMO: no humans, solo, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot
 
 ### PAGE 1
 
@@ -168,7 +168,7 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 ### PAGE 10
 
 **PANEL 1 — WIDE — the giving**
-- Art: One by one, students drop their coins in front of Momo.
+- Art: Students' hands drop coins onto a growing pile beside Momo.
 - CAPTION: "One by one, we gave Momo everything."
 
 **PANEL 2 — CLOSE — Saki**

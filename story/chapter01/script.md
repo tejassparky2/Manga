@@ -12,7 +12,7 @@ Reconstruction draft 1, generated from `script.yaml`.
 
 The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's strength and Momo's design.
 
-- REN: 1boy, black hair, messy hair, hair between eyes, gakuran
+- REN: 1boy, black hair, short hair, messy hair, hair between eyes, gakuran
 - YUI: 1girl, long hair, black hair, straight hair, blunt bangs, serafuku
 - HARUTO: 1boy, blonde hair, spiky hair, gakuran
 - RIKU: 1boy, black hair, slicked back hair, sharp eyes, gakuran
@@ -20,7 +20,7 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 - KOTA: 1boy, black hair, bowl cut, thin, timid, gakuran
 - AOI: 1girl, black hair, bob cut, glasses, serafuku
 - MIO: 1girl, light brown hair, long wavy hair, earrings, serafuku
-- MOMO: no humans, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot
+- MOMO: no humans, solo, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot
 
 ---
 
@@ -471,7 +471,7 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 ### PAGE 23
 
 **PANEL 1 — WIDE — the key**
-- Art: A light comes on over a glass barrier in the chamber. Behind the glass, the key. Around it, the token containers. Students turn toward it.
+- Art: A light comes on over a glass barrier in the chamber. Behind the glass, the key. Around it, the empty token containers.
 - SFX: KA-CHUNK
 - Continuity note: The spotlight is a staging PROPOSAL. The number, form and function of the token containers are UNRESOLVED; do not draw exactly 20.
 
