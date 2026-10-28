@@ -35,7 +35,7 @@ pages:
   - kind: art
     shot: "SPLASH — establishing shot"
     art: "A Japanese high school at midday under a clear, calm sky. Ordinary and peaceful. Title lettering overlaid."
-    gen: "scenery, no humans, japanese high school building, school courtyard, clear sky, cumulus clouds, summer, power lines, wide shot, from below, detailed background"
+    gen: "scenery, no humans, modern japanese high school, concrete school building, white walls, rows of windows, wall clock on building, school grounds, chain-link fence, clear sky, cumulus clouds, wide shot, from below, detailed background"
     title: true
     text:
     - {t: caption, say: "Class 3-B."}
