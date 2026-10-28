@@ -471,7 +471,7 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 ### PAGE 23
 
 **PANEL 1 — WIDE — the key**
-- Art: A light comes on over a glass barrier in the chamber. Behind the glass, the key. Around it, the token containers. Students turn toward it.
+- Art: A light comes on over a glass barrier in the chamber. Behind the glass, the key. Around it, the empty token containers.
 - SFX: KA-CHUNK
 - Continuity note: The spotlight is a staging PROPOSAL. The number, form and function of the token containers are UNRESOLVED; do not draw exactly 20.
 

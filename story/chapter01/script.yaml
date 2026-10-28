@@ -428,7 +428,8 @@ pages:
   - kind: art
     shot: "HIGH ANGLE WIDE — the chamber"
     art: "The full chamber: concrete walls, a huge metal door, a large dark screen on one wall, students scattered."
-    gen: "multiple boys, multiple girls, large room, concrete walls, huge metal door, large screen on wall, underground bunker, from above, wide shot, dim lighting"
+    gen: "multiple boys, multiple girls, gakuran, serafuku, single enclosed concrete room, huge steel door, one large dark screen on wall, from above, wide shot, dim lighting"
+    negative_extra: "atrium, multiple floors, balconies"
     text:
     - {t: thought, who: REN, say: "Eighteen. Nineteen. Twenty."}
     note: "Ren confirms all 20 members of Class 3-B are present (bible Scene 6)."
@@ -441,7 +442,8 @@ pages:
   - kind: art
     shot: "MEDIUM — empty space"
     art: "Students look at one another. No adult anywhere."
-    gen: "multiple boys, multiple girls, looking at each other, anxious, concrete room, dim lighting"
+    gen: "multiple boys, multiple girls, gakuran, serafuku, looking at each other, anxious, concrete room, dim lighting"
+    negative_extra: "t-shirt, casual clothes"
     text:
     - {t: speech, who: STUDENT E, say: "Sensei's not here..."}
     note: "The teacher is missing (bible Scene 6). Their fate is UNRESOLVED."
@@ -673,17 +675,17 @@ pages:
   panels:
   - kind: art
     shot: "WIDE — the key"
-    art: "A light comes on over a glass barrier in the chamber. Behind the glass, the key. Around it, the token containers. Students turn toward it."
-    gen: "single key on pedestal inside glass box, spotlight, transparent cylinders around it, dark concrete room, multiple boys, multiple girls, from behind, wide shot"
-    negative_extra: "shelves, shop, display cabinets"
+    art: "A light comes on over a glass barrier in the chamber. Behind the glass, the key. Around it, the empty token containers."
+    gen: "no humans, single small key on pedestal inside one small glass box, spotlight, row of empty transparent cylinders on floor, dark concrete room, wide shot"
+    negative_extra: "people inside, mannequin, shelves, shop"
     text:
     - {t: sfx, say: "KA-CHUNK"}
     note: "The spotlight is a staging PROPOSAL. The number, form and function of the token containers are UNRESOLVED; do not draw exactly 20."
   - kind: art
     shot: "CLOSE — behind the glass"
     art: "The key behind thick glass."
-    gen: "no humans, single old key, close-up, behind thick glass, reflection, spotlight, dark background, still life"
-    negative_extra: "shelves, shop"
+    gen: "no humans, close-up of one old metal key lying on pedestal, glass reflection, spotlight, black background, still life, simple background"
+    negative_extra: "shelves, shop, cabinet, books"
   - kind: art
     shot: "MEDIUM — Momo"
     art: "Momo gestures at the screen with a paw."
