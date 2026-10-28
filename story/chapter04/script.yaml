@@ -459,9 +459,9 @@ pages:
   - kind: art
     shot: "CLOSE — Riku"
     art: "Riku closes his fist."
-    gen: "{RIKU}, cold eyes, expressionless, hand in pocket, upper body, white room, bright"
-    negative_extra: "fighting stance, table, coin, reaching"
-    seed: 41713
+    gen: "{RIKU}, cold eyes, expressionless, looking at viewer, close-up, portrait, white room, bright"
+    negative_extra: "paper, book, holding, hands, coin"
+    seed: 41723
     text:
     - {t: speech, who: RIKU, say: "My tokens don't leave my hands. I go first.", canon: true}
 
