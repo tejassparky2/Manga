@@ -127,7 +127,7 @@ pages:
     shot: "CLOSE — Momo, the rule"
     art: "Momo points at the door, grinning."
     gen: "{MOMO}, mouse ears, standing, pointing to the side, grin, full body, white room, bright"
-    negative_extra: "napkin, cloth, bib, scarf"
+    negative_extra: "napkin"
     seed: 40413
     text:
     - {t: speech, who: MOMO, say: "Go in alone. Open ten lockers. Find your own name, and you live! Don't, and you die!", canon: true}
