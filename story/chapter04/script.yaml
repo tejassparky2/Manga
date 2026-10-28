@@ -314,9 +314,9 @@ pages:
   - kind: art
     shot: "HIGH — the circle"
     art: "The locker ring from high above: the painted line is one unbroken circle."
-    gen: "no humans, from above, locker room, metal lockers, lockers in circle, painted circle on floor, concrete floor, dim, wide shot"
+    gen: "no humans, from above, school lockers, metal lockers, lockers in circle, painted white circle on floor, concrete floor, dim, wide shot"
     sketch: sketches/p12_1.png
-    strength: 0.8
+    strength: 0.65
     text:
     - {t: caption, who: REN, say: "\"Everyone's connected.\" I looked at the line on the floor. One circle. No breaks.", canon: true}
   - kind: loop
