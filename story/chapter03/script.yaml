@@ -164,7 +164,8 @@ pages:
   - kind: art
     shot: "WIDE — the class"
     art: "The class stands apart from one another, frightened."
-    gen: "multiple boys, multiple girls, gakuran, serafuku, scared, standing apart, white room, bright, wide shot, from above"
+    gen: "4boys, 3girls, gakuran, serafuku, scared, standing apart, white room, bright, from above"
+    negative_extra: "crowd, multiple floors"
     text:
     - {t: caption, who: REN, say: "Tokens can't vanish. Somebody always holds the fewest.", canon: true}
   - kind: art
@@ -314,8 +315,8 @@ pages:
   - kind: art
     shot: "WIDE — Riku crosses the room"
     art: "Riku walks across the white room, seen from behind."
-    gen: "{RIKU}, from behind, walking across large bare white room, bright, wide shot"
-    negative_extra: "corridor, hallway, tunnel"
+    gen: "{RIKU}, from above, walking, long shadow, white floor, white background, simple background, full body"
+    negative_extra: "corridor, hallway, walls"
     text:
     - {t: caption, who: REN, say: "He walked across the room. To Saki.", canon: true}
 
@@ -434,7 +435,7 @@ pages:
 - page: 18
   rows: [[1.3, [1]], [0.8, [1]]]
   panels:
-  - kind: art
+  - kind: token
     shot: "WIDE — the empty spot"
     art: "The white floor where Saki stood. A single coin lies there. No one."
     gen: "no humans, single small round coin lying on bare white floor, empty white room, bright, eerie, minimalist, from above"

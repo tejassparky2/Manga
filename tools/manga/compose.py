@@ -458,6 +458,34 @@ def draw_streak(img, spec):
     return img
 
 
+def draw_token(w, h):
+    """One small coin alone on a bare white floor, seen from above at an angle."""
+    ss = 2
+    W, H = w * ss, h * ss
+    floor = Image.new("L", (W, H), 242)
+    vignette = Image.new("L", (W, H), 0)
+    ImageDraw.Draw(vignette).ellipse((W * 0.08, H * 0.1, W * 0.92, H * 0.95), fill=255)
+    vignette = vignette.filter(ImageFilter.GaussianBlur(min(W, H) // 6))
+    dots = tone(W, H, step=12, r=2.4, bg=242).convert("L")          # screentone at the edges
+    floor = Image.composite(floor, dots, vignette)
+    img = floor.convert("RGB")
+    d = ImageDraw.Draw(img)
+    cx, cy = W * 0.5, H * 0.56
+    rx = min(W, H) * 0.075
+    ry = rx * 0.55                      # foreshortened: lying flat on the floor
+    shadow = Image.new("L", (W, H), 0)
+    ImageDraw.Draw(shadow).ellipse((cx - rx * 1.05 + rx * 0.25, cy - ry + ry * 0.55,
+                                    cx + rx * 1.05 + rx * 0.25, cy + ry * 1.55), fill=170)
+    img.paste((40, 40, 40), (0, 0), shadow.filter(ImageFilter.GaussianBlur(rx * 0.25)))
+    edge = ry * 0.28                    # coin thickness
+    d.ellipse((cx - rx, cy - ry + edge, cx + rx, cy + ry + edge), fill=(70, 70, 70))
+    d.rectangle((cx - rx, cy, cx + rx, cy + edge), fill=(70, 70, 70))
+    d.ellipse((cx - rx, cy - ry, cx + rx, cy + ry), fill=(205, 205, 205), outline=(25, 25, 25), width=6)
+    d.ellipse((cx - rx * 0.72, cy - ry * 0.72, cx + rx * 0.72, cy + ry * 0.72), outline=(95, 95, 95), width=4)
+    d.arc((cx - rx * 0.9, cy - ry * 0.9, cx + rx * 0.9, cy + ry * 0.9), 200, 290, fill=(255, 255, 255), width=8)
+    return img.resize((w, h), Image.LANCZOS)
+
+
 def render_panel(panel, w, h, art_dir, pid):
     kind = panel.get("kind", "art")
     if kind == "art":
@@ -487,6 +515,8 @@ def render_panel(panel, w, h, art_dir, pid):
         return draw_clock(w, h, panel["time"])
     if kind == "phone":
         return draw_phone(w, h, panel["mode"])
+    if kind == "token":
+        return draw_token(w, h)
     raise ValueError(f"unknown panel kind {kind}")
 
 
