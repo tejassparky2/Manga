@@ -15,15 +15,15 @@ chapter: 1
 title: "12:17"
 
 characters:
-  REN: "1boy, black hair, short hair, messy hair, tired eyes, gakuran, black school uniform"
-  YUI: "1girl, long hair, black hair, straight hair, gentle eyes, serafuku, sailor collar"
-  HARUTO: "1boy, blonde hair, short spiky hair, gakuran, unbuttoned collar"
-  RIKU: "1boy, black hair, slicked back hair, sharp eyes, scowl, gakuran, open jacket"
-  GO: "1boy, buzz cut, very short hair, tall, broad shoulders, muscular, stoic, gakuran"
-  KOTA: "1boy, messy bangs, thin, slouching, gakuran"
-  AOI: "1girl, short hair, bob cut, glasses, calm expression, serafuku"
-  MIO: "1girl, long wavy hair, hair clip, earrings, stylish, serafuku"
-  MOMO: "no humans, white mouse, cute, chibi, round ears, big ears, black eyes, bow tie, bell, mascot, small"
+  REN: "1boy, black hair, messy hair, gakuran"
+  YUI: "1girl, long black hair, serafuku"
+  HARUTO: "1boy, blonde hair, spiky hair, gakuran"
+  RIKU: "1boy, slicked back hair, sharp eyes, gakuran"
+  GO: "1boy, buzz cut, tall, muscular, gakuran"
+  KOTA: "1boy, messy bangs, thin, gakuran"
+  AOI: "1girl, bob cut, glasses, serafuku"
+  MIO: "1girl, long wavy hair, earrings, serafuku"
+  MOMO: "no humans, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot"
 
 pages:
 
@@ -134,7 +134,7 @@ pages:
   - kind: art
     shot: "WIDE — Haruto provokes"
     art: "Haruto leans across, sly grin. Ren flustered but deadpan. Yui blinks."
-    gen: "1girl, 2boys, {HARUTO}, sly grin, leaning forward, {REN}, flustered, {YUI}, classroom, school desk"
+    gen: "1girl, 2boys, {HARUTO}, sly grin, leaning forward, {REN}, flustered, {YUI}, classroom"
     text:
     - {t: speech, who: HARUTO, say: "Ohh? Personal delivery?"}
     - {t: speech, who: REN, say: "It's not like that."}

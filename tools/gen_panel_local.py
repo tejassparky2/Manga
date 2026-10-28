@@ -13,9 +13,15 @@ import torch
 from diffusers import EulerAncestralDiscreteScheduler, StableDiffusionXLPipeline
 
 MODEL = Path(__file__).resolve().parent.parent / "models" / "animagine-xl-4.0"
-STYLE = "monochrome, greyscale, manga, screentone, lineart, masterpiece, high score, great score, absurdres"
+# CLIP reads only 77 tokens, so the style tags lead and the quality tags trail.
+STYLE = "monochrome, greyscale, manga"
+QUALITY = "screentone, masterpiece, high score, absurdres"
 NEGATIVE = ("lowres, bad anatomy, bad hands, text, speech bubble, error, worst quality, low quality, "
             "jpeg artifacts, signature, watermark, blurry, color")
+
+
+def full_prompt(prompt):
+    return f"{STYLE}, {prompt}, {QUALITY}"
 
 
 def load_pipeline():
@@ -27,7 +33,7 @@ def load_pipeline():
 
 def generate(pipe, prompt, width=832, height=1216, steps=20, cfg=5.0, seed=0, negative=NEGATIVE):
     with torch.no_grad():
-        latents = pipe(f"{prompt}, {STYLE}", negative_prompt=negative, width=width, height=height,
+        latents = pipe(full_prompt(prompt), negative_prompt=negative, width=width, height=height,
                        num_inference_steps=steps, guidance_scale=cfg, output_type="latent",
                        generator=torch.Generator().manual_seed(seed)).images
         latents = latents.to(torch.float32) / pipe.vae.config.scaling_factor
