@@ -476,7 +476,8 @@ pages:
   - kind: art
     shot: "WIDE — the door"
     art: "Gō and Riku throw their shoulders into the huge metal door."
-    gen: "2boys, black hair, buzz cut, slicked back hair, gakuran, pushing huge steel door, straining, indoors, concrete wall, dim lighting"
+    gen: "2boys, from behind, black hair, gakuran, pushing giant blast door, huge steel door, small figures, concrete bunker wall, dim lighting"
+    negative_extra: "wooden door, bald"
     text:
     - {t: sfx, say: "GONG!!"}
     - {t: speech, who: RIKU, say: "Open, damn it!"}
@@ -489,14 +490,16 @@ pages:
   - kind: art
     shot: "MEDIUM — Riku kicks"
     art: "Riku kicks the door. It does not move."
-    gen: "{RIKU}, kicking steel door, angry, indoors, concrete wall, dim lighting, motion lines"
+    gen: "{RIKU}, kicking giant steel blast door, angry, concrete, dim lighting, motion lines"
+    negative_extra: "wooden door"
     text:
     - {t: sfx, say: "GAN!"}
     - {t: speech, who: RIKU, say: "Damn it!!"}
   - kind: art
     shot: "CLOSE — Aoi examines"
     art: "Aoi kneels at the door frame, studying its seams."
-    gen: "{AOI}, kneeling, examining steel door, rivets, touching metal, serious, dim lighting"
+    gen: "{AOI}, kneeling, touching rivets of giant steel blast door, serious, dim lighting"
+    negative_extra: "wooden door"
   - kind: art
     shot: "CLOSE — Aoi"
     art: "Aoi's glasses catch the light."
