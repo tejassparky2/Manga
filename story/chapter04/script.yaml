@@ -72,6 +72,7 @@ pages:
     negative_extra: "window, stairs, corridor, hallway, walking, crowd"
     sketch: sketches/p02_3.png
     strength: 0.85
+    retouch: "Render w2 9251eb3: a tiny girl inside the doorway was painted out (tools/manga/retouch.py)."
     text:
     - {t: caption, who: REN, say: "Nobody saw who took it.", canon: true}
 
@@ -222,9 +223,9 @@ pages:
   - kind: art
     shot: "CLOSE — Mio"
     art: "Mio, bitter."
-    gen: "{MIO}, bitter, frown, arms crossed, upper body, white room, bright"
-    negative_extra: "cards, playing card, holding, book"
-    seed: 40802
+    gen: "{MIO}, bitter, frown, looking to the side, close-up, portrait, white room, bright"
+    negative_extra: "holding, book, magazine, hands"
+    seed: 40812
     text:
     - {t: speech, who: MIO, say: "Then he walks out, and we flip coins.", canon: true}
   - kind: art
@@ -458,9 +459,9 @@ pages:
   - kind: art
     shot: "CLOSE — Riku"
     art: "Riku closes his fist."
-    gen: "{RIKU}, cold eyes, expressionless, hand in pocket, upper body, white room, bright"
-    negative_extra: "fighting stance, table, coin, reaching"
-    seed: 41713
+    gen: "{RIKU}, cold eyes, expressionless, looking at viewer, close-up, portrait, white room, bright"
+    negative_extra: "paper, book, holding, hands, coin"
+    seed: 41723
     text:
     - {t: speech, who: RIKU, say: "My tokens don't leave my hands. I go first.", canon: true}
 
@@ -489,6 +490,8 @@ pages:
     shot: "LOW — Riku"
     art: "Riku from below, looking down on them."
     gen: "{RIKU}, smug, looking down, from below, upper body, white room, bright"
+    negative_extra: "book, holding, paper"
+    seed: 41804
     text:
     - {t: speech, who: RIKU, say: "Eighteen lives for nine tokens. Every one of you owes me.", canon: true}
 
