@@ -164,7 +164,8 @@ pages:
   - kind: art
     shot: "MEDIUM — Ren speaks up"
     art: "Ren steps forward and addresses the class."
-    gen: "{REN}, standing, speaking, serious, hand raised, upper body, dark room, screen glow"
+    gen: "{REN}, solo, speaking, serious, open hand raised, palm, upper body, dark room"
+    negative_extra: "phone, card, holding object"
     text:
     - {t: speech, who: REN, say: "I bid one. Everyone else bids zero.", canon: true}
 
