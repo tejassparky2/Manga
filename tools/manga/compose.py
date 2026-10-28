@@ -408,7 +408,7 @@ def draw_phone(w, h, mode):
     return img.resize((w, h), Image.LANCZOS)
 
 
-def draw_title(page, rect):
+def draw_title(page, rect, chapter):
     x0, y0, x1, y1 = rect
     d = ImageDraw.Draw(page)
     f = font("sfx", 150)
@@ -416,7 +416,7 @@ def draw_title(page, rect):
         tw = f.getlength(line)
         d.text(((x0 + x1 - tw) / 2, y0 + 90 + n * 150), line, font=f, fill="black", stroke_width=10, stroke_fill="white")
     f2 = font("sfx", 64)
-    t = "CHAPTER 1  —  12:17"
+    t = f"CHAPTER {chapter['chapter']}  —  {chapter['title'].upper()}"
     d.text(((x0 + x1 - f2.getlength(t)) / 2, y0 + 420), t, font=f2, fill="white", stroke_width=6, stroke_fill="black")
 
 
@@ -450,7 +450,7 @@ def draw_streak(img, spec):
 def render_panel(panel, w, h, art_dir, pid):
     kind = panel.get("kind", "art")
     if kind == "art":
-        path = art_dir / f"{pid}.png"
+        path = art_dir / f"{panel.get('reuse', pid)}.png"   # reuse: show another panel's art
         if not path.exists():
             img = Image.new("RGB", (w, h), (200, 200, 200))
             ImageDraw.Draw(img).text((20, 20), f"{pid} not rendered yet", font=font("sans", 28), fill="black")
@@ -479,7 +479,7 @@ def render_panel(panel, w, h, art_dir, pid):
     raise ValueError(f"unknown panel kind {kind}")
 
 
-def compose_page(page_spec, art_dir):
+def compose_page(page_spec, art_dir, chapter):
     page = Image.new("RGB", (PAGE_W, PAGE_H), "white")
     d = ImageDraw.Draw(page)
     rects = panel_rects(page_spec["rows"])
@@ -495,7 +495,7 @@ def compose_page(page_spec, art_dir):
         if panel.get("kind") != "white":
             d.rectangle(rect, outline="black", width=BORDER)
         if panel.get("title"):
-            draw_title(page, rect)
+            draw_title(page, rect, chapter)
     for panel, rect in zip(page_spec["panels"], rects):
         letter_panel(page, panel, rect)
     f = font("sans-reg", 24)
@@ -544,7 +544,7 @@ def main():
         n = spec["page"]
         if a.pages and not (int(lo) <= n <= int(hi or lo)):
             continue
-        compose_page(spec, out / "panels").save(pages_dir / f"page_{n:02d}.png", optimize=True)
+        compose_page(spec, out / "panels", chapter).save(pages_dir / f"page_{n:02d}.png", optimize=True)
         print(f"page {n} done")
     if len(list(pages_dir.glob("page_*.png"))) == len(chapter["pages"]):
         pdf, cbz = export(pages_dir, out, a.name, chapter)
