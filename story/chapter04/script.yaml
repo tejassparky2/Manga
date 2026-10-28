@@ -393,13 +393,15 @@ pages:
     mode: split
     center: [0.5, 0.62]
     text:
-    - {t: offpanel, who: REN, say: "One loop of nine. The other is what's left. Nineteen minus nine is ten.", canon: true, at: [0.5, 0.15]}
+    - {t: offpanel, who: REN, say: "One loop of nine. The other is what's left. Nineteen minus nine is ten.", canon: true, at: [0.76, 0.14]}
   - kind: art
     shot: "CLOSE — Aoi"
     art: "Aoi, a flicker of hope."
-    gen: "{AOI}, surprised, hopeful, upper body, white room, bright"
+    gen: "{AOI}, surprised, hopeful, looking up, upper body, white room, bright"
+    negative_extra: "book, holding, paper, notebook"
+    seed: 41502
     text:
-    - {t: speech, who: AOI, say: "Ten or shorter. Everyone after you finds their name.", canon: true}
+    - {t: speech, who: AOI, say: "Ten or shorter. Everyone after you finds their name.", canon: true, at: [0.3, 0.14], size: 27}
   - kind: art
     shot: "CLOSE — Ren"
     art: "Ren, grim, eyes down."
