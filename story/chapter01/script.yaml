@@ -482,7 +482,7 @@ pages:
     gen: "2boys, from behind, gakuran, hands on door, pushing door, large metal door, industrial, rivets, concrete wall, dim lighting, wide shot"
     negative_extra: "wooden door, window, 1girl, long hair"
     sketch: sketches/p16_4.png
-    strength: 0.65
+    strength: 0.8
     text:
     - {t: sfx, say: "GONG!!"}
     - {t: speech, who: RIKU, say: "Open, damn it!"}
@@ -613,7 +613,7 @@ pages:
     gen: "multiple boys, multiple girls, gakuran, serafuku, shocked, wide-eyed, frozen, standing still, looking at viewer, dark concrete room, dim light"
     negative_extra: "hologram, ghost, crystal, glass, ruins"
     sketch: sketches/p20_4.png
-    strength: 0.7
+    strength: 0.82
 
 - page: 21
   scene: 9
@@ -629,8 +629,10 @@ pages:
   - kind: art
     shot: "WIDE — silence"
     art: "No one moves."
-    gen: "multiple boys, multiple girls, gakuran, serafuku, silent, shocked, standing still, dark concrete room, dim light, wide shot"
-    negative_extra: "tablet, arcade, screens"
+    gen: "multiple boys, multiple girls, gakuran, serafuku, silent, shocked, standing still, looking at viewer, dark concrete room, dim light"
+    negative_extra: "door, doorway, corridor, tablet, screens"
+    sketch: sketches/p21_2.png
+    strength: 0.82
     text:
     - {t: speech, who: STUDENTS, say: "......"}
   - kind: art

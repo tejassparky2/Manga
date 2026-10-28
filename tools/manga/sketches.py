@@ -80,6 +80,9 @@ def student(d, x, y, s, girl, rnd):
     face = rnd.choice((-1, 0, 1))  # which way the student is looking
     fx = x + face * head * 0.45
     d.ellipse([fx - head * 0.55, top + head * 0.8, fx + head * 0.55, top + head * 1.9], fill=SKIN)
+    if s >= 1.5:  # close enough to see: wide, frightened eyes
+        for ex in (fx - head * 0.25, fx + head * 0.25):
+            d.ellipse([ex - head * 0.11, top + head * 1.15, ex + head * 0.11, top + head * 1.4], fill=(30, 30, 30))
 
 
 def chamber_wide(w=1152, h=896, seed=1501):
@@ -145,29 +148,34 @@ def door_push(w=1344, h=768, seed=1604):
         sh = 62 * s if broad else 50 * s
         d.polygon([(x - sh, top + 70 * s), (x + sh, top + 70 * s), (x + 40 * s, base - 160 * s),
                    (x - 40 * s, base - 160 * s)], fill=GAKURAN)  # back of the jacket
-        for side in (-1, 1):  # arms up, palms flat on the door
-            hx = x + side * (sh + 30 * s)
-            d.line([(x + side * sh * 0.8, top + 80 * s), (hx, top + 10 * s)], fill=GAKURAN, width=int(30 * s))
-            d.ellipse([hx - 13 * s, top - 6 * s, hx + 13 * s, top + 22 * s], fill=SKIN)
+        for side in (-1, 1):  # arms forward at shoulder height, palms flat on the door
+            hx = x + side * (sh + 45 * s)
+            d.line([(x + side * sh * 0.8, top + 85 * s), (hx, top + 60 * s)], fill=GAKURAN, width=int(30 * s))
+            d.ellipse([hx - 13 * s, top + 45 * s, hx + 13 * s, top + 75 * s], fill=SKIN)
         r = 30 * s if broad else 33 * s
         d.ellipse([x - r, top - 4 * s, x + r, top + 2 * r - 4 * s], fill=(40, 40, 40) if broad else HAIR)
-    return vignette(img, 140)
+    # Soften the flat shapes, or the model keeps the boys as cartoon cut-outs.
+    return vignette(img.filter(ImageFilter.GaussianBlur(4)), 140)
 
 
 def frozen_class(w=1536, h=640, seed=2004):
-    """Ch1 p20_4: the class standing frozen in two loose rows, facing the viewer
-    (and Momo), in the dark concrete chamber with light falling on their faces."""
+    """Ch1 p20_4 and p21_2: the class standing frozen in two loose rows, facing the
+    viewer (and Momo), in the dark concrete chamber with light on their faces.
+    The sealed door stays out of frame."""
     rnd = random.Random(seed)
+    k = h / 640
+    n = max(4, round(7 * w / 1536 / k))
     img = concrete(w, h, 62, seed)
     d = ImageDraw.Draw(img)
     d.rectangle([0, int(h * 0.72), w, h], fill=(92, 92, 92))
     img = light_pool(img, w // 2, int(h * 0.62), int(w * 0.45), int(h * 0.4), gain=45)
     d = ImageDraw.Draw(img)
-    figures = [(h * 0.8, w * (k + 0.5) / 7 + rnd.uniform(-25, 25), 2.6) for k in range(7)]
-    figures += [(h + 40, w * (k + 1) / 7 + rnd.uniform(-25, 25), 3.4) for k in range(6)]
+    figures = [(h * 0.8, w * (i + 0.5) / n + rnd.uniform(-25, 25) * k, 2.6 * k) for i in range(n)]
+    figures += [(h + 40 * k, w * (i + 1) / n + rnd.uniform(-25, 25) * k, 3.4 * k) for i in range(n - 1)]
     for idx, (y, x, s) in enumerate(figures):
         student(d, x, y, s, idx % 3 == 1, rnd)
-    return vignette(img, 120)
+    # Soften the flat shapes, or the model keeps them as faceless mannequins.
+    return vignette(img.filter(ImageFilter.GaussianBlur(5 * k)), 120)
 
 
 def old_key(length, angle=0, tone=(200, 200, 200)):
@@ -289,7 +297,7 @@ def coin_in_palm(w=832, h=1216, seed=3132):
     d.ellipse([w * 0.55, h * 0.3, w * 0.8, h * 0.47], fill=(196, 196, 196))  # his hand
     finger(d, w * 0.6, h * 0.42, cx + 30, cy - 70, 44, fill=(196, 196, 196))  # index finger to the coin
     finger(d, w * 0.66, h * 0.45, cx + 70, cy - 30, 44, fill=(196, 196, 196))  # thumb
-    return img.filter(ImageFilter.GaussianBlur(1))
+    return img.filter(ImageFilter.GaussianBlur(6))  # soft, or the model keeps the flat shapes
 
 
 def empty_hands(w=832, h=1216, seed=3142):
@@ -320,11 +328,12 @@ def empty_hands(w=832, h=1216, seed=3142):
                     for f in range(4):
                         fx = hx - 27 * s + f * 18 * s
                         finger(d, fx, hy - 10 * s, fx + side * 4 * s, hy - 52 * s, 13 * s)
-    return vignette(img, 60)
+    return vignette(img.filter(ImageFilter.GaussianBlur(6)), 60)  # soft, or the figures stay mannequins
 
 
 SKETCHES = {
-    "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class, "p23_1.png": key_case, "p23_2.png": key_closeup},
+    "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class,
+                  "p21_2.png": lambda: frozen_class(1152, 896, seed=2102), "p23_1.png": key_case, "p23_2.png": key_closeup},
     "chapter02": {"p01_1.png": key_title, "p10_1.png": lambda: chamber_wide(seed=2101)},  # same chamber as Ch1 p15_1
     "chapter03": {"p13_2.png": coin_in_palm, "p14_2.png": empty_hands},
 }
