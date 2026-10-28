@@ -35,8 +35,10 @@ pages:
   - kind: art
     shot: "SPLASH — the key"
     art: "The key behind its glass barrier under a spotlight, in the dark concrete chamber. The timer is running."
-    gen: "no humans, single old key on pedestal, inside glass box, spotlight, dark concrete room, dramatic lighting, still life"
+    gen: "no humans, key, old key, glass case, pedestal, spotlight, dark room, dramatic lighting, still life"
     negative_extra: "shelves, shop, display cabinets"
+    sketch: sketches/p01_1.png
+    strength: 0.6
     title: true
 
 # ---------------------------------------------------------------- PART A
@@ -203,7 +205,9 @@ pages:
   - kind: art
     shot: "CLOSE — Ren narrows his eyes"
     art: "Ren watches Riku, uneasy."
-    gen: "{REN}, narrowed eyes, suspicious, upper body, dark room, screen glow"
+    gen: "{REN}, solo, narrowed eyes, suspicious, upper body, dark room, side lighting"
+    negative_extra: "laptop, computer, phone, screen"
+    seed: 20810
     text:
     - {t: caption, who: REN, say: "Riku agreed too fast.", canon: true}
   - kind: timer
@@ -247,7 +251,10 @@ pages:
   - kind: art
     shot: "WIDE — everyone alive"
     art: "The class stands, shaken but whole."
-    gen: "multiple boys, multiple girls, gakuran, serafuku, relieved, standing, dark room, concrete, wide shot, from above"
+    gen: "multiple boys, multiple girls, gakuran, serafuku, relieved, standing, from above, wide shot, concrete room, large metal door, black screen on wall, dim lighting"
+    negative_extra: "atrium, multiple floors, corridor, wooden"
+    sketch: sketches/p10_1.png
+    strength: 0.7
     text:
     - {t: caption, who: REN, say: "No tie. Nobody eliminated. Twenty survivors.", canon: true}
   - kind: art

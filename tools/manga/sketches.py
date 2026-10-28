@@ -207,6 +207,29 @@ def key_case(w=1152, h=896, seed=2301):
     return vignette(img, 160)
 
 
+def key_title(w=832, h=1216, seed=2011):
+    """Ch2 p01_1 (title splash): the exit key on a pedestal behind glass, one
+    spotlight from above, dark room. The top third stays clear for the title."""
+    img = concrete(w, h, 40, seed)
+    beam = Image.new("L", (w, h), 0)
+    ImageDraw.Draw(beam).polygon([(w * 0.38, 0), (w * 0.62, 0), (w * 0.86, h * 0.9), (w * 0.14, h * 0.9)], fill=60)
+    img = Image.composite(Image.new("RGB", (w, h), (255, 255, 255)), img, beam.filter(ImageFilter.GaussianBlur(40)))
+    img = light_pool(img, w // 2, int(h * 0.88), int(w * 0.4), int(h * 0.06), gain=90)
+    d = ImageDraw.Draw(img)
+    px0, px1, ptop, pbot = int(w * 0.25), int(w * 0.75), int(h * 0.6), int(h * 0.88)
+    d.rectangle([px0, ptop, px1, pbot], fill=(70, 70, 70), outline=(20, 20, 20), width=3)
+    d.polygon([(px0, ptop), (px1, ptop), (px1 - 16, ptop - 22), (px0 + 16, ptop - 22)], fill=(150, 150, 150))
+    gx0, gx1, gtop = px0 + 20, px1 - 20, int(h * 0.34)
+    glass = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    gd = ImageDraw.Draw(glass)
+    gd.rectangle([gx0, gtop, gx1, ptop - 22], fill=(220, 220, 220, 36), outline=(235, 235, 235, 255), width=3)
+    gd.line([(gx0 + 24, gtop + 30), (gx0 + 70, gtop + 150)], fill=(255, 255, 255, 150), width=7)
+    img = Image.alpha_composite(img.convert("RGBA"), glass)
+    key = old_key((gx1 - gx0) * 0.85)
+    img.alpha_composite(key, (int((w - key.width) / 2), int(ptop - 22 - key.height * 0.8)))
+    return vignette(img.convert("RGB"), 150)
+
+
 def key_closeup(w=896, h=1152, seed=2302):
     """Ch1 p23_2: close-up of the old metal key lying on the pedestal, glass
     reflections in front, black background."""
@@ -286,6 +309,7 @@ def empty_hands(w=832, h=1216, seed=3142):
 
 SKETCHES = {
     "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p23_1.png": key_case, "p23_2.png": key_closeup},
+    "chapter02": {"p01_1.png": key_title, "p10_1.png": lambda: chamber_wide(seed=2101)},  # same chamber as Ch1 p15_1
     "chapter03": {"p13_2.png": coin_in_palm, "p14_2.png": empty_hands},
 }
 
