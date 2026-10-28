@@ -47,6 +47,11 @@ def load_pipeline():
     pipe = StableDiffusionXLPipeline.from_pretrained(MODEL, torch_dtype=torch.bfloat16, **extra)
     pipe.scheduler = EulerAncestralDiscreteScheduler.from_config(pipe.scheduler.config)
     pipe.vae.to(torch.float32)  # SDXL VAE is unstable in half precision
+    # Denoise through a view of the same modules without the text encoders: with
+    # text_encoder_2 present the pipeline recasts prompt embeds to its dtype (bf16),
+    # which breaks the fp32 UNet. No weights are copied.
+    pipe.denoiser = StableDiffusionXLPipeline(**{**pipe.components, "text_encoder": None, "text_encoder_2": None,
+                                                 "tokenizer": None, "tokenizer_2": None})
     print(f"unet dtype: {pipe.unet.dtype}", flush=True)
     return pipe
 
@@ -57,7 +62,7 @@ def generate(pipe, prompt, width=832, height=1216, steps=20, cfg=5.0, seed=0, ne
         embeds = pipe.encode_prompt(full_prompt(prompt), device="cpu", num_images_per_prompt=1,
                                     do_classifier_free_guidance=True, negative_prompt=negative)
         pe, npe, ppe, nppe = (e.to(dtype) for e in embeds)
-        latents = pipe(prompt_embeds=pe, negative_prompt_embeds=npe, pooled_prompt_embeds=ppe,
+        latents = pipe.denoiser(prompt_embeds=pe, negative_prompt_embeds=npe, pooled_prompt_embeds=ppe,
                        negative_pooled_prompt_embeds=nppe, width=width, height=height,
                        num_inference_steps=steps, guidance_scale=cfg, output_type="latent",
                        generator=torch.Generator().manual_seed(seed)).images

@@ -14,7 +14,7 @@ chapter: 3
 title: "The Charity"
 
 characters:
-  REN: "1boy, black hair, messy hair, hair between eyes, gakuran"
+  REN: "1boy, black hair, short hair, messy hair, hair between eyes, gakuran"
   YUI: "1girl, long hair, black hair, straight hair, blunt bangs, serafuku"
   HARUTO: "1boy, blonde hair, spiky hair, gakuran"
   RIKU: "1boy, black hair, slicked back hair, sharp eyes, gakuran"
@@ -24,6 +24,10 @@ characters:
   MIO: "1girl, light brown hair, long wavy hair, earrings, serafuku"
   SAKI: "1girl, black hair, short hair, hair over one eye, quiet, serafuku"
   MOMO: "no humans, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot"
+
+character_negatives:
+  MOMO: "multiple mice, 2others"
+negative_extra: "rubble, ruins, sky, shelves, shop"
 
 pages:
 
