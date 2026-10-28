@@ -5,7 +5,7 @@ the sketch fixes what text prompts kept getting wrong: the room's shape, the
 size of the metal door, how many students stand in it. Shapes and tones only;
 the model draws the people and the detail.
 
-  python tools/manga/sketches.py story/chapter01/sketches
+  python tools/manga/sketches.py          # writes story/chapterNN/sketches/*.png
 """
 import random
 import sys
@@ -154,6 +154,22 @@ def door_push(w=1344, h=768, seed=1604):
     return vignette(img, 140)
 
 
+def frozen_class(w=1536, h=640, seed=2004):
+    """Ch1 p20_4: the class standing frozen in two loose rows, facing the viewer
+    (and Momo), in the dark concrete chamber with light falling on their faces."""
+    rnd = random.Random(seed)
+    img = concrete(w, h, 62, seed)
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, int(h * 0.72), w, h], fill=(92, 92, 92))
+    img = light_pool(img, w // 2, int(h * 0.62), int(w * 0.45), int(h * 0.4), gain=45)
+    d = ImageDraw.Draw(img)
+    figures = [(h * 0.8, w * (k + 0.5) / 7 + rnd.uniform(-25, 25), 2.6) for k in range(7)]
+    figures += [(h + 40, w * (k + 1) / 7 + rnd.uniform(-25, 25), 3.4) for k in range(6)]
+    for idx, (y, x, s) in enumerate(figures):
+        student(d, x, y, s, idx % 3 == 1, rnd)
+    return vignette(img, 120)
+
+
 def old_key(length, angle=0, tone=(200, 200, 200)):
     """An old metal key on a transparent layer: ring bow, shaft, toothed bit."""
     L = int(length)
@@ -181,7 +197,7 @@ def key_case(w=1152, h=896, seed=2301):
     img = Image.composite(Image.new("RGB", (w, h), (255, 255, 255)), img, beam.filter(ImageFilter.GaussianBlur(30)))
     img = light_pool(img, w // 2, int(h * 0.8), int(w * 0.3), int(h * 0.09), gain=90)
     d = ImageDraw.Draw(img)
-    px0, px1, ptop, pbot = int(w * 0.37), int(w * 0.63), int(h * 0.56), int(h * 0.8)
+    px0, px1, ptop, pbot = int(w * 0.33), int(w * 0.67), int(h * 0.56), int(h * 0.8)
     d.rectangle([px0, ptop, px1, pbot], fill=(120, 120, 120), outline=(30, 30, 30), width=3)  # pedestal
     d.polygon([(px0, ptop), (px1, ptop), (px1 - 14, ptop - 18), (px0 + 14, ptop - 18)], fill=(170, 170, 170))
     gx0, gx1, gtop = px0 + 18, px1 - 18, int(h * 0.22)
@@ -190,8 +206,8 @@ def key_case(w=1152, h=896, seed=2301):
     gd.rectangle([gx0, gtop, gx1, ptop - 18], fill=(220, 220, 220, 40), outline=(235, 235, 235, 255), width=3)
     gd.line([(gx0 + 20, gtop + 30), (gx0 + 60, gtop + 120)], fill=(255, 255, 255, 160), width=6)  # reflection
     img = Image.alpha_composite(img.convert("RGBA"), glass)
-    key = old_key((gx1 - gx0) * 0.8, angle=0)
-    img.alpha_composite(key, (int((gx0 + gx1 - key.width) / 2), int(ptop - 18 - key.height * 0.85)))
+    key = old_key((gx1 - gx0) * 0.9, angle=0)
+    img.alpha_composite(key, (int((gx0 + gx1 - key.width) / 2), int(ptop - 18 - key.height * 0.8)))
     img = img.convert("RGB")
     d = ImageDraw.Draw(img)
     for k in range(10):  # empty transparent token containers on the floor, either side
@@ -205,6 +221,29 @@ def key_case(w=1152, h=896, seed=2301):
         d.ellipse([x - cw, y - ch - cw * 0.35, x + cw, y - ch + cw * 0.35], outline=(220, 220, 220), width=3)
         d.ellipse([x - cw, y - cw * 0.35, x + cw, y + cw * 0.35], outline=(150, 150, 150), width=3)
     return vignette(img, 160)
+
+
+def key_title(w=832, h=1216, seed=2011):
+    """Ch2 p01_1 (title splash): the exit key on a pedestal behind glass, one
+    spotlight from above, dark room. The top third stays clear for the title."""
+    img = concrete(w, h, 40, seed)
+    beam = Image.new("L", (w, h), 0)
+    ImageDraw.Draw(beam).polygon([(w * 0.38, 0), (w * 0.62, 0), (w * 0.86, h * 0.9), (w * 0.14, h * 0.9)], fill=60)
+    img = Image.composite(Image.new("RGB", (w, h), (255, 255, 255)), img, beam.filter(ImageFilter.GaussianBlur(40)))
+    img = light_pool(img, w // 2, int(h * 0.88), int(w * 0.4), int(h * 0.06), gain=90)
+    d = ImageDraw.Draw(img)
+    px0, px1, ptop, pbot = int(w * 0.25), int(w * 0.75), int(h * 0.6), int(h * 0.88)
+    d.rectangle([px0, ptop, px1, pbot], fill=(70, 70, 70), outline=(20, 20, 20), width=3)
+    d.polygon([(px0, ptop), (px1, ptop), (px1 - 16, ptop - 22), (px0 + 16, ptop - 22)], fill=(150, 150, 150))
+    gx0, gx1, gtop = px0 + 20, px1 - 20, int(h * 0.34)
+    glass = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    gd = ImageDraw.Draw(glass)
+    gd.rectangle([gx0, gtop, gx1, ptop - 22], fill=(220, 220, 220, 36), outline=(235, 235, 235, 255), width=3)
+    gd.line([(gx0 + 24, gtop + 30), (gx0 + 70, gtop + 150)], fill=(255, 255, 255, 150), width=7)
+    img = Image.alpha_composite(img.convert("RGBA"), glass)
+    key = old_key((gx1 - gx0) * 0.85)
+    img.alpha_composite(key, (int((w - key.width) / 2), int(ptop - 22 - key.height * 0.8)))
+    return vignette(img.convert("RGB"), 150)
 
 
 def key_closeup(w=896, h=1152, seed=2302):
@@ -226,12 +265,76 @@ def key_closeup(w=896, h=1152, seed=2302):
     return vignette(img.convert("RGB"), 120)
 
 
-SKETCHES = {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p23_1.png": key_case, "p23_2.png": key_closeup}
+def finger(d, x0, y0, x1, y1, width, fill=SKIN):
+    d.line([(x0, y0), (x1, y1)], fill=fill, width=int(width))
+    r = width / 2
+    d.ellipse([x1 - r, y1 - r, x1 + r, y1 + r], fill=fill)
+
+
+def coin_in_palm(w=832, h=1216, seed=3132):
+    """Ch3 p13_2: hands only. A girl's open palm, one coin lying flat on it, and a
+    boy's hand in a black sleeve letting go of it from above. White background."""
+    img = Image.new("RGB", (w, h), (238, 238, 238))
+    d = ImageDraw.Draw(img)
+    cx, cy = w * 0.47, h * 0.68
+    d.polygon([(cx - 120, cy + 120), (cx + 130, cy + 120), (cx + 150, h), (cx - 150, h)], fill=(214, 214, 214))  # wrist
+    d.rectangle([cx - 170, h * 0.93, cx + 170, h], fill=GAKURAN)  # her sleeve cuff
+    for k, (dx, length) in enumerate(((-100, 190), (-35, 230), (30, 220), (92, 170))):
+        finger(d, cx + dx, cy - 90, cx + dx * 1.15, cy - 90 - length, 62)
+    finger(d, cx - 140, cy + 20, cx - 270, cy - 90, 70)  # thumb
+    d.ellipse([cx - 165, cy - 150, cx + 165, cy + 170], fill=SKIN, outline=(150, 150, 150), width=3)  # palm
+    d.ellipse([cx - 75, cy - 45, cx + 75, cy + 45], fill=(150, 150, 150), outline=(70, 70, 70), width=4)  # the coin
+    d.ellipse([cx - 58, cy - 33, cx + 58, cy + 33], outline=(110, 110, 110), width=3)
+    d.polygon([(w, 0), (w, h * 0.22), (w * 0.78, h * 0.4), (w * 0.6, h * 0.3), (w * 0.72, 0)], fill=GAKURAN)  # his sleeve
+    d.ellipse([w * 0.55, h * 0.3, w * 0.8, h * 0.47], fill=(196, 196, 196))  # his hand
+    finger(d, w * 0.6, h * 0.42, cx + 30, cy - 70, 44, fill=(196, 196, 196))  # index finger to the coin
+    finger(d, w * 0.66, h * 0.45, cx + 70, cy - 30, 44, fill=(196, 196, 196))  # thumb
+    return img.filter(ImageFilter.GaussianBlur(1))
+
+
+def empty_hands(w=832, h=1216, seed=3142):
+    """Ch3 p14_2: the class in the bare white room, front row holding out empty
+    open hands, the rest behind them."""
+    rnd = random.Random(seed)
+    img = Image.new("RGB", (w, h), (232, 232, 232))
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, h * 0.62, w, h], fill=(210, 210, 210))  # floor
+    rows = [(h * 0.47, 0.55, 5), (h * 0.68, 0.75, 4), (h * 0.99, 1.0, 3)]
+    for row, (base, s, n) in enumerate(rows):
+        for k in range(n):
+            x = w * (k + 0.5) / n + rnd.uniform(-20, 20)
+            girl = (k + row) % 2 == 1
+            head = 40 * s
+            top = base - 380 * s
+            d.rounded_rectangle([x - 72 * s, top + 2 * head - 10 * s, x + 72 * s, base], 26 * s, fill=GAKURAN)
+            if girl:
+                d.polygon([(x - 62 * s, top + 2 * head), (x + 62 * s, top + 2 * head), (x, top + 2 * head + 80 * s)],
+                          fill=WHITE)  # sailor collar
+                d.ellipse([x - head * 1.2, top - 8 * s, x + head * 1.2, top + 2 * head + 50 * s], fill=HAIR)
+            d.ellipse([x - head * 0.8, top + head * 0.45, x + head * 0.8, top + head * 2.1], fill=SKIN)  # face
+            d.ellipse([x - head, top - 6 * s, x + head, top + head * 0.9], fill=HAIR)  # fringe
+            if row == len(rows) - 1:  # front row: both hands out, palms up, empty
+                for side in (-1, 1):
+                    hx, hy = x + side * 52 * s, base - 170 * s
+                    d.ellipse([hx - 38 * s, hy - 26 * s, hx + 38 * s, hy + 26 * s], fill=SKIN, outline=(120, 120, 120))
+                    for f in range(4):
+                        fx = hx - 27 * s + f * 18 * s
+                        finger(d, fx, hy - 10 * s, fx + side * 4 * s, hy - 52 * s, 13 * s)
+    return vignette(img, 60)
+
+
+SKETCHES = {
+    "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class, "p23_1.png": key_case, "p23_2.png": key_closeup},
+    "chapter02": {"p01_1.png": key_title, "p10_1.png": lambda: chamber_wide(seed=2101)},  # same chamber as Ch1 p15_1
+    "chapter03": {"p13_2.png": coin_in_palm, "p14_2.png": empty_hands},
+}
 
 
 if __name__ == "__main__":
-    out = Path(sys.argv[1] if len(sys.argv) > 1 else "story/chapter01/sketches")
-    out.mkdir(parents=True, exist_ok=True)
-    for name, draw in SKETCHES.items():
-        draw().save(out / name)
-        print("wrote", out / name)
+    story = Path(sys.argv[1] if len(sys.argv) > 1 else "story")
+    for chapter, sketches in SKETCHES.items():
+        out = story / chapter / "sketches"
+        out.mkdir(parents=True, exist_ok=True)
+        for name, draw in sketches.items():
+            draw().save(out / name)
+            print("wrote", out / name)
