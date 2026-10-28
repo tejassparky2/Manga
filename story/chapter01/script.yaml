@@ -260,7 +260,9 @@ pages:
     shot: "WIDE — the sky"
     art: "Over the town, a single bright streak moves across the midday sky far too fast."
     note: "One object only (bible Scene 4: 'an object'). Do not draw several."
-    gen: "no humans, scenery, noon, bright daytime sky, single streak of light, solo, one shooting star, cityscape, rooftops, wide shot"
+    gen: "no humans, scenery, noon, bright daytime sky, cumulus clouds, cityscape, rooftops, wide shot"
+    negative_extra: "shooting star, meteor, streak, star trail, contrail, light trail, meteor shower"
+    streak: [0.97, 0.06, 0.6, 0.34]   # one object, drawn by the engine
 
 - page: 9
   scene: 4

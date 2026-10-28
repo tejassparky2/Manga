@@ -12,7 +12,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from gen_panel_local import generate, load_pipeline  # noqa: E402
+from gen_panel_local import NEGATIVE, generate, load_pipeline  # noqa: E402
 from layout import bucket_for, iter_panels, load_chapter, panel_id  # noqa: E402
 
 
@@ -64,7 +64,8 @@ def main():
         seed = a.seed if a.seed is not None else panel.get("seed", seed)
         prompt = expand(panel["gen"], chapter["characters"])
         t = time.time()
-        img = generate(pipe, prompt, width=w, height=h, steps=a.steps, seed=seed)
+        negative = f"{panel['negative_extra']}, {NEGATIVE}" if panel.get("negative_extra") else NEGATIVE
+        img = generate(pipe, prompt, width=w, height=h, steps=a.steps, seed=seed, negative=negative)
         img.save(out / f"{pid}.png")
         print(f"[{n}/{len(jobs)}] {pid} {w}x{h} seed={seed} {time.time() - t:.0f}s", flush=True)
 

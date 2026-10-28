@@ -420,6 +420,29 @@ def draw_title(page, rect):
     d.text(((x0 + x1 - f2.getlength(t)) / 2, y0 + 420), t, font=f2, fill="white", stroke_width=6, stroke_fill="black")
 
 
+def draw_streak(img, spec):
+    """One glowing streak from (x0, y0) to its head at (x1, y1), in panel fractions."""
+    w, h = img.size
+    x0, y0, x1, y1 = spec[0] * w, spec[1] * h, spec[2] * w, spec[3] * h
+    glow = Image.new("L", (w, h), 0)
+    core = Image.new("L", (w, h), 0)
+    gd, cd = ImageDraw.Draw(glow), ImageDraw.Draw(core)
+    n = 40
+    for k in range(n):
+        t0, t1 = k / n, (k + 1) / n
+        seg = (x0 + (x1 - x0) * t0, y0 + (y1 - y0) * t0, x0 + (x1 - x0) * t1, y0 + (y1 - y0) * t1)
+        gd.line(seg, fill=int(255 * t1), width=int(4 + 18 * t1))
+        cd.line(seg, fill=int(255 * t1), width=int(1 + 5 * t1))
+    r = max(6, int(min(w, h) * 0.012))
+    gd.ellipse((x1 - 3 * r, y1 - 3 * r, x1 + 3 * r, y1 + 3 * r), fill=255)
+    cd.ellipse((x1 - r, y1 - r, x1 + r, y1 + r), fill=255)
+    shade = glow.filter(ImageFilter.MaxFilter(9)).filter(ImageFilter.GaussianBlur(6)).point(lambda v: v * 0.55)
+    img.paste((30, 30, 30), (0, 0), shade)   # dark edge so the streak reads on a light sky
+    img.paste((255, 255, 255), (0, 0), glow.filter(ImageFilter.GaussianBlur(10)))
+    img.paste((255, 255, 255), (0, 0), core)
+    return img
+
+
 def render_panel(panel, w, h, art_dir, pid):
     kind = panel.get("kind", "art")
     if kind == "art":
@@ -429,7 +452,8 @@ def render_panel(panel, w, h, art_dir, pid):
             ImageDraw.Draw(img).text((20, 20), f"{pid} not rendered yet", font=font("sans", 28), fill="black")
             return img
         img = Image.open(path).convert("L").convert("RGB")
-        return fit(img, w, h, tuple(panel.get("focus", (0.5, 0.5))))
+        img = fit(img, w, h, tuple(panel.get("focus", (0.5, 0.5))))
+        return draw_streak(img, panel["streak"]) if panel.get("streak") else img
     if kind == "black":
         return Image.new("RGB", (w, h), "black")
     if kind == "white":
