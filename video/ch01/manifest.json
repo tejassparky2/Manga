@@ -489,6 +489,36 @@
      ]
     }
    ]
+  },
+  "24": {
+   "image": "pages/page_24.jpg",
+   "panels": [
+    {
+     "id": "p24_1",
+     "kind": "rules",
+     "box": [
+      80,
+      90,
+      1520,
+      2164
+     ]
+    }
+   ]
+  },
+  "26": {
+   "image": "pages/page_26.jpg",
+   "panels": [
+    {
+     "id": "p26_1",
+     "kind": "art",
+     "box": [
+      80,
+      90,
+      1520,
+      2164
+     ]
+    }
+   ]
   }
  },
  "page_size": [
