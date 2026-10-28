@@ -644,7 +644,8 @@ def draw_loop(w, h, mode, center=(0.54, 0.5)):
         cx, cy, R = W * center[0], H * center[1], min(W, H) * 0.36
         pts = ring(cx, cy, R, 19)
         t = "19"
-        d.text((cx - fn.getlength(t) / 2, cy - fn.size * 0.6), t, font=fn, fill=pencil)
+        tx = cx - fn.getlength(t) / 2 - (R * 0.4 if mode == "cut" else 0)   # clear of the swap line
+        d.text((tx, cy - fn.size * 0.6), t, font=fn, fill=pencil)
         if mode == "cut":
             fs = font("dialogue", int(min(W, H) * 0.045))
             for k, label in ((0, "1st"), (9, "10th")):
@@ -666,6 +667,32 @@ def draw_loop(w, h, mode, center=(0.54, 0.5)):
             d.text((cx - fn.getlength(t) / 2, H * center[1] - fn.size * 0.6), t, font=fn, fill=pencil)
     return img.resize((w, h), Image.LANCZOS)
 
+
+def draw_swap(w, h):
+    """Go's cut (Ch5): two open lockers side by side, one blank card in each, the cards trading
+    places along crossing arrows. Blank cards: which names were swapped is not canon."""
+    ss = 2
+    W, H = w * ss, h * ss
+    img = tone(W, H, step=12, r=2.6, bg=48)
+    d = ImageDraw.Draw(img)
+    lw, lh = W * 0.36, H * 0.74
+    cw, ch = lw * 0.62, lh * 0.2
+    for k, cx in enumerate((W * 0.27, W * 0.73)):
+        x0, y0 = cx - lw / 2, (H - lh) / 2
+        d.rectangle((x0, y0, x0 + lw, y0 + lh), fill=(22, 22, 22), outline=(150, 150, 150), width=8)  # open locker
+        for j in range(3):                                                                         # shelf lines
+            y = y0 + lh * (0.28 + 0.24 * j)
+            d.line((x0 + 10, y, x0 + lw - 10, y), fill=(60, 60, 60), width=5)
+        card = Image.new("RGBA", (int(cw), int(ch)), (248, 248, 248, 255))
+        ImageDraw.Draw(card).rectangle((0, 0, cw - 1, ch - 1), outline=(20, 20, 20), width=6)
+        card = card.rotate(6 if k == 0 else -6, expand=True, resample=Image.BICUBIC)
+        img.paste(card, (int(cx - card.width / 2), int(H * 0.5 - card.height / 2)), card)
+    for y, (xa, xb) in ((H * 0.36, (W * 0.3, W * 0.7)), (H * 0.64, (W * 0.7, W * 0.3))):   # one card each way
+        pts = [(xa + (xb - xa) * t, y + (-1 if y < H / 2 else 1) * H * 0.07 * math.sin(math.pi * t))
+               for t in [k / 24 for k in range(25)]]
+        d.line(pts[:-2], fill=(240, 240, 240), width=12, joint="curve")
+        _arrow(d, pts[-4], pts[-1], 12, (240, 240, 240), head=44)
+    return img.resize((w, h), Image.LANCZOS)
 
 def draw_namecard(w, h, name):
     """A name card lying in a dark locker, close up."""
@@ -776,6 +803,8 @@ def render_panel(panel, w, h, art_dir, pid):
         return draw_loop(w, h, panel["mode"], panel.get("center", (0.54, 0.5)))
     if kind == "namecard":
         return draw_namecard(w, h, panel["name"])
+    if kind == "swap":
+        return draw_swap(w, h)
     if kind == "offer":
         return draw_offer(w, h, panel["lines"])
     raise ValueError(f"unknown panel kind {kind}")
