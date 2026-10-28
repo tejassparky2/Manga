@@ -14,7 +14,7 @@ import zipfile
 from pathlib import Path
 
 import img2pdf
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from layout import PAGE_H, PAGE_W, load_chapter, panel_id, panel_rects  # noqa: E402
@@ -745,6 +745,8 @@ def render_panel(panel, w, h, art_dir, pid):
             return img
         img = Image.open(path).convert("L").convert("RGB")
         img = fit(img, w, h, tuple(panel.get("focus", (0.5, 0.5))))
+        if panel.get("shade"):                            # darken the art (e.g. a dead student's locker)
+            img = ImageEnhance.Brightness(img).enhance(panel["shade"])
         return draw_streak(img, panel["streak"]) if panel.get("streak") else img
     if kind == "black":
         return Image.new("RGB", (w, h), "black")

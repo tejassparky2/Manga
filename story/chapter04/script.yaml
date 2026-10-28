@@ -39,8 +39,11 @@ pages:
   - kind: art
     shot: "SPLASH — the door"
     art: "The white room. A door stands open in the far wall, dark beyond. The students stand back from it, seen from behind."
-    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, standing, open door, dark doorway, white room, bright, wide shot"
-    negative_extra: "window, stairs"
+    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, standing still, dark doorway, white room, white walls, bright, wide shot"
+    negative_extra: "window, stairs, corridor, hallway, walking"
+    sketch: sketches/p01_1.png
+    strength: 0.85
+    retouch: "Render w1 512998f: a tiny figure standing inside the doorway was painted out (nobody moved first)."
     title: true
     text:
     - {t: caption, who: REN, say: "A door opened in the white room. Nobody moved first.", canon: true, at: [0.5, 0.93]}
@@ -51,18 +54,24 @@ pages:
   - kind: art
     shot: "INSERT — the token is taken"
     art: "Hands only: a hand in a black sleeve picks Saki's coin up off the white floor."
-    gen: "hand focus, close-up, picking up coin, single coin, black sleeve, white floor, from above"
-    negative_extra: "face, multiple coins, coin stack"
+    gen: "hand focus, close-up, reaching down, picking up coin, single coin on floor, black sleeve, white floor, from above"
+    negative_extra: "face, multiple coins, coin stack, two hands"
+    sketch: sketches/p02_1.png
+    strength: 0.8
   - kind: art
     shot: "INSERT — into the notebook"
     art: "The same hand slides the coin between the pages of a small notebook."
-    gen: "hand focus, close-up, small notebook, open book, coin between pages, black sleeve, white background"
-    negative_extra: "face, multiple coins, pen, pencil"
+    gen: "hand focus, close-up, small open notebook, single coin lying on page, black sleeve, white background, from above"
+    negative_extra: "face, multiple coins, pen, pencil, text"
+    sketch: sketches/p02_2.png
+    strength: 0.8
   - kind: art
     shot: "WIDE — eyes on the door"
     art: "Everyone faces the open door. No one is looking back."
-    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, looking at door, open door, white room, bright, wide shot"
-    negative_extra: "window, stairs"
+    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, standing still, dark doorway, white room, white walls, bright, wide shot"
+    negative_extra: "window, stairs, corridor, hallway, walking, crowd"
+    sketch: sketches/p02_3.png
+    strength: 0.85
     text:
     - {t: caption, who: REN, say: "Nobody saw who took it.", canon: true}
 
@@ -72,9 +81,9 @@ pages:
   - kind: art
     shot: "ESTABLISHING — the locker room"
     art: "Twenty lockers stand in a ring, facing in, under one light. A painted line runs round the floor inside them."
-    gen: "no humans, locker room, lockers, metal lockers, circular room, painted line on floor, concrete floor, dim, ceiling light, wide shot"
+    gen: "no humans, school lockers, metal lockers, locker vents, name plates, lockers in circle, painted line on floor, concrete floor, dim, wide shot"
     sketch: sketches/p03_1.png
-    strength: 0.8
+    strength: 0.7
     text:
     - {t: caption, who: REN, say: "Three rooms. In the middle one, twenty lockers stood in a ring. Every one had a name on it.", canon: true}
   - kind: art
@@ -83,14 +92,16 @@ pages:
     gen: "no humans, metal locker, close-up, front view, locker door, taped shut, duct tape, sealed, name plate, dim"
     negative_extra: "text, letters, caution tape"
     plates:
-    - {at: [0.5, 0.22], w: 0.5, text: "NISHIDA SAKI"}
+    - {at: [0.49, 0.893], w: 0.47, text: "NISHIDA SAKI"}
     text:
     - {t: caption, who: REN, say: "One said NISHIDA SAKI. It was sealed shut.", canon: true}
   - kind: art
     shot: "LOW — the line"
     art: "The painted line on the concrete, curving away past the feet of the lockers."
-    gen: "no humans, floor, painted line, white line on concrete floor, curved line, bottom of lockers, low angle, close-up, dim"
-    negative_extra: "text, letters, road"
+    gen: "no humans, floor, painted white line on concrete floor, curved line, bottom of lockers, from above, close-up, dim"
+    negative_extra: "text, letters, road, reflection"
+    sketch: sketches/p03_3.png
+    strength: 0.75
     text:
     - {t: caption, who: REN, say: "A line was painted on the floor. It ran past every locker, all the way around, without a break.", canon: true}
 
@@ -123,8 +134,9 @@ pages:
   - kind: art
     shot: "MEDIUM — Momo, tokens"
     art: "Momo holds up one coin."
-    gen: "{MOMO}, mouse ears, holding coin, single coin, smile, upper body, white room, bright"
+    gen: "{MOMO}, mouse ears, holding up coin with both hands, single coin, smile, full body, white room, bright"
     negative_extra: "coin stack"
+    seed: 40501
     text:
     - {t: speech, who: MOMO, say: "Each token you spend opens one more! You can give tokens away before someone goes in!", canon: true}
   - kind: art
@@ -142,7 +154,8 @@ pages:
   - kind: art
     shot: "CLOSE — Momo, silence"
     art: "Momo, finger to its lips."
-    gen: "{MOMO}, mouse ears, finger to lips, shushing, wink, upper body, white room, bright"
+    gen: "{MOMO}, mouse ears, index finger to mouth, shushing, one eye closed, full body, white room, bright"
+    seed: 40504
     overlay_timer: "30:00"
     text:
     - {t: speech, who: MOMO, say: "After you go in, no talking to anyone who hasn't. No signs, no notes, nothing! Thirty minutes!", canon: true, at: [0.5, 0.72]}
@@ -155,7 +168,7 @@ pages:
     art: "Momo's face, a flat black stare under the smile."
     gen: "{MOMO}, mouse ears, close-up, smile, shaded face, black eyes, white room"
     text:
-    - {t: speech, who: MOMO, say: "And Momo set them up special. Everyone's connected!", canon: true}
+    - {t: speech, who: MOMO, say: "And Momo set them up special. Everyone's connected!", canon: true, at: [0.16, 0.3], tail: [0.4, 0.62]}
     clue: "'Everyone's connected' — the arrangement is one loop, said in plain sight."
   - kind: rules
     shot: "SCREEN — the rules"
@@ -181,7 +194,7 @@ pages:
     art: "Aoi, pushing up her glasses, doing the sum."
     gen: "{AOI}, serious, adjusting glasses, upper body, white room, bright"
     text:
-    - {t: speech, who: AOI, say: "Ten lockers out of nineteen. On average, nine of us die.", canon: true}
+    - {t: speech, who: AOI, say: "Ten lockers out of nineteen. On average, nine of us die.", canon: true, at: [0.7, 0.15], tail: [0.66, 0.33], size: 27}
   - kind: art
     shot: "CLOSE — Haruto"
     art: "Haruto, a forced grin, sweating."
@@ -209,6 +222,8 @@ pages:
     shot: "CLOSE — Mio"
     art: "Mio, bitter."
     gen: "{MIO}, bitter, frown, arms crossed, upper body, white room, bright"
+    negative_extra: "cards, playing card, holding, book"
+    seed: 40802
     text:
     - {t: speech, who: MIO, say: "Then he walks out, and we flip coins.", canon: true}
   - kind: art
@@ -283,7 +298,7 @@ pages:
     gen: "{AOI}, serious, looking down, holding paper, upper body, white room, bright"
     negative_extra: "book, text, letters"
     text:
-    - {t: speech, who: AOI, say: "If your loop is ten or shorter, you find it. If it's longer, everyone in that loop dies together.", canon: true}
+    - {t: speech, who: AOI, say: "If your loop is ten or shorter, you find it. If it's longer, everyone in that loop dies together.", canon: true, at: [0.7, 0.78], tail: [0.42, 0.45]}
   - kind: art
     shot: "CLOSE — Aoi"
     art: "Aoi, worried, light glinting on her glasses."
@@ -301,9 +316,9 @@ pages:
   - kind: art
     shot: "HIGH — the circle"
     art: "The locker ring from high above: the painted line is one unbroken circle."
-    gen: "no humans, from above, locker room, metal lockers, lockers in circle, painted circle on floor, concrete floor, dim, wide shot"
+    gen: "no humans, from above, school lockers, metal lockers, lockers in circle, painted white circle on floor, concrete floor, dim, wide shot"
     sketch: sketches/p12_1.png
-    strength: 0.8
+    strength: 0.65
     text:
     - {t: caption, who: REN, say: "\"Everyone's connected.\" I looked at the line on the floor. One circle. No breaks.", canon: true}
   - kind: loop
@@ -326,7 +341,10 @@ pages:
   - kind: art
     shot: "WIDE — the class"
     art: "The class stands frozen."
-    gen: "6+boys, 6+girls, gakuran, serafuku, standing, silent, despair, looking down, white room, bright, wide shot"
+    gen: "6+boys, 6+girls, gakuran, serafuku, standing, silent, despair, looking down, white room, white walls, bright, wide shot"
+    negative_extra: "crowd, ceiling, stadium"
+    sketch: sketches/p13_1.png
+    strength: 0.85
     text:
     - {t: caption, who: REN, say: "Nineteen is longer than ten.", canon: true}
   - kind: art
@@ -391,7 +409,10 @@ pages:
   - kind: art
     shot: "WIDE — silence"
     art: "The class, silent, nobody meeting anyone's eyes."
-    gen: "6+boys, 6+girls, gakuran, serafuku, standing, silent, looking away, white room, bright, wide shot"
+    gen: "6+boys, 6+girls, gakuran, serafuku, standing apart, silent, looking away, white room, white walls, bright, wide shot"
+    negative_extra: "crowd, ceiling, stadium, sitting"
+    sketch: sketches/p16_1.png
+    strength: 0.85
     text:
     - {t: caption, who: REN, say: "Silence.", canon: true}
   - kind: art
@@ -417,8 +438,9 @@ pages:
   - kind: art
     shot: "MEDIUM — Riku's tokens"
     art: "Riku weighs a handful of coins, looking at them. (His face is shown, so this is never confused with the hidden hand on page 2.)"
-    gen: "{RIKU}, holding coins, handful of coins, looking at hand, smirk, upper body, white room, bright"
-    negative_extra: "coin stack"
+    gen: "{RIKU}, smirk, looking down at open palm, many small coins in palm, upper body, white room, bright"
+    negative_extra: "coin stack, medal, pendant, chain, picture, large coin"
+    seed: 41701
     text:
     - {t: caption, who: REN, say: "Ten free. Nine more makes nineteen. Whoever goes first with nine tokens sees everything.", canon: true}
   - kind: art
@@ -430,7 +452,9 @@ pages:
   - kind: art
     shot: "CLOSE — Riku"
     art: "Riku closes his fist."
-    gen: "{RIKU}, cold, clenched fist, upper body, white room, bright"
+    gen: "{RIKU}, cold eyes, expressionless, one hand clenched over coins, hand at chest, upper body, white room, bright"
+    negative_extra: "fighting stance, punching, boxing, two fists"
+    seed: 41703
     text:
     - {t: speech, who: RIKU, say: "My tokens don't leave my hands. I go first.", canon: true}
 
@@ -468,7 +492,11 @@ pages:
   - kind: art
     shot: "WIDE — the class and Riku"
     art: "The class, seen from behind, faces Riku across the white room."
-    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, facing one boy, standoff, white room, bright, wide shot"
+    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, facing one boy, standoff, white room, white walls, bright, wide shot"
+    negative_extra: "crowd, stadium, arena, audience, ceiling"
+    sketch: sketches/p19_1.png
+    strength: 0.85
+    retouch: "Render w1 512998f: the lone figure's spiky crown repainted as a smooth, slicked-back head (Riku, not Haruto)."
     text:
     - {t: caption, who: REN, say: "Nine of us dead on average. One of us dead for sure. Or none of us, if he keeps his word.", canon: true}
   - kind: art
@@ -489,8 +517,10 @@ pages:
   panels:
   - kind: art
     shot: "MEDIUM — Ren's plan"
-    art: "Ren addresses the whole class, one hand raised."
-    gen: "{REN}, talking, raised hand, serious, upper body, white room, bright"
+    art: "Ren addresses the whole class, from a low angle."
+    gen: "{REN}, talking, commanding, serious, from below, upper body, white room, bright"
+    negative_extra: "book, tablet, holding, hand up"
+    seed: 42001
     text:
     - {t: speech, who: REN, say: "Everyone else: follow the chain. Find your name, touch nothing. Fail, cut first and tenth.", canon: true}
   - kind: art
