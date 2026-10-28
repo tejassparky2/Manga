@@ -2,9 +2,8 @@
 
   python tools/manga/export_video.py story/chapter01/script.yaml output/ch01 video/ch01 --pages 1-7
 
-Writes JPEG (quality 92) copies to <dest>/pages/page_NN.jpg and
-<dest>/panels/pNN_i.jpg (generated art only; drawn screens, clocks and
-phones exist only on the pages) and refreshes <dest>/manifest.json.
+Writes lettered pages as JPEG (quality 92) to <dest>/pages/page_NN.jpg and
+refreshes <dest>/manifest.json with each panel's id, kind and box.
 """
 import argparse
 import json
@@ -28,7 +27,6 @@ def main():
     chapter = load_chapter(a.script)
     src, dest = Path(a.outdir), Path(a.dest)
     (dest / "pages").mkdir(parents=True, exist_ok=True)
-    (dest / "panels").mkdir(parents=True, exist_ok=True)
     manifest_path = dest / "manifest.json"
     manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {"pages": {}}
     manifest.update({"page_size": [PAGE_W, PAGE_H], "reading_order": "right-to-left",
@@ -42,14 +40,7 @@ def main():
         panels = []
         for i, (panel, rect) in enumerate(zip(spec["panels"], panel_rects(spec["rows"])), start=1):
             pid = panel_id(n, i)
-            entry = {"id": pid, "kind": panel.get("kind", "art"), "box": list(rect)}
-            art = src / "panels" / f"{pid}.png"
-            if entry["kind"] == "art" and art.exists():
-                Image.open(art).convert("L").save(dest / "panels" / f"{pid}.jpg", quality=92)
-                entry["art"] = f"panels/{pid}.jpg"
-                # the page shows a cover-crop of this uncropped render, centred on `focus`
-                entry["crop_focus"] = list(panel.get("focus", (0.5, 0.5)))
-            panels.append(entry)
+            panels.append({"id": pid, "kind": panel.get("kind", "art"), "box": list(rect)})
         manifest["pages"][str(n)] = {"image": f"pages/page_{n:02d}.jpg", "panels": panels}
         print(f"exported page {n}")
     manifest["pages"] = dict(sorted(manifest["pages"].items(), key=lambda kv: int(kv[0])))
