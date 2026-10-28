@@ -14,7 +14,7 @@ import zipfile
 from pathlib import Path
 
 import img2pdf
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from layout import PAGE_H, PAGE_W, load_chapter, panel_id, panel_rects  # noqa: E402
@@ -644,7 +644,8 @@ def draw_loop(w, h, mode, center=(0.54, 0.5)):
         cx, cy, R = W * center[0], H * center[1], min(W, H) * 0.36
         pts = ring(cx, cy, R, 19)
         t = "19"
-        d.text((cx - fn.getlength(t) / 2, cy - fn.size * 0.6), t, font=fn, fill=pencil)
+        tx = cx - fn.getlength(t) / 2 - (R * 0.4 if mode == "cut" else 0)   # clear of the swap line
+        d.text((tx, cy - fn.size * 0.6), t, font=fn, fill=pencil)
         if mode == "cut":
             fs = font("dialogue", int(min(W, H) * 0.045))
             for k, label in ((0, "1st"), (9, "10th")):
@@ -745,6 +746,8 @@ def render_panel(panel, w, h, art_dir, pid):
             return img
         img = Image.open(path).convert("L").convert("RGB")
         img = fit(img, w, h, tuple(panel.get("focus", (0.5, 0.5))))
+        if panel.get("shade"):                            # darken the art (e.g. a dead student's locker)
+            img = ImageEnhance.Brightness(img).enhance(panel["shade"])
         return draw_streak(img, panel["streak"]) if panel.get("streak") else img
     if kind == "black":
         return Image.new("RGB", (w, h), "black")
