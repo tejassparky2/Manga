@@ -223,9 +223,9 @@ pages:
   - kind: art
     shot: "CLOSE — Mio"
     art: "Mio, bitter."
-    gen: "{MIO}, bitter, frown, arms crossed, upper body, white room, bright"
-    negative_extra: "cards, playing card, holding, book"
-    seed: 40802
+    gen: "{MIO}, bitter, frown, looking to the side, close-up, portrait, white room, bright"
+    negative_extra: "holding, book, magazine, hands"
+    seed: 40812
     text:
     - {t: speech, who: MIO, say: "Then he walks out, and we flip coins.", canon: true}
   - kind: art
