@@ -230,15 +230,26 @@ def screen_base(w, h):
 def draw_screen(w, h, lines):
     img = screen_base(w, h)
     d = ImageDraw.Draw(img)
-    sizes = [int(h * (0.16 if l.get("big") else 0.095)) for l in lines]
-    sizes = [min(s, int(w * 0.075 if not l.get("big") else w * 0.09)) for s, l in zip(sizes, lines)]
-    gap = int(h * 0.04)
-    total = sum(sizes) + gap * (len(lines) - 1)
+    max_w = w * 0.86
+
+    def layout(scale):
+        rows = []   # (text, size, red)
+        for l in lines:
+            s = int(min(h * (0.16 if l.get("big") else 0.095), w * (0.09 if l.get("big") else 0.075)) * scale)
+            for t in wrap(l["s"], font("sans", s), max_w):   # long lines wrap instead of overflowing
+                rows.append((t, s, l.get("red")))
+        gap = int(h * 0.04 * scale)
+        return rows, sum(r[1] for r in rows) + gap * (len(rows) - 1), gap
+
+    scale = 1.0
+    rows, total, gap = layout(scale)
+    while (total > h * 0.86 or any(font("sans", r[1]).getlength(r[0]) > max_w for r in rows)) and scale > 0.3:
+        scale -= 0.05
+        rows, total, gap = layout(scale)
     y = (h - total) / 2
-    for l, s in zip(lines, sizes):
+    for t, s, red in rows:
         f = font("sans", s)
-        tw = f.getlength(l["s"])
-        d.text(((w - tw) / 2, y - s * 0.12), l["s"], font=f, fill=RED if l.get("red") else (238, 238, 238))
+        d.text(((w - f.getlength(t)) / 2, y - s * 0.12), t, font=f, fill=RED if red else (238, 238, 238))
         y += s + gap
     return img
 
