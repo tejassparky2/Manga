@@ -660,6 +660,19 @@ def floor_line(w=896, h=1152, seed=4033):
     d.line(line, fill=(250, 250, 250), width=int(w * 0.035), joint="curve")                      # the painted line
     return vignette(img.filter(ImageFilter.GaussianBlur(4)), 60)
 
+def apart_eye(w=896, h=1152, seed=5203):
+    """Ch5 p20_2 (eye level): the class clustered in the distance by the lockers; Ren alone in
+    the foreground, his back to us, far from them."""
+    rnd = random.Random(seed)
+    img = locker_ring(w, h, cam=(0, 1.5, -2.6), pitch=4, blur=2)
+    d = ImageDraw.Draw(img)
+    sc = h / 1216
+    for k in range(8):                                    # the others, together, small
+        back_view(d, w * (0.08 + 0.055 * k + rnd.uniform(-0.01, 0.01)), h * (0.70 + 0.03 * (k % 2)),
+                  0.5 * sc, k % 3 == 1)
+    back_view(d, w * 0.76, h * 1.06, 1.55 * sc, False)  # Ren, alone, near
+    return img.filter(ImageFilter.GaussianBlur(3))
+
 SKETCHES = {
     "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class,
                   "p21_2.png": lambda: frozen_class(1152, 896, seed=2102), "p23_1.png": key_case, "p23_2.png": key_closeup},
@@ -680,7 +693,7 @@ SKETCHES = {
                   "p14_3.png": surrounded,
                   "p16_3.png": lambda: coin_notebook(seed=5163),   # rhymes with Ch4 p02_2: the same notebook, the same coin
                   "p06_2.png": waiting_board, "p07_5.png": wall_sitters, "p11_2.png": heads_turn,
-                  "p20_2.png": apart},
+                  "p20_2.png": apart_eye},
 }
 
 

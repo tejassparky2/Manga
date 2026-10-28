@@ -133,8 +133,8 @@ pages:
     shot: "WIDE — the finished room"
     art: "A white room. Riku sits alone against the wall."
     gen: "{RIKU}, sitting on floor, against wall, alone, one knee up, smirk, looking at viewer, full body, white room, bright"
-    negative_extra: "corridor, hallway, window, spiky hair"
-    seed: 50413
+    negative_extra: "corridor, hallway, window, spiky hair, book, magazine, paper"
+    seed: 50423
     text:
     - {t: speech, who: RIKU, say: "Disappointed?", canon: true}
 
@@ -502,6 +502,7 @@ pages:
     negative_extra: "face, multiple coins, text, ring"
     sketch: sketches/p16_3.png
     strength: 0.8
+    retouch: "Render w10 ba8ab29 drew the coin as a sphere; tools/manga/retouch.py repaints it as a flat coin."
   - kind: art
     shot: "CLOSE — Kota"
     art: "Kota, crying."
@@ -593,10 +594,10 @@ pages:
   - kind: art
     shot: "HIGH — alone among them"
     art: "Ren stands apart from the others, small, in the ring."
-    gen: "{REN}, standing apart, alone, multiple boys, multiple girls, distance, from above, concrete floor, dim, wide shot"
-    negative_extra: "crowd"
+    gen: "{REN}, from behind, standing apart, alone, multiple boys, multiple girls, distance, metal lockers, locker room, dim, wide shot"
+    negative_extra: "crowd, balls"
     sketch: sketches/p20_2.png
-    strength: 0.62
+    strength: 0.75
     text:
     - {t: caption, who: REN, say: "I didn't know anyone in this room anymore.", canon: true}
   - kind: art
