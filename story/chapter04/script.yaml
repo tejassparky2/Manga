@@ -489,6 +489,8 @@ pages:
     shot: "LOW — Riku"
     art: "Riku from below, looking down on them."
     gen: "{RIKU}, smug, looking down, from below, upper body, white room, bright"
+    negative_extra: "book, holding, paper"
+    seed: 41804
     text:
     - {t: speech, who: RIKU, say: "Eighteen lives for nine tokens. Every one of you owes me.", canon: true}
 
