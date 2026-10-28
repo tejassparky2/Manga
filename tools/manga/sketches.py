@@ -670,7 +670,7 @@ SKETCHES = {
                   "p02_3.png": lambda: white_room_door(1216, 832, seed=4023),
                   "p03_3.png": floor_line,
                   "p03_1.png": lambda: locker_ring(1152, 896, cam=(0, 1.6, -2.2), pitch=10),
-                  "p12_1.png": lambda: locker_ring(1344, 768, cam=(0, 6.5, -5.0), pitch=48),
+                  "p12_1.png": lambda: locker_ring(1344, 768, cam=(0, 4.2, -4.2), pitch=34),
                   "p13_1.png": lambda: silent_class(1216, 832, seed=4131),
                   "p16_1.png": silent_class,
                   "p19_1.png": standoff},

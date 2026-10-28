@@ -314,9 +314,9 @@ pages:
   - kind: art
     shot: "HIGH — the circle"
     art: "The locker ring from high above: the painted line is one unbroken circle."
-    gen: "no humans, from above, locker room, metal lockers, lockers in circle, painted circle on floor, concrete floor, dim, wide shot"
+    gen: "no humans, from above, school lockers, metal lockers, lockers in circle, painted white circle on floor, concrete floor, dim, wide shot"
     sketch: sketches/p12_1.png
-    strength: 0.8
+    strength: 0.65
     text:
     - {t: caption, who: REN, say: "\"Everyone's connected.\" I looked at the line on the floor. One circle. No breaks.", canon: true}
   - kind: loop
@@ -436,8 +436,9 @@ pages:
   - kind: art
     shot: "MEDIUM — Riku's tokens"
     art: "Riku weighs a handful of coins, looking at them. (His face is shown, so this is never confused with the hidden hand on page 2.)"
-    gen: "{RIKU}, holding coins, handful of coins, looking at hand, smirk, upper body, white room, bright"
-    negative_extra: "coin stack"
+    gen: "{RIKU}, smirk, looking down at open palm, many small coins in palm, upper body, white room, bright"
+    negative_extra: "coin stack, medal, pendant, chain, picture, large coin"
+    seed: 41701
     text:
     - {t: caption, who: REN, say: "Ten free. Nine more makes nineteen. Whoever goes first with nine tokens sees everything.", canon: true}
   - kind: art
@@ -449,7 +450,9 @@ pages:
   - kind: art
     shot: "CLOSE — Riku"
     art: "Riku closes his fist."
-    gen: "{RIKU}, cold, clenched fist, upper body, white room, bright"
+    gen: "{RIKU}, cold eyes, expressionless, one hand clenched over coins, hand at chest, upper body, white room, bright"
+    negative_extra: "fighting stance, punching, boxing, two fists"
+    seed: 41703
     text:
     - {t: speech, who: RIKU, say: "My tokens don't leave my hands. I go first.", canon: true}
 
