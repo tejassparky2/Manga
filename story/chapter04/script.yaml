@@ -81,9 +81,9 @@ pages:
   - kind: art
     shot: "ESTABLISHING — the locker room"
     art: "Twenty lockers stand in a ring, facing in, under one light. A painted line runs round the floor inside them."
-    gen: "no humans, locker room, lockers, metal lockers, circular room, painted line on floor, concrete floor, dim, ceiling light, wide shot"
+    gen: "no humans, school lockers, metal lockers, locker vents, name plates, lockers in circle, painted line on floor, concrete floor, dim, wide shot"
     sketch: sketches/p03_1.png
-    strength: 0.8
+    strength: 0.7
     text:
     - {t: caption, who: REN, say: "Three rooms. In the middle one, twenty lockers stood in a ring. Every one had a name on it.", canon: true}
   - kind: art
@@ -92,14 +92,16 @@ pages:
     gen: "no humans, metal locker, close-up, front view, locker door, taped shut, duct tape, sealed, name plate, dim"
     negative_extra: "text, letters, caution tape"
     plates:
-    - {at: [0.5, 0.22], w: 0.5, text: "NISHIDA SAKI"}
+    - {at: [0.49, 0.893], w: 0.47, text: "NISHIDA SAKI"}
     text:
     - {t: caption, who: REN, say: "One said NISHIDA SAKI. It was sealed shut.", canon: true}
   - kind: art
     shot: "LOW — the line"
     art: "The painted line on the concrete, curving away past the feet of the lockers."
-    gen: "no humans, floor, painted line, white line on concrete floor, curved line, bottom of lockers, low angle, close-up, dim"
-    negative_extra: "text, letters, road"
+    gen: "no humans, floor, painted white line on concrete floor, curved line, bottom of lockers, from above, close-up, dim"
+    negative_extra: "text, letters, road, reflection"
+    sketch: sketches/p03_3.png
+    strength: 0.75
     text:
     - {t: caption, who: REN, say: "A line was painted on the floor. It ran past every locker, all the way around, without a break.", canon: true}
 
