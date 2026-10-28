@@ -468,14 +468,17 @@ pages:
   - kind: art
     shot: "MEDIUM — Ren"
     art: "Ren, cold, pointing."
-    gen: "{REN}, pointing, cold, stern, upper body, locker room, dim"
+    gen: "{REN}, pointing at viewer, cold, stern, upper body, metal lockers, locker room, dim"
+    negative_extra: "scarf, hood, coat"
+    seed: 51501
     text:
     - {t: speech, who: REN, say: "Haruto. Turn out your pockets.", canon: true}
   - kind: art
     shot: "INSERT — thirty coins"
     art: "Coins spill out across the concrete floor."
-    gen: "no humans, coins falling, many coins, scattered coins, concrete floor, close-up, motion lines, dim"
-    negative_extra: "text, letters"
+    gen: "no humans, coins falling, many coins, scattered coins, bouncing coins, concrete floor, close-up, motion lines, dim"
+    negative_extra: "text, letters, coin stack, stacked coins"
+    seed: 51502
     text:
     - {t: sfx, say: "CLINK CLINK", at: [0.3, 0.2]}
 
