@@ -39,8 +39,10 @@ pages:
   - kind: art
     shot: "SPLASH — the door"
     art: "The white room. A door stands open in the far wall, dark beyond. The students stand back from it, seen from behind."
-    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, standing, open door, dark doorway, white room, bright, wide shot"
-    negative_extra: "window, stairs"
+    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, standing still, dark doorway, white room, white walls, bright, wide shot"
+    negative_extra: "window, stairs, corridor, hallway, walking"
+    sketch: sketches/p01_1.png
+    strength: 0.85
     title: true
     text:
     - {t: caption, who: REN, say: "A door opened in the white room. Nobody moved first.", canon: true, at: [0.5, 0.93]}
@@ -123,8 +125,9 @@ pages:
   - kind: art
     shot: "MEDIUM — Momo, tokens"
     art: "Momo holds up one coin."
-    gen: "{MOMO}, mouse ears, holding coin, single coin, smile, upper body, white room, bright"
+    gen: "{MOMO}, mouse ears, holding up coin with both hands, single coin, smile, full body, white room, bright"
     negative_extra: "coin stack"
+    seed: 40501
     text:
     - {t: speech, who: MOMO, say: "Each token you spend opens one more! You can give tokens away before someone goes in!", canon: true}
   - kind: art
@@ -142,7 +145,8 @@ pages:
   - kind: art
     shot: "CLOSE — Momo, silence"
     art: "Momo, finger to its lips."
-    gen: "{MOMO}, mouse ears, finger to lips, shushing, wink, upper body, white room, bright"
+    gen: "{MOMO}, mouse ears, index finger to mouth, shushing, one eye closed, full body, white room, bright"
+    seed: 40504
     overlay_timer: "30:00"
     text:
     - {t: speech, who: MOMO, say: "After you go in, no talking to anyone who hasn't. No signs, no notes, nothing! Thirty minutes!", canon: true, at: [0.5, 0.72]}
@@ -155,7 +159,7 @@ pages:
     art: "Momo's face, a flat black stare under the smile."
     gen: "{MOMO}, mouse ears, close-up, smile, shaded face, black eyes, white room"
     text:
-    - {t: speech, who: MOMO, say: "And Momo set them up special. Everyone's connected!", canon: true}
+    - {t: speech, who: MOMO, say: "And Momo set them up special. Everyone's connected!", canon: true, at: [0.16, 0.3], tail: [0.4, 0.62]}
     clue: "'Everyone's connected' — the arrangement is one loop, said in plain sight."
   - kind: rules
     shot: "SCREEN — the rules"
@@ -468,7 +472,10 @@ pages:
   - kind: art
     shot: "WIDE — the class and Riku"
     art: "The class, seen from behind, faces Riku across the white room."
-    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, facing one boy, standoff, white room, bright, wide shot"
+    gen: "6+boys, 6+girls, gakuran, serafuku, from behind, facing one boy, standoff, white room, white walls, bright, wide shot"
+    negative_extra: "crowd, stadium, arena, audience, ceiling"
+    sketch: sketches/p19_1.png
+    strength: 0.85
     text:
     - {t: caption, who: REN, say: "Nine of us dead on average. One of us dead for sure. Or none of us, if he keeps his word.", canon: true}
   - kind: art

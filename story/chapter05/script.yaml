@@ -269,14 +269,16 @@ pages:
     strength: 0.8
   - kind: art
     shot: "CLOSE — Gō"
-    art: "Gō holds his tenth card. Not his name. His face is steady."
-    gen: "{GO}, holding card, looking at card, calm, sweat, close-up, locker room, dim"
-    negative_extra: "text, letters"
+    art: "Gō stares into his tenth open locker. Not his name. His face is steady. (Which name it was is not canon, so no card is shown.)"
+    gen: "{GO}, looking into open locker, staring, calm, sweat, close-up, locker room, dim"
+    negative_extra: "card, playing card, holding, text, letters"
+    seed: 50902
   - kind: art
     shot: "INSERT — the cut"
     art: "Gō's hands: a card in each, swapping them between two open lockers."
-    gen: "hand focus, close-up, two hands, holding cards, swapping, open locker, metal locker, black sleeves, dim"
-    negative_extra: "face, text, letters"
+    gen: "hand focus, close-up, two hands, each hand holding one small blank white paper card, open lockers, black sleeves, dim"
+    negative_extra: "face, text, letters, playing card, multiple cards, picture"
+    seed: 50903
   - kind: black
     shot: "BLACK"
     art: "Solid black."
@@ -397,8 +399,10 @@ pages:
     - {t: speech, who: REN, say: "No. He didn't.", canon: true}
   - kind: art
     shot: "MEDIUM — Ren"
-    art: "Ren, one finger raised."
-    gen: "{REN}, explaining, index finger raised, upper body, locker room, dim"
+    art: "Ren, explaining, steady."
+    gen: "{REN}, explaining, serious, looking at viewer, upper body, locker room, dim"
+    negative_extra: "v sign, hand up"
+    seed: 51303
     text:
     - {t: speech, who: REN, say: "I found mine in nine. A loop of nine leaves ten lockers. No room for a loop longer than ten.", canon: true}
   - kind: board
@@ -496,7 +500,9 @@ pages:
   - kind: art
     shot: "CLOSE — Haruto"
     art: "Haruto, breaking."
-    gen: "{HARUTO}, crying, desperate, upper body, locker room, dim"
+    gen: "{HARUTO}, crying, tears, desperate, clenched fists, upper body, locker room, dim"
+    negative_extra: "book, notebook, paper, holding"
+    seed: 51702
     text:
     - {t: speech, who: HARUTO, say: "Riku had fixed everything. One swap. I thought... maybe they were in the same loop.", canon: true}
   - kind: art
