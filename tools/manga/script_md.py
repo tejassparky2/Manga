@@ -16,6 +16,13 @@ KIND_NOTE = {
     "timer": "System screen.",
     "grid": "System screen. Only the five recovered records are readable.",
     "card": "System screen.",
+    "board": "System screen: the results board. Unnamed students' names out of focus (not canon).",
+    "notebook": "Drawn element: Ren's sketch of five lockers, A to E.",
+    "loop": "Drawn element: Ren's loop diagram.",
+    "namecard": "Drawn element: one name card in a dark locker.",
+    "offer": "System screen: Momo's private offer.",
+    "swap": "Drawn element: two blank cards trading places between two lockers.",
+    "token": "Drawn element.",
 }
 LABEL = {"speech": "", "offpanel": " (off-panel)", "shout": " (shout)", "thought": " (thought)"}
 

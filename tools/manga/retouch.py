@@ -116,7 +116,68 @@ def ch05_p16_3(im):
     return im
 
 
-RETOUCH = {"ch04/p01_1": ch04_p01_1, "ch04/p19_1": ch04_p19_1, "ch04/p09_3": ch04_p09_3, "ch04/p02_3": ch04_p02_3, "ch04/p03_2": ch04_p03_2, "ch05/p16_3": ch05_p16_3}
+def ch05_p04_3(im):
+    """A photograph of a figure lies on the floor by Riku (a prop that reads as a clue: not canon).
+    Each row of the floor under it is repainted by blending the floor just left and right of it."""
+    quad = [(506, 739), (704, 738), (821, 868), (622, 884)]
+    mask = Image.new("L", im.size, 0)
+    ImageDraw.Draw(mask).polygon(quad, fill=255)
+    mask = mask.filter(ImageFilter.MaxFilter(7))
+    px, m = im.load(), mask.load()
+    for y in range(730, 896):
+        xs = [x for x in range(480, 860) if m[x, y]]
+        if not xs:
+            continue
+        xl, xr = xs[0] - 4, min(xs[-1] + 4, im.width - 1)
+        a, b = px[xl, y], px[xr, y]
+        if sum(b) < 3 * 150:                              # the right edge touches his trouser leg: use the floor
+            b = a
+        for x in xs:
+            t = (x - xl) / (xr - xl)
+            px[x, y] = tuple(int(a[c] + (b[c] - a[c]) * t) for c in range(3))
+    soft = im.filter(ImageFilter.GaussianBlur(1.5))
+    im.paste(soft, (0, 0), mask.filter(ImageFilter.GaussianBlur(3)))
+    return im
+
+
+def ch05_p20_2(im):
+    """The lone figure in front (Ren, from behind) came out with a bob: Aoi's silhouette. Repaint
+    the background behind the head, then draw Ren's short, messy hair over a visible nape."""
+    import math
+    px = im.load()
+    for y in range(768, 889):                                       # background, row by row
+        a, b = px[628, y], px[742, y]
+        for x in range(630, 741):
+            t = (x - 628) / (742 - 628)
+            px[x, y] = tuple(int(a[c] + (b[c] - a[c]) * t) for c in range(3))
+    k, box = 4, (620, 760, 750, 900)
+    big = im.crop(box).resize(((box[2] - box[0]) * k, (box[3] - box[1]) * k), Image.LANCZOS)
+    d = ImageDraw.Draw(big)
+
+    def P(x, y):
+        return ((x - box[0]) * k, (y - box[1]) * k)
+    import random
+    rnd = random.Random(2002)
+    d.rectangle([*P(675, 868), *P(695, 892)], fill=(62, 62, 61))     # a little nape above the collar
+    cx, cy, rx, ry = 685, 840, 33, 35
+    d.ellipse([*P(cx - rx, cy - ry), *P(cx + rx, cy + ry)], fill=(18, 18, 18))
+    for i in range(11):                                             # soft clumps round the crown and sides
+        a = math.pi * (0.95 + 1.1 * i / 10) + rnd.uniform(-0.1, 0.1)
+        rr = rnd.uniform(9, 13)
+        x, y = cx + (rx + 1) * math.cos(a), cy + (ry + 1) * math.sin(a)
+        d.ellipse([*P(x - rr, y - rr), *P(x + rr, y + rr)], fill=(18, 18, 18))
+    for a, ln in ((3.6, 10), (4.3, 12), (5.0, 11), (5.7, 9)):      # a few wisps sticking out
+        x, y = cx + (rx + 8) * math.cos(a), cy + (ry + 8) * math.sin(a)
+        d.polygon([P(x - 4 * math.sin(a), y + 4 * math.cos(a)), P(x + 4 * math.sin(a), y - 4 * math.cos(a)),
+                   P(x + ln * math.cos(a), y + ln * math.sin(a))], fill=(18, 18, 18))
+    for dx, ln in ((-16, 8), (-6, 12), (4, 10), (15, 7)):           # uneven strands over the nape
+        d.polygon([P(cx + dx - 6, 868), P(cx + dx + 6, 868), P(cx + dx + 2, 868 + ln)], fill=(18, 18, 18))
+    im.paste(big.filter(ImageFilter.GaussianBlur(k * 1.8)).resize((box[2] - box[0], box[3] - box[1]), Image.LANCZOS),
+             box[:2])
+    return im
+
+
+RETOUCH = {"ch04/p01_1": ch04_p01_1, "ch04/p19_1": ch04_p19_1, "ch04/p09_3": ch04_p09_3, "ch04/p02_3": ch04_p02_3, "ch04/p03_2": ch04_p03_2, "ch05/p16_3": ch05_p16_3, "ch05/p04_3": ch05_p04_3, "ch05/p20_2": ch05_p20_2}
 
 
 def main(root=Path("output")):

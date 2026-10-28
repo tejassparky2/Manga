@@ -135,6 +135,7 @@ pages:
     gen: "{RIKU}, sitting on floor, against wall, alone, one knee up, smirk, looking at viewer, full body, white room, bright"
     negative_extra: "hallway, spiky hair, book, magazine"
     seed: 50423
+    retouch: "Render w1 5cff8ee: a photograph lying on the floor painted out (retouch.py)."
     text:
     - {t: speech, who: RIKU, say: "Disappointed?", canon: true}
 
@@ -417,7 +418,7 @@ pages:
     negative_extra: "book, holding, hands, paper"
     seed: 51313
     text:
-    - {t: speech, who: REN, say: "I found mine in nine. A loop of nine leaves ten lockers. No room for a loop longer than ten.", canon: true}
+    - {t: speech, who: REN, say: "I found mine in nine. A loop of nine leaves ten lockers. No room for a loop longer than ten.", canon: true, at: [0.42, 0.8], tail: [0.56, 0.42]}
   - kind: board
     shot: "SCREEN — up to the ninth"
     art: "The board: rows 2 to 9 lit, every one a nine or a ten."
@@ -597,7 +598,8 @@ pages:
     gen: "{REN}, from behind, standing apart, alone, multiple boys, multiple girls, distance, metal lockers, locker room, dim, wide shot"
     negative_extra: "crowd, balls"
     sketch: sketches/p20_2.png
-    strength: 0.75
+    strength: 0.65
+    retouch: "Local render (seed 2002, strength 0.65): the lone figure's bob (Aoi's silhouette) repainted as Ren's short messy hair (retouch.py)."
     text:
     - {t: caption, who: REN, say: "I didn't know anyone in this room anymore.", canon: true}
   - kind: art
