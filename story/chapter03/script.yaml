@@ -359,7 +359,8 @@ pages:
   - kind: art
     shot: "WIDE — empty hands"
     art: "The class, hands empty, horrified."
-    gen: "multiple boys, multiple girls, gakuran, serafuku, horrified, empty hands, white room, bright, wide shot"
+    gen: "multiple boys, multiple girls, gakuran, serafuku, horrified, showing empty hands, bare white room, white walls, bright, wide shot"
+    negative_extra: "corridor, paintings, frames"
     text:
     - {t: caption, who: REN, say: "None of us had a single token left to stop it.", canon: true}
   - kind: art
