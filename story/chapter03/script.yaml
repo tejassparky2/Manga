@@ -418,7 +418,8 @@ pages:
   - kind: art
     shot: "FULL — Momo announces"
     art: "Momo, bright and cheerful."
-    gen: "{MOMO}, arms up, announcing, happy, full body, white room, bright"
+    gen: "{MOMO}, solo, arms up, announcing, happy, full body, white room, bright"
+    negative_extra: "letters"
     text:
     - {t: speech, who: MOMO, say: "Time's up! Kanzaki Riku, sixty-nine. Nishida Saki, one!", canon: true}
   - kind: black
@@ -433,7 +434,8 @@ pages:
   - kind: art
     shot: "WIDE — the empty spot"
     art: "The white floor where Saki stood. A single coin lies there. No one."
-    gen: "no humans, white room, empty floor, single coin on floor, bright, eerie, wide shot, from above"
+    gen: "no humans, single small round coin lying on bare white floor, empty white room, bright, eerie, minimalist, from above"
+    negative_extra: "tablet, box, wood floor"
     text:
     - {t: caption, who: REN, say: "When they came back, Saki was gone. Her token lay on the floor.", canon: true}
   - kind: screen
@@ -456,6 +458,7 @@ pages:
   - kind: art
     shot: "CLOSE — Ren"
     art: "Ren, hollow."
-    gen: "{REN}, hollow eyes, devastated, close-up, white room"
+    gen: "{REN}, solo, devastated, dull eyes, teary eyes, trembling lips, close-up, white room"
+    negative_extra: "empty eyes, no pupils, horror"
     text:
     - {t: caption, who: REN, say: "I found the loophole. Riku found the loophole in my loophole.", canon: true}
