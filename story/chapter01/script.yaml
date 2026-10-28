@@ -85,8 +85,8 @@ pages:
     art: "Ren wipes his mouth with the back of his hand, flat expression. Haruto leans in."
     gen: "2boys, {REN}, wiping mouth, expressionless, {HARUTO}, leaning forward, smile, classroom, upper body"
     text:
-    - {t: speech, who: HARUTO, say: "Dead?", canon: true}
-    - {t: speech, who: REN, say: "Unfortunately.", canon: true}
+    - {t: speech, who: HARUTO, say: "Dead?", canon: true, at: [0.25, 0.12], tail: [0.2, 0.38]}
+    - {t: speech, who: REN, say: "Unfortunately.", canon: true, at: [0.45, 0.88], tail: [0.66, 0.52]}
   - kind: art
     shot: "CLOSE — Haruto"
     art: "Haruto, delighted, hands together."
