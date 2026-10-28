@@ -72,6 +72,7 @@ pages:
     negative_extra: "window, stairs, corridor, hallway, walking, crowd"
     sketch: sketches/p02_3.png
     strength: 0.85
+    retouch: "Render w2 9251eb3: a tiny girl inside the doorway was painted out (tools/manga/retouch.py)."
     text:
     - {t: caption, who: REN, say: "Nobody saw who took it.", canon: true}
 
@@ -90,6 +91,7 @@ pages:
     shot: "CLOSE — Saki's locker"
     art: "One locker, taped shut. Its name plate reads NISHIDA SAKI (plate drawn at compose)."
     gen: "no humans, metal locker, close-up, front view, locker door, taped shut, duct tape, sealed, name plate, dim"
+    retouch: "Render w2 37a0b62: two fake-kanji glyphs on the small lock plate blanked (retouch.py). Ch5 p12_3 reuses this panel."
     negative_extra: "text, letters, caution tape"
     plates:
     - {at: [0.49, 0.893], w: 0.47, text: "NISHIDA SAKI"}
@@ -125,7 +127,8 @@ pages:
     shot: "CLOSE — Momo, the rule"
     art: "Momo points at the door, grinning."
     gen: "{MOMO}, mouse ears, standing, pointing to the side, grin, full body, white room, bright"
-    seed: 40403
+    negative_extra: "napkin"
+    seed: 40413
     text:
     - {t: speech, who: MOMO, say: "Go in alone. Open ten lockers. Find your own name, and you live! Don't, and you die!", canon: true}
 
@@ -159,7 +162,7 @@ pages:
     seed: 40504
     overlay_timer: "30:00"
     text:
-    - {t: speech, who: MOMO, say: "After you go in, no talking to anyone who hasn't. No signs, no notes, nothing! Thirty minutes!", canon: true, at: [0.5, 0.72]}
+    - {t: speech, who: MOMO, say: "After you go in, no talking to anyone who hasn't. No signs, no notes, nothing! Thirty minutes!", canon: true, at: [0.5, 0.85], tail: [0.47, 0.6], size: 26}
 
 - page: 6
   rows: [[0.65, [1]], [1.6, [1]]]
@@ -222,9 +225,10 @@ pages:
   - kind: art
     shot: "CLOSE — Mio"
     art: "Mio, bitter."
-    gen: "{MIO}, bitter, frown, arms crossed, upper body, white room, bright"
-    negative_extra: "cards, playing card, holding, book"
-    seed: 40802
+    gen: "{MIO}, bitter, frown, looking to the side, close-up, portrait, white room, bright"
+    negative_extra: "holding, book, magazine, hands"
+    seed: 40812
+    retouch: "Render w10 0728a16: a glossy rectangle in the corner bloomed out to white light (retouch.py)."
     text:
     - {t: speech, who: MIO, say: "Then he walks out, and we flip coins.", canon: true}
   - kind: art
@@ -458,9 +462,9 @@ pages:
   - kind: art
     shot: "CLOSE — Riku"
     art: "Riku closes his fist."
-    gen: "{RIKU}, cold eyes, expressionless, hand in pocket, upper body, white room, bright"
-    negative_extra: "fighting stance, table, coin, reaching"
-    seed: 41713
+    gen: "{RIKU}, cold eyes, expressionless, looking at viewer, close-up, portrait, white room, bright"
+    negative_extra: "paper, book, holding, hands, coin"
+    seed: 41723
     text:
     - {t: speech, who: RIKU, say: "My tokens don't leave my hands. I go first.", canon: true}
 
@@ -489,8 +493,10 @@ pages:
     shot: "LOW — Riku"
     art: "Riku from below, looking down on them."
     gen: "{RIKU}, smug, looking down, from below, upper body, white room, bright"
+    negative_extra: "book, holding, paper"
+    seed: 41804
     text:
-    - {t: speech, who: RIKU, say: "Eighteen lives for nine tokens. Every one of you owes me.", canon: true}
+    - {t: speech, who: RIKU, say: "Eighteen lives for nine tokens. Every one of you owes me.", canon: true, at: [0.66, 0.74], tail: [0.42, 0.36]}
 
 - page: 19
   rows: [[1, [1]], [1, [1, 1]]]
