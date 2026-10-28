@@ -133,8 +133,8 @@ pages:
     shot: "WIDE — the finished room"
     art: "A white room. Riku sits alone against the wall."
     gen: "{RIKU}, sitting on floor, against wall, alone, one knee up, smirk, looking at viewer, full body, white room, bright"
-    negative_extra: "corridor, hallway, window, spiky hair"
-    seed: 50413
+    negative_extra: "corridor, hallway, window, spiky hair, book, magazine, paper"
+    seed: 50423
     text:
     - {t: speech, who: RIKU, say: "Disappointed?", canon: true}
 
