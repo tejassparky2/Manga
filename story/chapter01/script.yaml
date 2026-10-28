@@ -142,8 +142,8 @@ pages:
     art: "Ren, flustered but deadpan, looks away. Haruto's next line comes from off-panel right."
     gen: "{REN}, flustered, blush, looking away, deadpan, upper body, classroom"
     text:
-    - {t: speech, who: REN, say: "It's not like that."}
-    - {t: offpanel, who: HARUTO, say: "I didn't say anything~"}
+    - {t: speech, who: REN, say: "It's not like that.", at: [0.36, 0.1], tail: [0.47, 0.34]}
+    - {t: offpanel, who: HARUTO, say: "I didn't say anything~", at: [0.78, 0.3], tail: [1.06, 0.3]}
 
 - page: 5
   scene: 2
