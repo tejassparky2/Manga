@@ -135,6 +135,7 @@ pages:
     gen: "{RIKU}, sitting on floor, against wall, alone, one knee up, smirk, looking at viewer, full body, white room, bright"
     negative_extra: "hallway, spiky hair, book, magazine"
     seed: 50423
+    retouch: "Render w1 5cff8ee: a photograph lying on the floor painted out (retouch.py)."
     text:
     - {t: speech, who: RIKU, say: "Disappointed?", canon: true}
 

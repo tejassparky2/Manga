@@ -116,7 +116,31 @@ def ch05_p16_3(im):
     return im
 
 
-RETOUCH = {"ch04/p01_1": ch04_p01_1, "ch04/p19_1": ch04_p19_1, "ch04/p09_3": ch04_p09_3, "ch04/p02_3": ch04_p02_3, "ch04/p03_2": ch04_p03_2, "ch05/p16_3": ch05_p16_3}
+def ch05_p04_3(im):
+    """A photograph of a figure lies on the floor by Riku (a prop that reads as a clue: not canon).
+    Each row of the floor under it is repainted by blending the floor just left and right of it."""
+    quad = [(506, 739), (704, 738), (821, 868), (622, 884)]
+    mask = Image.new("L", im.size, 0)
+    ImageDraw.Draw(mask).polygon(quad, fill=255)
+    mask = mask.filter(ImageFilter.MaxFilter(7))
+    px, m = im.load(), mask.load()
+    for y in range(730, 896):
+        xs = [x for x in range(480, 860) if m[x, y]]
+        if not xs:
+            continue
+        xl, xr = xs[0] - 4, min(xs[-1] + 4, im.width - 1)
+        a, b = px[xl, y], px[xr, y]
+        if sum(b) < 3 * 150:                              # the right edge touches his trouser leg: use the floor
+            b = a
+        for x in xs:
+            t = (x - xl) / (xr - xl)
+            px[x, y] = tuple(int(a[c] + (b[c] - a[c]) * t) for c in range(3))
+    soft = im.filter(ImageFilter.GaussianBlur(1.5))
+    im.paste(soft, (0, 0), mask.filter(ImageFilter.GaussianBlur(3)))
+    return im
+
+
+RETOUCH = {"ch04/p01_1": ch04_p01_1, "ch04/p19_1": ch04_p19_1, "ch04/p09_3": ch04_p09_3, "ch04/p02_3": ch04_p02_3, "ch04/p03_2": ch04_p03_2, "ch05/p16_3": ch05_p16_3, "ch05/p04_3": ch05_p04_3}
 
 
 def main(root=Path("output")):
