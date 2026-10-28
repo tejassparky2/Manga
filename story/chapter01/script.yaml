@@ -401,8 +401,9 @@ pages:
   - kind: art
     shot: "POV (Ren) — Yui"
     art: "Ren's point of view: Yui, sitting up on the concrete floor, reaches toward his bleeding forehead."
-    gen: "{YUI}, sitting, reaching towards viewer, pov, worried, concrete floor, dim lighting, upper body"
-    negative_extra: "book, magazine, paper"
+    gen: "{YUI}, sitting, reaching out hand towards viewer, empty hands, pov, worried, concrete floor, dim lighting, upper body"
+    negative_extra: "book, magazine, paper, holding"
+    seed: 14020
     text:
     - {t: speech, who: YUI, say: "You're bleeding—"}
     - {t: speech, who: REN, say: "I'm fine.", at: [0.3, 0.86], tail: [0.24, 0.99]}
