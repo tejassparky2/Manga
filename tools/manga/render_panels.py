@@ -7,6 +7,10 @@ Resumable: panels whose PNG already exists are skipped.
   python tools/manga/render_panels.py ... --redo p03_2 --seed 1234   # re-roll one panel
   python tools/manga/render_panels.py ... --remote https://<pod>-8000.proxy.runpod.net --token T
       # same model on a rented GPU (tools/gpu_server.py) instead of the local CPU
+
+A panel with `sketch: sketches/p15_1.png` (relative to the script) is repainted
+from that drawn layout instead of from noise; `strength` (default 0.65) sets how
+far the model may move away from it. Sketches come from tools/manga/sketches.py.
 """
 import argparse
 import io
@@ -96,7 +100,9 @@ def main():
         if a.remote:
             img = remote_generate(a.remote, a.token, prompt, negative, w, h, a.steps, seed)
         else:
-            img = generate(pipe, prompt, width=w, height=h, steps=a.steps, seed=seed, negative=negative)
+            sketch = Image.open(Path(a.script).parent / panel["sketch"]) if panel.get("sketch") else None
+            img = generate(pipe, prompt, width=w, height=h, steps=a.steps, seed=seed, negative=negative,
+                           sketch=sketch, strength=panel.get("strength", 0.65))
         img.save(out / f"{pid}.png")
         print(f"[{n}/{len(jobs)}] {pid} {w}x{h} seed={seed} {time.time() - t:.0f}s", flush=True)
 
