@@ -1,8 +1,101 @@
 # DEAD MAN’S ALGORITHM — Continuity Ledger
 
-Version 1, 2026-10-27. State: end of Chapter 1, "12:17". Source: `story_bible.md` only.
+Version 2, 2026-10-28. State: end of Chapter 3, "The Charity" (Game 2).
 
-The labels follow the bible: **CONFIRMED CANON** · **UNRESOLVED** · **PROPOSAL — NOT CANON** · **CONTINUITY CONFLICT**. This version contains no proposals. Two items are marked *[audit finding]*. They are inconsistencies I noticed in the bible, not story content.
+Sources:
+- `story_bible.md`
+- `continuation_v5_approved.md`, approved by the author on 2026-10-28
+
+The labels follow the bible: **CONFIRMED CANON** · **UNRESOLVED** · **PROPOSAL — NOT CANON** · **CONTINUITY CONFLICT**. Items marked *[audit finding]* are inconsistencies I noticed in the source material, not story content.
+
+**Section 0 records everything added in version 2.** Sections 1–7 are the version 1 sheet (end of Chapter 1). Where section 0 answers an item they list as open, section 0 takes precedence.
+
+---
+
+## 0. Version 2 — approved continuation (Chapters 2–3)
+
+**CONFIRMED CANON**, approved 2026-10-28.
+
+### Answered Glass Auction mechanics (updates section 3)
+| Item | Answer |
+|---|---|
+| B. Submission | Bids are secret and final. |
+| D. Key | It opens the exit door for everyone and leads to Game 2. |
+| F. Zero bids | A player may bid 0 while others bid. |
+| H. Rule 02 scope | Every bid is spent. Losing bidders are not otherwise punished. |
+| I. Tokens | They carry over between games. |
+
+**Still UNRESOLVED:**
+- **Q3:** what happens if no bid is unique but not everyone bid 0.
+- **Q6:** whether "eliminated" means "executed". Game 1 ends with no tie, so the story never shows it.
+- **Items not covered by the approval:** A (single pass or cascade), E (talking and transfers in Game 1), G (bid format), L (forbidden actions).
+
+### Game 1 — final game state (Chapter 2)
+| Player | Bid | Tokens after |
+|---|---|---|
+| Kuroda Ren | 1 | 99 |
+| Kanzaki Riku | 30 | 70 |
+| The other 18 students | 0 | 100 each |
+
+- **Highest unique bid:** 30 (Riku). He wins the key.
+- **Ties:** none. Nobody is eliminated.
+- **Rule 05:** not triggered, because tokens were spent.
+- **Survivors:** 20 of 20.
+- **Clock:** the bids resolve when the timer reaches 00:00. The countdown read 9:12 during the debate.
+- **Riku's deception:** he said "Nobody beats a hundred" so nobody would dare bid high, then bid 30.
+
+### Game 2 — "The Charity" (Chapter 3)
+**Rules:**
+1. Nobody can take your tokens.
+2. You may give tokens to anyone in this room. Gifts are final.
+3. When time runs out, the poorest player dies. If several tie for poorest, they all die.
+4. Zero tokens, and you're not a player anymore.
+
+**Setup:** a white room, a 10-minute limit, and a screen showing only PLAYERS. Momo says "Momo just watches!", which plants the clue that Momo is not a player.
+
+**Loophole:** give every token to Momo. Momo is in the room but is not a player, so there are 0 players and nobody is the poorest.
+
+**What happened:**
+1. Everyone except Riku gave Momo all their tokens, so PLAYERS showed 1.
+2. With 3 seconds left, Riku gave 1 token to Saki, so PLAYERS showed 2.
+3. Saki could not give it to Momo, because that would kill Riku.
+
+**Final game state:**
+- **Riku:** 69 tokens. Survives.
+- **Saki:** 1 token. Poorest. Executed: lights out, then she is gone and her token lies on the floor.
+- **Everyone else:** 0 tokens. Not players.
+- **Momo:** holds the rest. The approved text does not state an exact total.
+
+**Survivors:** 19.
+
+### Characters added or changed
+- **Nishida Saki (new, CONFIRMED CANON):**
+  - Seat 14. The ninth named student; the quietest girl in the class.
+  - Said "He's still one of us" about Riku.
+  - **Status: DEAD** (executed, Game 2).
+  - Her look in the art is a proposal: short black hair over one eye.
+- **Riku:** deceived the class in Game 1. In Game 2 he used Saki's kindness to survive. After her death he said: "She was the only one I trusted."
+- **Ren:** narrates in first person (approved text). He found both loopholes. He openly told Saki to give her token to Momo, knowing it would kill Riku.
+- **Gō:** said "Let him be the poorest. He lied to all of us." This is approved canon. *[audit finding: it is darker than his quiet, loyal profile so far; noted, not changed]*
+
+### Roster after Chapter 3
+- **Named students:** 9 (8 from the bible, plus Saki).
+- **Unnamed students:** 11.
+- **Alive:** 19.
+- **Dead:** 1 (Saki).
+- **Tokens:** Riku 69; every other survivor 0.
+
+### Series rule for games (author's direction, CONFIRMED CANON)
+- **Loophole:** every game hides one in its own rules that lets everyone survive, and Ren finds it.
+- **Breakers:** greed, fear, betrayal or sacrifice break it.
+- **Outcomes:** only a few games end with everyone alive. From Game 2 on, most games kill.
+- **Writing the answer:** at least two obvious answers must fail first. The real answer uses two rules or one exact word, never a new rule. It is proved step by step with exact numbers, and its clues are planted beforehand.
+- **Full text:** `continuation_v5_approved.md`.
+
+### Approved staging for Chapters 2–3
+- **Chapter titles:** "The Bids" and "The Charity". These are PROPOSALS taken from the approved part and game names.
+- **Screen text:** "19 SURVIVORS" follows the Chapter 1 screen format (PROPOSAL).
+- **Tokens:** drawn as coins (PROPOSAL). Their physical form was not established.
 
 ---
 
@@ -244,3 +337,4 @@ No hypotheses or reveals are approved for any of these questions.
 | Date | Change | Approved by author |
 |---|---|---|
 | 2026-10-27 | Ledger created from the story bible. No canon changes. | n/a |
+| 2026-10-28 | Version 2: approved continuation v5 recorded (Saki, auction answers, Game 1 ending, Game 2). Q3 and Q6 stay open. | Yes, "Approved, apply fixes and draw chapters 2 and 3" |

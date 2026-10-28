@@ -292,8 +292,9 @@ pages:
     gen: "no humans, scenery, noon, single giant meteor, solo, huge fireball in sky, clearly visible, burning trail, daytime sky, city, rooftops, dramatic, wide shot"
     negative_extra: "meteor shower, multiple meteors"
     seed: 9040
+    streak: [1.0, -0.05, 0.6, 0.45, 3.2]   # one large fireball, drawn by the engine
     text:
-    - {t: shout, who: STUDENT C, say: "It's a meteor!!"}
+    - {t: shout, who: STUDENT C, say: "It's a meteor!!", at: [0.2, 0.14], tail: [0.12, 0.42]}
 
 # ---------------------------------------------------------------- SCENE 5
 - page: 10

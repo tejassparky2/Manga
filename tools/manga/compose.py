@@ -408,7 +408,7 @@ def draw_phone(w, h, mode):
     return img.resize((w, h), Image.LANCZOS)
 
 
-def draw_title(page, rect):
+def draw_title(page, rect, chapter):
     x0, y0, x1, y1 = rect
     d = ImageDraw.Draw(page)
     f = font("sfx", 150)
@@ -416,14 +416,18 @@ def draw_title(page, rect):
         tw = f.getlength(line)
         d.text(((x0 + x1 - tw) / 2, y0 + 90 + n * 150), line, font=f, fill="black", stroke_width=10, stroke_fill="white")
     f2 = font("sfx", 64)
-    t = "CHAPTER 1  —  12:17"
+    t = f"CHAPTER {chapter['chapter']}  —  {chapter['title'].upper()}"
     d.text(((x0 + x1 - f2.getlength(t)) / 2, y0 + 420), t, font=f2, fill="white", stroke_width=6, stroke_fill="black")
 
 
 def draw_streak(img, spec):
-    """One glowing streak from (x0, y0) to its head at (x1, y1), in panel fractions."""
+    """One glowing streak from (x0, y0) to its head at (x1, y1), in panel fractions.
+
+    An optional fifth value scales the trail width and head size (a near fireball).
+    """
     w, h = img.size
     x0, y0, x1, y1 = spec[0] * w, spec[1] * h, spec[2] * w, spec[3] * h
+    k_size = spec[4] if len(spec) > 4 else 1.0
     glow = Image.new("L", (w, h), 0)
     core = Image.new("L", (w, h), 0)
     gd, cd = ImageDraw.Draw(glow), ImageDraw.Draw(core)
@@ -431,14 +435,14 @@ def draw_streak(img, spec):
     for k in range(n):
         t0, t1 = k / n, (k + 1) / n
         seg = (x0 + (x1 - x0) * t0, y0 + (y1 - y0) * t0, x0 + (x1 - x0) * t1, y0 + (y1 - y0) * t1)
-        gd.line(seg, fill=int(255 * t1), width=int(4 + 18 * t1))
-        cd.line(seg, fill=int(255 * t1), width=int(1 + 5 * t1))
-    r = max(6, int(min(w, h) * 0.012))
+        gd.line(seg, fill=int(255 * t1), width=int((4 + 18 * t1) * k_size))
+        cd.line(seg, fill=int(255 * t1), width=int((1 + 5 * t1) * k_size))
+    r = max(6, int(min(w, h) * 0.012 * k_size))
     gd.ellipse((x1 - 3 * r, y1 - 3 * r, x1 + 3 * r, y1 + 3 * r), fill=255)
     cd.ellipse((x1 - r, y1 - r, x1 + r, y1 + r), fill=255)
     shade = glow.filter(ImageFilter.MaxFilter(9)).filter(ImageFilter.GaussianBlur(6)).point(lambda v: v * 0.55)
     img.paste((30, 30, 30), (0, 0), shade)   # dark edge so the streak reads on a light sky
-    img.paste((255, 255, 255), (0, 0), glow.filter(ImageFilter.GaussianBlur(10)))
+    img.paste((255, 255, 255), (0, 0), glow.filter(ImageFilter.GaussianBlur(10 * k_size)))
     img.paste((255, 255, 255), (0, 0), core)
     return img
 
@@ -446,7 +450,7 @@ def draw_streak(img, spec):
 def render_panel(panel, w, h, art_dir, pid):
     kind = panel.get("kind", "art")
     if kind == "art":
-        path = art_dir / f"{pid}.png"
+        path = art_dir / f"{panel.get('reuse', pid)}.png"   # reuse: show another panel's art
         if not path.exists():
             img = Image.new("RGB", (w, h), (200, 200, 200))
             ImageDraw.Draw(img).text((20, 20), f"{pid} not rendered yet", font=font("sans", 28), fill="black")
@@ -475,7 +479,7 @@ def render_panel(panel, w, h, art_dir, pid):
     raise ValueError(f"unknown panel kind {kind}")
 
 
-def compose_page(page_spec, art_dir):
+def compose_page(page_spec, art_dir, chapter):
     page = Image.new("RGB", (PAGE_W, PAGE_H), "white")
     d = ImageDraw.Draw(page)
     rects = panel_rects(page_spec["rows"])
@@ -491,7 +495,7 @@ def compose_page(page_spec, art_dir):
         if panel.get("kind") != "white":
             d.rectangle(rect, outline="black", width=BORDER)
         if panel.get("title"):
-            draw_title(page, rect)
+            draw_title(page, rect, chapter)
     for panel, rect in zip(page_spec["panels"], rects):
         letter_panel(page, panel, rect)
     f = font("sans-reg", 24)
@@ -540,7 +544,7 @@ def main():
         n = spec["page"]
         if a.pages and not (int(lo) <= n <= int(hi or lo)):
             continue
-        compose_page(spec, out / "panels").save(pages_dir / f"page_{n:02d}.png", optimize=True)
+        compose_page(spec, out / "panels", chapter).save(pages_dir / f"page_{n:02d}.png", optimize=True)
         print(f"page {n} done")
     if len(list(pages_dir.glob("page_*.png"))) == len(chapter["pages"]):
         pdf, cbz = export(pages_dir, out, a.name, chapter)
