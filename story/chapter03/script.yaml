@@ -83,16 +83,18 @@ pages:
     - {t: speech, who: MOMO, say: "Rule three. When time runs out, the poorest player dies. A tie for poorest? They all die!", canon: true}
   - kind: art
     shot: "MEDIUM — Momo, rule four"
-    art: "Momo holds up a paw making a zero."
-    gen: "{MOMO}, ok sign, cheerful, upper body, white background, simple background"
-    negative_extra: "bear, hat"
-    seed: 30330
+    art: "Momo raises a paw."
+    gen: "{MOMO}, mouse ears, raising hand, cheerful, smile, upper body, white room, bright"
+    negative_extra: "bunny"
+    seed: 30331
     text:
     - {t: speech, who: MOMO, say: "Rule four. Zero tokens, and you're not a player anymore.", canon: true}
   - kind: art
     shot: "MEDIUM — Momo sits back down"
     art: "Momo settles back on the floor, swinging its legs."
     gen: "{MOMO}, sitting on floor, swinging legs, smile, full body, white room, bright"
+    negative_extra: "hair bow"
+    seed: 30340
     text:
     - {t: speech, who: MOMO, say: "Tokens are precious! You'll want them later! Ten minutes!", canon: true}
 
@@ -243,15 +245,17 @@ pages:
   - kind: art
     shot: "MEDIUM — Ren explains"
     art: "Ren turns to the class."
-    gen: "{REN}, solo, speaking, determined, open mouth, looking at viewer, upper body, white background, simple background"
-    negative_extra: "book, paper, folder, holding, document"
-    seed: 30910
+    gen: "{REN}, solo, portrait, face focus, speaking, determined, open mouth, looking at viewer, white background"
+    negative_extra: "book, paper, holding, hands"
+    seed: 30911
     text:
     - {t: speech, who: REN, say: "Momo isn't a player. Give Momo everything, and there are no players. And nobody dies.", canon: true}
   - kind: art
     shot: "CLOSE — Mio"
     art: "Mio, doubtful."
     gen: "{MIO}, doubtful, worried, upper body, white room, bright"
+    negative_extra: "book, holding"
+    seed: 30920
     text:
     - {t: speech, who: MIO, say: "And walk into game three with nothing?", canon: true}
   - kind: art
@@ -346,9 +350,9 @@ pages:
   - kind: art
     shot: "CLOSE — Momo"
     art: "Momo claps."
-    gen: "{MOMO}, clapping, excited, upper body, white background, simple background"
-    negative_extra: "bowl, table"
-    seed: 31330
+    gen: "{MOMO}, mouse ears, clapping, excited, upper body, white room, bright"
+    negative_extra: "bunny"
+    seed: 31331
     text:
     - {t: speech, who: MOMO, say: "A gift! Gifts are final!", canon: true}
   - kind: screen
