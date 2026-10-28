@@ -351,8 +351,8 @@ pages:
     shot: "CLOSE — Momo"
     art: "Momo claps."
     gen: "{MOMO}, mouse ears, clapping, excited, upper body, white room, bright"
-    negative_extra: "bunny"
-    seed: 31331
+    negative_extra: "bunny, box"
+    seed: 31332
     text:
     - {t: speech, who: MOMO, say: "A gift! Gifts are final!", canon: true}
   - kind: screen

@@ -1,14 +1,70 @@
 # DEAD MAN’S ALGORITHM — Continuity Ledger
 
-Version 2, 2026-10-28. State: end of Chapter 3, "The Charity" (Game 2).
+Version 3, 2026-10-28. State: end of Chapter 5 (Game 3, "Find Yourself").
 
 Sources:
 - `story_bible.md`
 - `continuation_v5_approved.md`, approved by the author on 2026-10-28
+- `continuation_v6_approved.md` (Game 3), approved by the author on 2026-10-28
 
 The labels follow the bible: **CONFIRMED CANON** · **UNRESOLVED** · **PROPOSAL — NOT CANON** · **CONTINUITY CONFLICT**. Items marked *[audit finding]* are inconsistencies I noticed in the source material, not story content.
 
-**Section 0 records everything added in version 2.** Sections 1–7 are the version 1 sheet (end of Chapter 1). Where section 0 answers an item they list as open, section 0 takes precedence.
+**Section 00 records everything added in version 3, and section 0 everything added in version 2.** Sections 1–7 are the version 1 sheet (end of Chapter 1). Where section 0 answers an item they list as open, section 0 takes precedence.
+
+---
+
+## 00. Version 3 — Game 3 "Find Yourself" (Chapters 4–5)
+
+**CONFIRMED CANON**, approved 2026-10-28. Full text: `continuation_v6_approved.md`.
+
+### The game
+**Setup:** 19 lockers in a ring, with name cards inside. Saki's locker is sealed. An unbroken painted circle runs on the floor. Three rooms: waiting, locker and finished. A results board shows each player's result and how many lockers they opened.
+
+**Rules:**
+1. Open 10 lockers. Each token buys one more open; spent tokens are gone, and tokens may be given before someone goes in.
+2. Find your own name or die.
+3. You may make one swap of two cards.
+4. Momo may make private offers.
+5. No communication once you've been inside.
+6. 30 minutes; anyone who hasn't gone in by then dies.
+
+**Momo's arrangement:** one deliberate loop of all 19 ("Everyone's connected!").
+
+### What happened
+1. **Riku went first.** He spent 9 tokens to open all 19 and cut the loop into 9 and 10. He refused Momo's offer of 50 to leave it whole: "Dead people don't owe me anything."
+2. **Riku's price:** the class owes him ("Eighteen lives for nine tokens").
+3. **Ren went second** and found his name in 9, which proved Riku honest.
+4. **Haruto went ninth.** He took Momo's offer of 30 tokens to swap two lockers Momo named, joining the loops into one of 19.
+5. **Gō went tenth.** He didn't find his name in 10. He cut the loop (first locker with tenth) and died: lights out, then gone. His cut saved the 9 behind him.
+6. **Kota went eleventh** and found his name in 9.
+7. **Ren exposed Haruto from the board.** Nobody who finds their name in 9 or 10 can share the room with a loop over 10. Haruto had 30 tokens in his pockets.
+8. **Kota was revealed to have Saki's token:** "It was hers."
+
+### State after Game 3
+| | |
+|---|---|
+| **Survivors** | 18 |
+| **Dead** | Saki (Game 2), Gō (Game 3) |
+| **Riku** | 60 tokens |
+| **Haruto** | 30 tokens |
+| **Kota** | 1 token (Saki's) |
+| **Everyone else** | 0 |
+| **Momo** | 1,869 (*derived*) |
+| **Spent so far** | 40 |
+| **Total** | 2,000 |
+| **Relationships** | The class owes Riku. Ren and Haruto's friendship is broken. Kota has lost Gō. |
+
+### Characters changed
+- **Haruto:** betrayed the plan for 30 tokens, out of fear ("Next game, I'd have something").
+- **Riku:** kept his word for selfish reasons; holds the class's debt.
+- **Kota:** took Saki's token; his reason stays open.
+- **Gō:** DEAD. He kept his promise to cut the loop.
+
+### Mysteries added (UNRESOLVED, intentional)
+- The unbroken floor circle and "Everyone's connected".
+- Momo pays for betrayal with the class's own tokens: why does the system want betrayal?
+- Saki's sealed locker.
+- Why Kota took Saki's token.
 
 ---
 
@@ -96,6 +152,15 @@ The labels follow the bible: **CONFIRMED CANON** · **UNRESOLVED** · **PROPOSAL
 - **Chapter titles:** "The Bids" and "The Charity". These are PROPOSALS taken from the approved part and game names.
 - **Screen text:** "19 SURVIVORS" follows the Chapter 1 screen format (PROPOSAL).
 - **Tokens:** drawn as coins (PROPOSAL). Their physical form was not established.
+
+### Visual details the art had to choose (PROPOSAL — NOT CANON)
+The bible fixes what is in each scene, not how it looks. To draw Chapters 1–3 consistently, the art settles these details. All are proposals, and any of them can be changed on request.
+- **The metal door (Ch1):** the bible says "large metal door" and Aoi judges it purpose-built. It is drawn as a huge riveted steel double door with a centre seam, set in the chamber's back wall.
+- **The chamber (Ch1–2):** a bare concrete room. The door is on the left of the back wall and the dark screen on the right. All 20 students fit on the floor with room to spare.
+- **The key (Ch1–2):** an old-fashioned metal key with a ring bow and a toothed bit. It sits on a pedestal inside a glass case under a single spotlight. The bible says only that the key is behind a glass barrier.
+- **The token containers (Ch1):** empty transparent cylinders standing on the floor on either side of the glass case. The bible says the key is surrounded by them, but not what they look like.
+- **Momo's entrance (Ch1):** a small hatch slides open in the wall below the screen.
+- **Ch3 page 14:** "None of us had a single token left to stop it" is drawn as the class's empty hands reaching in, not as a wide shot of the class.
 
 ---
 
@@ -305,13 +370,13 @@ No hypotheses or reveals are approved for any of these questions.
 
 ## 7. Unavailable information: do not fabricate
 
-- The names and data of the 12 unnamed students.
+- The names and data of the 11 unnamed students. *(12 in version 1; Saki is now named.)*
 - Birthday and blood type for Kota, Aoi and Mio.
 - The medical and emergency-contact contents for any student.
 - The teacher's name and fate.
-- Games 02–20: names, rules, outcomes and death counts.
-- The resolution of Game 01, and answers to section 3.
-- What the exit key opens.
+- Games 03–20: names, rules, outcomes and death counts. *(Game 02 is now approved; see section 0.)*
+- Answers to the open items of section 3 (Q3, Q6, A, E, G, L). *(Game 01's resolution is now approved; see section 0.)*
+- Where the exit leads beyond Game 02. *(That the key opens the exit for everyone is now approved; see section 0.)*
 - Momo's nature, origin, limits and motives.
 - The meteor's nature, cause, creator and purpose.
 - What Ren saw inside the meteor.
@@ -338,3 +403,5 @@ No hypotheses or reveals are approved for any of these questions.
 |---|---|---|
 | 2026-10-27 | Ledger created from the story bible. No canon changes. | n/a |
 | 2026-10-28 | Version 2: approved continuation v5 recorded (Saki, auction answers, Game 1 ending, Game 2). Q3 and Q6 stay open. | Yes, "Approved, apply fixes and draw chapters 2 and 3" |
+| 2026-10-28 | Version 3: Game 3 "Find Yourself" (continuation v6) recorded: Gō dead, Haruto the betrayer, Riku's debt, Kota holds Saki's token. 18 survivors. | Yes, "Approved, go with Haruto and Gō, draw it" |
+| 2026-10-28 | Audit after drawing Chapters 1–3: section 7 brought in line with section 0 (11 unnamed students; Game 01, the key and Game 02 now approved). The art's visual choices are listed in section 0 as proposals. No canon changes. | n/a |
