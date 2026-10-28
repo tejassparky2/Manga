@@ -162,7 +162,7 @@ pages:
     seed: 40504
     overlay_timer: "30:00"
     text:
-    - {t: speech, who: MOMO, say: "After you go in, no talking to anyone who hasn't. No signs, no notes, nothing! Thirty minutes!", canon: true, at: [0.5, 0.72]}
+    - {t: speech, who: MOMO, say: "After you go in, no talking to anyone who hasn't. No signs, no notes, nothing! Thirty minutes!", canon: true, at: [0.5, 0.85], tail: [0.47, 0.6], size: 26}
 
 - page: 6
   rows: [[0.65, [1]], [1.6, [1]]]

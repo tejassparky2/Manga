@@ -132,8 +132,9 @@ pages:
   - kind: art
     shot: "WIDE — the finished room"
     art: "A white room. Riku sits alone against the wall."
-    gen: "{RIKU}, sitting on floor, against wall, alone, one knee up, white room, bright, wide shot"
-    negative_extra: "corridor, hallway, window"
+    gen: "{RIKU}, sitting on floor, against wall, alone, one knee up, smirk, looking at viewer, full body, white room, bright"
+    negative_extra: "hallway, spiky hair, book, magazine"
+    seed: 50423
     text:
     - {t: speech, who: RIKU, say: "Disappointed?", canon: true}
 
@@ -412,11 +413,11 @@ pages:
   - kind: art
     shot: "MEDIUM — Ren"
     art: "Ren, explaining, steady."
-    gen: "{REN}, explaining, serious, looking at viewer, upper body, locker room, dim"
-    negative_extra: "v sign, hand up"
-    seed: 51303
+    gen: "{REN}, serious, calm, looking at viewer, close-up, portrait, locker room, dim"
+    negative_extra: "book, holding, hands, paper"
+    seed: 51313
     text:
-    - {t: speech, who: REN, say: "I found mine in nine. A loop of nine leaves ten lockers. No room for a loop longer than ten.", canon: true}
+    - {t: speech, who: REN, say: "I found mine in nine. A loop of nine leaves ten lockers. No room for a loop longer than ten.", canon: true, at: [0.42, 0.8], tail: [0.56, 0.42]}
   - kind: board
     shot: "SCREEN — up to the ninth"
     art: "The board: rows 2 to 9 lit, every one a nine or a ten."
@@ -501,6 +502,7 @@ pages:
     negative_extra: "face, multiple coins, text, ring"
     sketch: sketches/p16_3.png
     strength: 0.8
+    retouch: "Render w10 ba8ab29 drew the coin as a sphere; tools/manga/retouch.py repaints it as a flat coin."
   - kind: art
     shot: "CLOSE — Kota"
     art: "Kota, crying."
@@ -554,7 +556,7 @@ pages:
     negative_extra: "text, letters"
     seed: 51803
     plates:
-    - {at: [0.5, 0.2], w: 0.42, text: "SHIBATA GŌ"}
+    - {at: [0.19, 0.2], w: 0.24, text: "SHIBATA GŌ"}
     text:
     - {t: caption, who: REN, say: "Gō's last swap saved the nine people behind him.", canon: true}
 
@@ -592,10 +594,10 @@ pages:
   - kind: art
     shot: "HIGH — alone among them"
     art: "Ren stands apart from the others, small, in the ring."
-    gen: "{REN}, standing apart, alone, multiple boys, multiple girls, distance, from above, concrete floor, dim, wide shot"
-    negative_extra: "crowd"
+    gen: "{REN}, from behind, standing apart, alone, multiple boys, multiple girls, distance, metal lockers, locker room, dim, wide shot"
+    negative_extra: "crowd, balls"
     sketch: sketches/p20_2.png
-    strength: 0.62
+    strength: 0.75
     text:
     - {t: caption, who: REN, say: "I didn't know anyone in this room anymore.", canon: true}
   - kind: art
