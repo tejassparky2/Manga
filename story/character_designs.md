@@ -14,6 +14,7 @@ The machine-readable tags live in `chapter01/script.yaml` under `characters:`. E
 | Hayashi Kota | Black bowl cut, thin, timid; gakuran | none |
 | Fujimoto Aoi | Black bob cut, glasses; sailor uniform (drawn as a girl, see below) | wears glasses *(canon)* |
 | Aoyama Mio | Long, wavy, light-brown hair, earrings; sailor uniform | stylish *(canon)* |
+| Nishida Saki | Short black hair over one eye; sailor uniform (no glasses, so she reads differently from Aoi) | quietest girl in the class *(canon)* |
 | Momo | Small white mouse-like mascot, big round ears, black eyes, bow tie, bell | full design *(canon)* |
 
 Open design questions for the author:
