@@ -21,7 +21,7 @@ characters:
   AOI: "1girl, black hair, bob cut, glasses, serafuku"
   MIO: "1girl, light brown hair, long wavy hair, earrings, serafuku"
   SAKI: "1girl, black hair, short hair, hair over one eye, quiet, serafuku"
-  MOMO: "no humans, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot"
+  MOMO: "no humans, solo, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot"
 
 character_negatives:
   MOMO: "multiple mice, 2others"
@@ -88,7 +88,7 @@ pages:
     shot: "EXTREME CLOSE — eyes"
     art: "One classmate's wary eyes, extreme close-up: exactly two eyes."
     gen: "1girl, solo, eye focus, two eyes, extreme close-up, suspicious, side glance, sweat, dark"
-    negative_extra: "third eye, extra eyes, multiple faces, multiple girls"
+    negative_extra: "third eye, extra eyes, multiple girls"
     text:
     - {t: caption, who: REN, say: "Bid too high, and you might tie. Bid too low, and someone beats you.", canon: true}
 
@@ -130,14 +130,14 @@ pages:
     gen: "{REN}, determined, calm, looking at viewer, upper body, dark room, screen glow"
     text:
     - {t: caption, who: REN, say: "My number was one.", canon: true}
-  - kind: screen
+  - kind: rules
     shot: "SCREEN — Rule 05"
     art: "Rule 05 on the screen."
     lines:
     - {s: "Rule 05: If all players leave all tokens unspent when time expires, everyone is executed.", canon: true}
     text:
     - {t: caption, who: REN, say: "Somebody had to spend. Or rule five killed us all.", canon: true}
-  - kind: screen
+  - kind: rules
     shot: "SCREEN — Rule 03"
     art: "Rule 03 on the screen."
     lines:
@@ -148,7 +148,7 @@ pages:
 - page: 6
   rows: [[1, [1, 1]], [1.1, [1]]]
   panels:
-  - kind: screen
+  - kind: rules
     shot: "SCREEN — Rule 02"
     art: "Rule 02 on the screen."
     lines:
