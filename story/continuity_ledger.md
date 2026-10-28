@@ -97,6 +97,15 @@ The labels follow the bible: **CONFIRMED CANON** · **UNRESOLVED** · **PROPOSAL
 - **Screen text:** "19 SURVIVORS" follows the Chapter 1 screen format (PROPOSAL).
 - **Tokens:** drawn as coins (PROPOSAL). Their physical form was not established.
 
+### Visual details the art had to choose (PROPOSAL — NOT CANON)
+The bible fixes what is in each scene, not how it looks. To draw Chapters 1–3 consistently, the art settles these details. All are proposals, and any of them can be changed on request.
+- **The metal door (Ch1):** the bible says "large metal door" and Aoi judges it purpose-built. It is drawn as a huge riveted steel double door with a centre seam, set in the chamber's back wall.
+- **The chamber (Ch1–2):** a bare concrete room. The door is on the left of the back wall and the dark screen on the right. All 20 students fit on the floor with room to spare.
+- **The key (Ch1–2):** an old-fashioned metal key with a ring bow and a toothed bit. It sits on a pedestal inside a glass case under a single spotlight. The bible says only that the key is behind a glass barrier.
+- **The token containers (Ch1):** empty transparent cylinders standing on the floor on either side of the glass case. The bible says the key is surrounded by them, but not what they look like.
+- **Momo's entrance (Ch1):** a small hatch slides open in the wall below the screen.
+- **Ch3 page 14:** "None of us had a single token left to stop it" is drawn as the class's empty hands reaching in, not as a wide shot of the class.
+
 ---
 
 ## 1. Confirmed canon summary
@@ -305,13 +314,13 @@ No hypotheses or reveals are approved for any of these questions.
 
 ## 7. Unavailable information: do not fabricate
 
-- The names and data of the 12 unnamed students.
+- The names and data of the 11 unnamed students. *(12 in version 1; Saki is now named.)*
 - Birthday and blood type for Kota, Aoi and Mio.
 - The medical and emergency-contact contents for any student.
 - The teacher's name and fate.
-- Games 02–20: names, rules, outcomes and death counts.
-- The resolution of Game 01, and answers to section 3.
-- What the exit key opens.
+- Games 03–20: names, rules, outcomes and death counts. *(Game 02 is now approved; see section 0.)*
+- Answers to the open items of section 3 (Q3, Q6, A, E, G, L). *(Game 01's resolution is now approved; see section 0.)*
+- Where the exit leads beyond Game 02. *(That the key opens the exit for everyone is now approved; see section 0.)*
 - Momo's nature, origin, limits and motives.
 - The meteor's nature, cause, creator and purpose.
 - What Ren saw inside the meteor.
@@ -338,3 +347,4 @@ No hypotheses or reveals are approved for any of these questions.
 |---|---|---|
 | 2026-10-27 | Ledger created from the story bible. No canon changes. | n/a |
 | 2026-10-28 | Version 2: approved continuation v5 recorded (Saki, auction answers, Game 1 ending, Game 2). Q3 and Q6 stay open. | Yes, "Approved, apply fixes and draw chapters 2 and 3" |
+| 2026-10-28 | Audit after drawing Chapters 1–3: section 7 brought in line with section 0 (11 unnamed students; Game 01, the key and Game 02 now approved). The art's visual choices are listed in section 0 as proposals. No canon changes. | n/a |
