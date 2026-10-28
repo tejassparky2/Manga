@@ -70,7 +70,28 @@ def ch04_p09_3(im):
     return Image.composite(Image.new("RGB", im.size, (90, 90, 90)), im, warped)
 
 
-RETOUCH = {"ch04/p01_1": ch04_p01_1, "ch04/p19_1": ch04_p19_1, "ch04/p09_3": ch04_p09_3}
+def ch04_p02_3(im):
+    """A tiny girl stands inside the dark doorway (read as Saki's ghost: not canon). The doorway shades
+    evenly left to right, so each row is repainted from just beside the figure."""
+    px = im.load()
+    for y in range(398, 476):
+        for x in range(578, 612):
+            px[x, y] = px[570, y]
+    return im
+
+
+def ch04_p03_2(im):
+    """Two fake-kanji glyphs on the small lock plate of Saki's locker read as text (not canon).
+    Each glyph's rows are repainted from the plain plate just beside it."""
+    px = im.load()
+    for x0, x1, src in ((403, 432, 398), (490, 520, 486)):
+        for y in range(392, 424):
+            for x in range(x0, x1):
+                px[x, y] = px[src, y]
+    return im
+
+
+RETOUCH = {"ch04/p01_1": ch04_p01_1, "ch04/p19_1": ch04_p19_1, "ch04/p09_3": ch04_p09_3, "ch04/p02_3": ch04_p02_3, "ch04/p03_2": ch04_p03_2}
 
 
 def main(root=Path("output")):

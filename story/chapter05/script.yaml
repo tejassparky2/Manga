@@ -283,12 +283,9 @@ pages:
     gen: "{GO}, looking into open locker, staring, calm, sweat, close-up, locker room, dim"
     negative_extra: "card, playing card, holding, text, letters"
     seed: 50902
-  - kind: art
+  - kind: swap
     shot: "INSERT — the cut"
-    art: "Gō's hands: a card in each, swapping them between two open lockers."
-    gen: "hand focus, close-up, two hands, each hand holding one small blank white paper card, open lockers, black sleeves, dim"
-    negative_extra: "face, text, letters, playing card, multiple cards, picture"
-    seed: 50903
+    art: "Two open lockers, a blank card in each, trading places: Gō swaps his first and tenth cards. (Drawn panel; renders gave oversized sheets and tangled hands. Cards blank: which names were swapped is not canon.)"
   - kind: black
     shot: "BLACK"
     art: "Solid black."
@@ -382,12 +379,12 @@ pages:
     strength: 0.75
   - kind: art
     shot: "CLOSE — Saki's locker, dark"
-    art: "Saki's locker, still taped shut, unlit."
-    gen: "no humans, metal locker, close-up, front view, taped shut, duct tape, dark, shadow, locker room"
-    negative_extra: "text, letters, caution tape"
+    art: "Saki's locker, still taped shut, unlit: Chapter 4's panel p03_2 (copied in as ch04_p03_2.png), darkened."
+    reuse: ch04_p03_2
+    focus: [0.5, 1.0]
     shade: 0.6
     plates:
-    - {at: [0.5, 0.4], w: 0.5, text: "NISHIDA SAKI"}
+    - {at: [0.49, 0.862], w: 0.52, text: "NISHIDA SAKI"}
   - kind: art
     shot: "CLOSE — Gō's locker, dark"
     art: "Gō's locker, closed, unlit."
@@ -432,7 +429,7 @@ pages:
       focus: [2, 3, 4, 5, 6, 7, 8, 9]
       reserve: 0.3
     text:
-    - {t: offpanel, who: REN, say: "Everyone up to the ninth person found theirs in nine or ten. Still no long loop.", canon: true, at: [0.5, 0.85]}
+    - {t: offpanel, who: REN, say: "Everyone up to the ninth person found theirs in nine or ten. Still no long loop.", canon: true, at: [0.64, 0.85]}
 
 - page: 14
   rows: [[1, [1]], [1, [1, 1]]]
@@ -449,7 +446,7 @@ pages:
       focus: [10]
       reserve: 0.3
     text:
-    - {t: offpanel, who: REN, say: "Gō went in tenth. He didn't find his in ten. Now there was a long loop.", canon: true, at: [0.5, 0.85]}
+    - {t: offpanel, who: REN, say: "Gō went in tenth. He didn't find his in ten. Now there was a long loop.", canon: true, at: [0.68, 0.85]}
   - kind: art
     shot: "CLOSE — Ren"
     art: "Ren, eyes in shadow."
@@ -500,8 +497,10 @@ pages:
   - kind: art
     shot: "INSERT — one coin"
     art: "The notebook, opened: one coin between the pages."
-    gen: "hand focus, close-up, open notebook, single coin, coin between pages, holding notebook, black sleeves, dim"
-    negative_extra: "face, multiple coins, text"
+    gen: "hand focus, close-up, small open notebook, single coin lying on page, black sleeve, from above, dim"
+    negative_extra: "face, multiple coins, text, ring"
+    sketch: sketches/p16_3.png
+    strength: 0.8
   - kind: art
     shot: "CLOSE — Kota"
     art: "Kota, crying."
@@ -596,7 +595,7 @@ pages:
     gen: "{REN}, standing apart, alone, multiple boys, multiple girls, distance, from above, concrete floor, dim, wide shot"
     negative_extra: "crowd"
     sketch: sketches/p20_2.png
-    strength: 0.8
+    strength: 0.62
     text:
     - {t: caption, who: REN, say: "I didn't know anyone in this room anymore.", canon: true}
   - kind: art
