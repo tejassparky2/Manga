@@ -457,7 +457,7 @@ pages:
   - kind: art
     shot: "WIDE — the door"
     art: "Gō and Riku throw their shoulders into the huge metal door."
-    gen: "2boys, {GO}, {RIKU}, pushing door, shoulder tackle, straining, huge metal door, concrete, dim lighting, motion lines"
+    gen: "2boys, black hair, buzz cut, slicked back hair, gakuran, pushing huge metal door, straining, concrete, dim lighting, motion lines"
     text:
     - {t: sfx, say: "GONG!!"}
     - {t: speech, who: RIKU, say: "Open, damn it!"}
