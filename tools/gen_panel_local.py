@@ -17,7 +17,7 @@ MODEL = Path(__file__).resolve().parent.parent / "models" / "animagine-xl-4.0"
 STYLE = "monochrome, greyscale, manga"
 QUALITY = "screentone, masterpiece, high score, absurdres"
 # The characters are high-school students: keep every image non-suggestive.
-NEGATIVE = ("nsfw, suggestive, cleavage, large breasts, revealing clothes, "
+NEGATIVE = ("nsfw, suggestive, cleavage, large breasts, revealing clothes, bare chest, open clothes, abs, bald, "
             "lowres, bad anatomy, bad hands, text, speech bubble, error, worst quality, low quality, "
             "jpeg artifacts, signature, watermark, blurry, color")
 

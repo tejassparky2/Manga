@@ -16,8 +16,8 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 - YUI: 1girl, long black hair, serafuku
 - HARUTO: 1boy, blonde hair, spiky hair, gakuran
 - RIKU: 1boy, black hair, slicked back hair, sharp eyes, gakuran
-- GO: 1boy, buzz cut, tall, muscular, gakuran
-- KOTA: 1boy, bowl cut, thin, timid, gakuran
+- GO: 1boy, black hair, buzz cut, tall, broad shoulders, stoic, buttoned gakuran
+- KOTA: 1boy, black hair, bowl cut, thin, timid, gakuran
 - AOI: 1girl, bob cut, glasses, serafuku
 - MIO: 1girl, long wavy hair, earrings, serafuku
 - MOMO: no humans, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot
