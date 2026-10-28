@@ -16,7 +16,9 @@ MODEL = Path(__file__).resolve().parent.parent / "models" / "animagine-xl-4.0"
 # CLIP reads only 77 tokens, so the style tags lead and the quality tags trail.
 STYLE = "monochrome, greyscale, manga"
 QUALITY = "screentone, masterpiece, high score, absurdres"
-NEGATIVE = ("lowres, bad anatomy, bad hands, text, speech bubble, error, worst quality, low quality, "
+# The characters are high-school students: keep every image non-suggestive.
+NEGATIVE = ("nsfw, suggestive, cleavage, large breasts, revealing clothes, "
+            "lowres, bad anatomy, bad hands, text, speech bubble, error, worst quality, low quality, "
             "jpeg artifacts, signature, watermark, blurry, color")
 
 

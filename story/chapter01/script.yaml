@@ -133,8 +133,8 @@ pages:
     note: "Bible Scene 2: she remembered his stomach had hurt the previous day."
   - kind: art
     shot: "WIDE — Haruto provokes"
-    art: "Haruto leans across, sly grin. Ren flustered but deadpan. Yui blinks."
-    gen: "1girl, 2boys, {HARUTO}, sly grin, leaning forward, {REN}, flustered, {YUI}, classroom"
+    art: "Haruto leans across Ren's desk, sly grin. Ren, flustered but deadpan. Yui is off-panel."
+    gen: "2boys, blonde spiky hair boy, sly grin, leaning forward, black messy hair boy, flustered, sitting, gakuran, classroom, school desk"
     text:
     - {t: speech, who: HARUTO, say: "Ohh? Personal delivery?"}
     - {t: speech, who: REN, say: "It's not like that."}
@@ -380,12 +380,12 @@ pages:
     art: "Ren stumbles between stirring classmates, searching."
     gen: "{REN}, walking, searching, looking around, worried, people lying on floor, concrete room, dim lighting"
   - kind: art
-    shot: "TWO-SHOT — Yui"
-    art: "Yui, sitting up, sees Ren and reaches toward his bleeding forehead."
-    gen: "1girl, 1boy, {YUI}, sitting, reaching out, worried, {REN}, blood on face, kneeling, concrete floor, dim lighting"
+    shot: "POV (Ren) — Yui"
+    art: "Ren's point of view: Yui, sitting up on the concrete floor, reaches toward his bleeding forehead."
+    gen: "{YUI}, sitting, reaching towards viewer, pov, worried, concrete floor, dim lighting, upper body"
     text:
     - {t: speech, who: YUI, say: "You're bleeding—"}
-    - {t: speech, who: REN, say: "I'm fine."}
+    - {t: speech, who: REN, say: "I'm fine.", tail: [0.5, 1.08]}
   - kind: art
     shot: "CLOSE — relief"
     art: "Yui, eyes wet, relieved."
