@@ -197,7 +197,7 @@ def key_case(w=1152, h=896, seed=2301):
     img = Image.composite(Image.new("RGB", (w, h), (255, 255, 255)), img, beam.filter(ImageFilter.GaussianBlur(30)))
     img = light_pool(img, w // 2, int(h * 0.8), int(w * 0.3), int(h * 0.09), gain=90)
     d = ImageDraw.Draw(img)
-    px0, px1, ptop, pbot = int(w * 0.37), int(w * 0.63), int(h * 0.56), int(h * 0.8)
+    px0, px1, ptop, pbot = int(w * 0.33), int(w * 0.67), int(h * 0.56), int(h * 0.8)
     d.rectangle([px0, ptop, px1, pbot], fill=(120, 120, 120), outline=(30, 30, 30), width=3)  # pedestal
     d.polygon([(px0, ptop), (px1, ptop), (px1 - 14, ptop - 18), (px0 + 14, ptop - 18)], fill=(170, 170, 170))
     gx0, gx1, gtop = px0 + 18, px1 - 18, int(h * 0.22)
@@ -206,8 +206,8 @@ def key_case(w=1152, h=896, seed=2301):
     gd.rectangle([gx0, gtop, gx1, ptop - 18], fill=(220, 220, 220, 40), outline=(235, 235, 235, 255), width=3)
     gd.line([(gx0 + 20, gtop + 30), (gx0 + 60, gtop + 120)], fill=(255, 255, 255, 160), width=6)  # reflection
     img = Image.alpha_composite(img.convert("RGBA"), glass)
-    key = old_key((gx1 - gx0) * 0.8, angle=0)
-    img.alpha_composite(key, (int((gx0 + gx1 - key.width) / 2), int(ptop - 18 - key.height * 0.85)))
+    key = old_key((gx1 - gx0) * 0.9, angle=0)
+    img.alpha_composite(key, (int((gx0 + gx1 - key.width) / 2), int(ptop - 18 - key.height * 0.8)))
     img = img.convert("RGB")
     d = ImageDraw.Draw(img)
     for k in range(10):  # empty transparent token containers on the floor, either side

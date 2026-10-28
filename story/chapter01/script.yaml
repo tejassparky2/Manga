@@ -686,10 +686,10 @@ pages:
   - kind: art
     shot: "WIDE — the key"
     art: "A light comes on over a glass barrier in the chamber. Behind the glass, the key. Around it, the empty token containers."
-    gen: "no humans, key, glass case, pedestal, spotlight, empty glass cylinders, dark concrete room, wide shot"
-    negative_extra: "people inside, mannequin, shelves, shop"
+    gen: "no humans, old key, large key, glass case, pedestal, spotlight, empty glass cylinders, dark concrete room"
+    negative_extra: "mannequin, shelves, shop, machine, bottle"
     sketch: sketches/p23_1.png
-    strength: 0.6
+    strength: 0.5
     text:
     - {t: sfx, say: "KA-CHUNK"}
     note: "The spotlight is a staging PROPOSAL. The number, form and function of the token containers are UNRESOLVED; do not draw exactly 20."
