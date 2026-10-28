@@ -12,7 +12,7 @@ Reconstruction draft 1, generated from `script.yaml`.
 
 The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's strength and Momo's design.
 
-- REN: 1boy, black hair, messy hair, hair between eyes, gakuran
+- REN: 1boy, black hair, short hair, messy hair, hair between eyes, gakuran
 - YUI: 1girl, long hair, black hair, straight hair, blunt bangs, serafuku
 - HARUTO: 1boy, blonde hair, spiky hair, gakuran
 - RIKU: 1boy, black hair, slicked back hair, sharp eyes, gakuran
@@ -53,11 +53,11 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 - MIO: "So somebody has to bid. And everyone will remember who."
 
 **PANEL 2 — WIDE — suspicion**
-- Art: Classmates eye one another in silence.
+- Art: Classmates eye one another in silence. No screen in shot.
 - CAPTION: "Everyone was doing the same math."
 
 **PANEL 3 — EXTREME CLOSE — eyes**
-- Art: A strip of wary eyes.
+- Art: One classmate's wary eyes, extreme close-up: exactly two eyes.
 - CAPTION: "Bid too high, and you might tie. Bid too low, and someone beats you."
 
 ### PAGE 4
@@ -178,6 +178,7 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 - Art: The huge metal door swings open onto light.
 - SFX: KA-CHUNK
 - CAPTION: "The exit key opened the exit. Into game two."
+- Continuity note: Only white light beyond the door. The outside world and Earth's condition stay UNRESOLVED.
 
 **PANEL 2 — MEDIUM — Riku walks through**
 - Art: Riku walks into the light, seen from behind.
