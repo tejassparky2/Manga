@@ -12,15 +12,15 @@ Reconstruction draft 1, generated from `script.yaml`.
 
 The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's strength and Momo's design.
 
-- REN: 1boy, black hair, short hair, messy hair, tired eyes, gakuran, black school uniform
-- YUI: 1girl, long hair, black hair, straight hair, gentle eyes, serafuku, sailor collar
-- HARUTO: 1boy, blonde hair, short spiky hair, gakuran, unbuttoned collar
-- RIKU: 1boy, black hair, slicked back hair, sharp eyes, scowl, gakuran, open jacket
-- GO: 1boy, buzz cut, very short hair, tall, broad shoulders, muscular, stoic, gakuran
-- KOTA: 1boy, messy bangs, thin, slouching, gakuran
-- AOI: 1girl, short hair, bob cut, glasses, calm expression, serafuku
-- MIO: 1girl, long wavy hair, hair clip, earrings, stylish, serafuku
-- MOMO: no humans, white mouse, cute, chibi, round ears, big ears, black eyes, bow tie, bell, mascot, small
+- REN: 1boy, black hair, messy hair, gakuran
+- YUI: 1girl, long black hair, serafuku
+- HARUTO: 1boy, blonde hair, spiky hair, gakuran
+- RIKU: 1boy, slicked back hair, sharp eyes, gakuran
+- GO: 1boy, buzz cut, tall, muscular, gakuran
+- KOTA: 1boy, messy bangs, thin, gakuran
+- AOI: 1girl, bob cut, glasses, serafuku
+- MIO: 1girl, long wavy hair, earrings, serafuku
+- MOMO: no humans, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot
 
 ---
 
@@ -43,7 +43,7 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 - TEACHER (off-panel): "Kuroda."
 
 **PANEL 3 — MEDIUM — Haruto pokes Ren**
-- Art: Haruto, in the seat beside Ren, grins and pokes Ren's head with the end of a pen.
+- Art: Haruto, in the seat beside Ren, grins and reaches over to poke Ren's head with the end of a pen (Ren just out of frame).
 - TEACHER (off-panel): "Kuroda Ren."
 - SFX: poke
 
@@ -95,11 +95,14 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 - YUI: "You said your stomach hurt yesterday." †
 - Continuity note: Bible Scene 2: she remembered his stomach had hurt the previous day.
 
-**PANEL 4 — WIDE — Haruto provokes**
-- Art: Haruto leans across, sly grin. Ren flustered but deadpan. Yui blinks.
+**PANEL 4 — CLOSE — Haruto provokes**
+- Art: Haruto leans across from the next desk, sly grin.
 - HARUTO: "Ohh? Personal delivery?" †
+
+**PANEL 5 — CLOSE — Ren, flustered**
+- Art: Ren, flustered but deadpan, looks away. Haruto's next line comes from off-panel right.
 - REN: "It's not like that." †
-- HARUTO: "I didn't say anything~" †
+- HARUTO (off-panel): "I didn't say anything~" †
 
 ### PAGE 5
 
@@ -273,8 +276,8 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 **PANEL 1 — MEDIUM — searching**
 - Art: Ren stumbles between stirring classmates, searching.
 
-**PANEL 2 — TWO-SHOT — Yui**
-- Art: Yui, sitting up, sees Ren and reaches toward his bleeding forehead.
+**PANEL 2 — POV (Ren) — Yui**
+- Art: Ren's point of view: Yui, sitting up on the concrete floor, reaches toward his bleeding forehead.
 - YUI: "You're bleeding—" †
 - REN: "I'm fine." †
 

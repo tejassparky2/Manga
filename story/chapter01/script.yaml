@@ -109,7 +109,7 @@ pages:
 # ---------------------------------------------------------------- SCENE 2
 - page: 4
   scene: 2
-  rows: [[1.1, [1]], [1, [1, 1]], [0.9, [1]]]
+  rows: [[1.1, [1]], [1, [1, 1]], [0.9, [1, 1]]]
   panels:
   - kind: art
     shot: "WIDE — Yui arrives"
@@ -132,13 +132,18 @@ pages:
     - {t: speech, who: YUI, say: "You said your stomach hurt yesterday."}
     note: "Bible Scene 2: she remembered his stomach had hurt the previous day."
   - kind: art
-    shot: "WIDE — Haruto provokes"
-    art: "Haruto leans across Ren's desk, sly grin. Ren, flustered but deadpan. Yui is off-panel."
-    gen: "2boys, blonde spiky hair boy, sly grin, leaning forward, black messy hair boy, flustered, sitting, gakuran, classroom, school desk"
+    shot: "CLOSE — Haruto provokes"
+    art: "Haruto leans across from the next desk, sly grin."
+    gen: "{HARUTO}, sly grin, teasing, leaning forward, upper body, classroom, school desk"
     text:
     - {t: speech, who: HARUTO, say: "Ohh? Personal delivery?"}
+  - kind: art
+    shot: "CLOSE — Ren, flustered"
+    art: "Ren, flustered but deadpan, looks away. Haruto's next line comes from off-panel right."
+    gen: "{REN}, flustered, blush, looking away, deadpan, upper body, classroom"
+    text:
     - {t: speech, who: REN, say: "It's not like that."}
-    - {t: speech, who: HARUTO, say: "I didn't say anything~"}
+    - {t: offpanel, who: HARUTO, say: "I didn't say anything~"}
 
 - page: 5
   scene: 2
