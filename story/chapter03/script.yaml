@@ -118,7 +118,8 @@ pages:
   - kind: art
     shot: "CLOSE — Gō"
     art: "Gō, cold."
-    gen: "{GO}, cold expression, stern, upper body, white room, bright"
+    gen: "{GO}, solo, cold expression, stern, upper body, white room, bright"
+    negative_extra: "muscular, topless, multiple boys"
     text:
     - {t: speech, who: GO, say: "Let him be the poorest. He lied to all of us.", canon: true}
 
