@@ -1,3 +1,5 @@
+> **Superseded by `game03_find_yourself.md` (v3).** Kept for history: the author said this vote game was too simple and its escape was written into a rule.
+
 # DEAD MAN'S ALGORITHM — Game 3 proposal: "The Verdict" (v2)
 
 **Status: PROPOSAL — NOT CANON.** None of it is canon until you approve it in this chat. Nothing gets drawn before that.
