@@ -485,6 +485,23 @@ def standoff(w=1216, h=832, seed=4191):
             back_view(d, bx, feet, s * sc, (k + row) % 2 == 1)
     return vignette(img.filter(ImageFilter.GaussianBlur(5)), 40)
 
+def silent_class(w=1536, h=640, seed=4161):
+    """Ch4 p16: the class standing apart in the white room, nobody facing anybody."""
+    rnd = random.Random(seed)
+    img = Image.new("RGB", (w, h), (238, 238, 238))
+    d = ImageDraw.Draw(img)
+    horizon = int(h * 0.45)
+    for y in range(horizon, h):
+        t = (y - horizon) / (h - horizon)
+        d.line([(0, y), (w, y)], fill=(int(224 - 16 * t),) * 3)
+    d.line([(0, horizon), (w, horizon)], fill=(205, 205, 205), width=3)
+    sc = h / 1216
+    spots = [(0.08 + 0.84 * k / 8 + rnd.uniform(-0.03, 0.03), rnd.choice((0.70, 0.82, 0.95))) for k in range(9)]
+    for fx, fy in sorted(spots, key=lambda p: p[1]):
+        s = sc * (1.1 + 1.6 * (fy - 0.6))
+        back_view(d, w * fx, h * fy, s, rnd.random() < 0.5)
+    return vignette(img.filter(ImageFilter.GaussianBlur(4)), 40)
+
 SKETCHES = {
     "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class,
                   "p21_2.png": lambda: frozen_class(1152, 896, seed=2102), "p23_1.png": key_case, "p23_2.png": key_closeup},
@@ -493,6 +510,7 @@ SKETCHES = {
     "chapter04": {"p01_1.png": white_room_door,
                   "p03_1.png": lambda: locker_ring(1152, 896, cam=(0, 1.6, -2.2), pitch=10),
                   "p12_1.png": lambda: locker_ring(1344, 768, cam=(0, 6.5, -5.0), pitch=48),
+                  "p16_1.png": silent_class,
                   "p19_1.png": standoff},
     "chapter05": {"p01_2.png": lambda: locker_ring(1024, 1024, cam=(0, 1.5, -2.6), pitch=4, figure=True),
                   "p09_1.png": lambda: locker_ring(1344, 768, cam=(0.3, 1.5, -2.6), pitch=4, figure=True),

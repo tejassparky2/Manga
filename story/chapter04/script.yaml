@@ -395,7 +395,10 @@ pages:
   - kind: art
     shot: "WIDE — silence"
     art: "The class, silent, nobody meeting anyone's eyes."
-    gen: "6+boys, 6+girls, gakuran, serafuku, standing, silent, looking away, white room, bright, wide shot"
+    gen: "6+boys, 6+girls, gakuran, serafuku, standing apart, silent, looking away, white room, white walls, bright, wide shot"
+    negative_extra: "crowd, ceiling, stadium, sitting"
+    sketch: sketches/p16_1.png
+    strength: 0.85
     text:
     - {t: caption, who: REN, say: "Silence.", canon: true}
   - kind: art
