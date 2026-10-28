@@ -595,7 +595,7 @@ pages:
     gen: "{REN}, standing apart, alone, multiple boys, multiple girls, distance, from above, concrete floor, dim, wide shot"
     negative_extra: "crowd"
     sketch: sketches/p20_2.png
-    strength: 0.8
+    strength: 0.62
     text:
     - {t: caption, who: REN, say: "I didn't know anyone in this room anymore.", canon: true}
   - kind: art
