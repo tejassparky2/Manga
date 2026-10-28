@@ -332,7 +332,7 @@ def empty_hands(w=832, h=1216, seed=3142):
     return vignette(img.filter(ImageFilter.GaussianBlur(6)), 60)  # soft, or the figures stay mannequins
 
 
-def locker_ring(w=1344, h=768, seed=4031, cam=(0.0, 1.5, -2.0), pitch=8, fov=1.0, figure=False, crowd=0):
+def locker_ring(w=1344, h=768, seed=4031, cam=(0.0, 1.5, -2.0), pitch=8, fov=1.0, figure=False, crowd=0, blur=5):
     """The Game 3 locker room in perspective: twenty lockers (0.9 x 1.8 m) standing
     shoulder to shoulder in a ring, facing in, the painted line running round the
     floor inside them. `cam` is the camera position in metres (ring centre at the
@@ -402,7 +402,7 @@ def locker_ring(w=1344, h=768, seed=4031, cam=(0.0, 1.5, -2.0), pitch=8, fov=1.0
         if not front:
             d.polygon(body, fill=(44, 44, 44), outline=(18, 18, 18))
             continue
-        d.polygon(body, fill=(150, 150, 150), outline=(26, 26, 26))
+        d.polygon(body, fill=(150, 150, 150), outline=(26, 26, 26), width=1 if blur > 2 else 3)
         d.line([body[0], body[3]], fill=(26, 26, 26), width=3)
         for k in range(4):                                # vent slits
             vy = 0.9 - k * 0.025
@@ -420,7 +420,7 @@ def locker_ring(w=1344, h=768, seed=4031, cam=(0.0, 1.5, -2.0), pitch=8, fov=1.0
         x, y = w * 0.5, h * 1.02
         d.rounded_rectangle([x - 34 * sc, y - 120 * sc, x + 34 * sc, y + 40 * sc], 12 * sc, fill=GAKURAN)
         d.ellipse([x - 20 * sc, y - 160 * sc, x + 20 * sc, y - 116 * sc], fill=HAIR)
-    img = img.filter(ImageFilter.GaussianBlur(5))
+    img = img.filter(ImageFilter.GaussianBlur(blur))      # blur=1: lockers are flat shapes; keep them crisp
     return vignette(img, 110)
 
 def back_view(d, x, y, s, girl):
@@ -642,6 +642,24 @@ def apart(w=896, h=1152, seed=5202):
     top(w * 0.74, h * 0.78, w / 520)                                                                 # Ren, alone
     return vignette(img.filter(ImageFilter.GaussianBlur(5)), 90)
 
+def floor_line(w=896, h=1152, seed=4033):
+    """Ch4 p03_3: low and close, the feet of the lockers curving away, and the painted line on the
+    concrete running alongside them in one smooth, unbroken arc."""
+    img = concrete(w, h, 150, seed, grain=10)
+    d = ImageDraw.Draw(img)
+    def arc(r_off):                                       # a curve sweeping from lower left to upper right
+        return [(w * (-0.1 + 1.2 * t), h * (0.42 + r_off) - h * 0.30 * t + h * 0.22 * (t - 0.5) ** 2 * 4 * 0.3)
+                for t in [k / 40 for k in range(41)]]
+    base = arc(0.0)
+    d.polygon([(x, y) for x, y in base] + [(w, 0), (0, 0)], fill=(70, 70, 70))                  # locker fronts
+    for k in range(1, 9):                                 # the gaps between lockers
+        x, y = base[k * 5]
+        d.line([(x, y), (x + w * 0.05, y - h * 0.4)], fill=(30, 30, 30), width=6)
+    d.line(base, fill=(40, 40, 40), width=10)                                                    # kick plate shadow
+    line = arc(0.16)
+    d.line(line, fill=(250, 250, 250), width=int(w * 0.035), joint="curve")                      # the painted line
+    return vignette(img.filter(ImageFilter.GaussianBlur(4)), 60)
+
 SKETCHES = {
     "chapter01": {"p15_1.png": chamber_wide, "p16_4.png": door_push, "p20_4.png": frozen_class,
                   "p21_2.png": lambda: frozen_class(1152, 896, seed=2102), "p23_1.png": key_case, "p23_2.png": key_closeup},
@@ -650,15 +668,17 @@ SKETCHES = {
     "chapter04": {"p01_1.png": white_room_door,
                   "p02_1.png": coin_pickup, "p02_2.png": coin_notebook,
                   "p02_3.png": lambda: white_room_door(1216, 832, seed=4023),
-                  "p03_1.png": lambda: locker_ring(1152, 896, cam=(0, 1.6, -2.2), pitch=10),
-                  "p12_1.png": lambda: locker_ring(1344, 768, cam=(0, 6.5, -5.0), pitch=48),
+                  "p03_3.png": floor_line,
+                  "p03_1.png": lambda: locker_ring(1152, 896, cam=(0, 1.6, -2.2), pitch=10, blur=1),
+                  "p12_1.png": lambda: locker_ring(1344, 768, cam=(0, 4.2, -4.2), pitch=34, blur=1),
                   "p13_1.png": lambda: silent_class(1216, 832, seed=4131),
                   "p16_1.png": silent_class,
                   "p19_1.png": standoff},
-    "chapter05": {"p01_2.png": lambda: locker_ring(1024, 1024, cam=(0, 1.5, -2.6), pitch=4, figure=True),
+    "chapter05": {"p01_2.png": lambda: locker_ring(1024, 1024, cam=(0, 1.5, -2.6), pitch=4, figure=True, blur=2),
                   "p09_1.png": lambda: locker_ring(1344, 768, cam=(0.3, 1.5, -2.6), pitch=4, figure=True),
-                  "p12_2.png": lambda: locker_ring(1344, 768, cam=(0, 4.5, -4.5), pitch=35, crowd=10),
+                  "p12_2.png": lambda: locker_ring(1344, 768, cam=(0, 4.5, -4.5), pitch=35, crowd=10, blur=2),
                   "p14_3.png": surrounded,
+                  "p16_3.png": lambda: coin_notebook(seed=5163),   # rhymes with Ch4 p02_2: the same notebook, the same coin
                   "p06_2.png": waiting_board, "p07_5.png": wall_sitters, "p11_2.png": heads_turn,
                   "p20_2.png": apart},
 }
