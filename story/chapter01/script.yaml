@@ -57,8 +57,8 @@ pages:
     - {t: offpanel, who: TEACHER, say: "Kuroda.", canon: true}
   - kind: art
     shot: "MEDIUM — Haruto pokes Ren"
-    art: "Haruto, in the seat beside Ren, grins and pokes Ren's head with the end of a pen."
-    gen: "2boys, {HARUTO}, grin, holding pen, poking, {REN}, sleeping, head on desk, classroom, school desk"
+    art: "Haruto, in the seat beside Ren, grins and reaches over to poke Ren's head with the end of a pen (Ren just out of frame)."
+    gen: "{HARUTO}, mischievous grin, holding pen, reaching out, leaning forward, pointing pen down, classroom, upper body"
     text:
     - {t: offpanel, who: TEACHER, say: "Kuroda Ren.", canon: true}
     - {t: sfx, say: "poke"}
