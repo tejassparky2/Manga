@@ -132,8 +132,9 @@ pages:
   - kind: art
     shot: "WIDE — the finished room"
     art: "A white room. Riku sits alone against the wall."
-    gen: "{RIKU}, sitting on floor, against wall, alone, one knee up, white room, bright, wide shot"
-    negative_extra: "corridor, hallway, window"
+    gen: "{RIKU}, sitting on floor, against wall, alone, one knee up, smirk, looking at viewer, full body, white room, bright"
+    negative_extra: "corridor, hallway, window, spiky hair"
+    seed: 50413
     text:
     - {t: speech, who: RIKU, say: "Disappointed?", canon: true}
 
@@ -554,7 +555,7 @@ pages:
     negative_extra: "text, letters"
     seed: 51803
     plates:
-    - {at: [0.5, 0.2], w: 0.42, text: "SHIBATA GŌ"}
+    - {at: [0.19, 0.2], w: 0.24, text: "SHIBATA GŌ"}
     text:
     - {t: caption, who: REN, say: "Gō's last swap saved the nine people behind him.", canon: true}
 
