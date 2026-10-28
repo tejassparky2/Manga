@@ -186,7 +186,8 @@ The bible confirms only Aoi's glasses, Haruto's blond or light hair, Gō's stren
 - AOI: "...What is that?" †
 
 **PANEL 4 — WIDE — the sky**
-- Art: Over the town, a bright streak moves across the sky far too fast.
+- Art: Over the town, a single bright streak moves across the midday sky far too fast.
+- Continuity note: One object only (bible Scene 4: 'an object'). Do not draw several.
 
 ### PAGE 9
 

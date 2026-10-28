@@ -258,8 +258,9 @@ pages:
     - {t: speech, who: AOI, say: "...What is that?"}
   - kind: art
     shot: "WIDE — the sky"
-    art: "Over the town, a bright streak moves across the sky far too fast."
-    gen: "no humans, scenery, sky, bright streak of light, shooting star, cityscape, rooftops, daytime, wide shot"
+    art: "Over the town, a single bright streak moves across the midday sky far too fast."
+    note: "One object only (bible Scene 4: 'an object'). Do not draw several."
+    gen: "no humans, scenery, noon, bright daytime sky, single streak of light, solo, one shooting star, cityscape, rooftops, wide shot"
 
 - page: 9
   scene: 4
@@ -275,7 +276,7 @@ pages:
   - kind: art
     shot: "SKY — closer"
     art: "The object is larger now, trailing fire."
-    gen: "no humans, sky, meteor, fireball, burning trail, smoke trail, clouds, daytime"
+    gen: "no humans, noon, daytime sky, single meteor, solo, fireball, burning trail, smoke trail, clouds"
   - kind: art
     shot: "CLOSE — Haruto"
     art: "Haruto at the window, his grin gone."
@@ -286,7 +287,7 @@ pages:
   - kind: art
     shot: "WIDE — the meteor"
     art: "The meteor burns bright over the town."
-    gen: "no humans, scenery, giant meteor, fireball, burning, sky, city, rooftops, dramatic, wide shot"
+    gen: "no humans, scenery, noon, single giant meteor, solo, fireball, burning, daytime sky, city, rooftops, dramatic, wide shot"
     text:
     - {t: shout, who: STUDENT C, say: "It's a meteor!!"}
 
@@ -298,7 +299,7 @@ pages:
   - kind: art
     shot: "SPLASH-WIDE — the meteor descends"
     art: "The meteor fills the sky above the school. The roar arrives."
-    gen: "no humans, scenery, giant meteor, fireball, school building, sky, falling, apocalypse, dramatic, wide shot, from below"
+    gen: "no humans, scenery, single giant meteor, solo, fireball, school building, daytime sky, falling, dramatic, wide shot, from below"
     text:
     - {t: stamp, say: "12:17:03", canon: true}
     - {t: sfx, say: "GOOOOO"}
