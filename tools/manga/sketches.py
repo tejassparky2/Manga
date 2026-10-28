@@ -296,7 +296,7 @@ def coin_in_palm(w=832, h=1216, seed=3132):
     d.ellipse([w * 0.55, h * 0.3, w * 0.8, h * 0.47], fill=(196, 196, 196))  # his hand
     finger(d, w * 0.6, h * 0.42, cx + 30, cy - 70, 44, fill=(196, 196, 196))  # index finger to the coin
     finger(d, w * 0.66, h * 0.45, cx + 70, cy - 30, 44, fill=(196, 196, 196))  # thumb
-    return img.filter(ImageFilter.GaussianBlur(1))
+    return img.filter(ImageFilter.GaussianBlur(6))  # soft, or the model keeps the flat shapes
 
 
 def empty_hands(w=832, h=1216, seed=3142):
@@ -327,7 +327,7 @@ def empty_hands(w=832, h=1216, seed=3142):
                     for f in range(4):
                         fx = hx - 27 * s + f * 18 * s
                         finger(d, fx, hy - 10 * s, fx + side * 4 * s, hy - 52 * s, 13 * s)
-    return vignette(img, 60)
+    return vignette(img.filter(ImageFilter.GaussianBlur(6)), 60)  # soft, or the figures stay mannequins
 
 
 SKETCHES = {
