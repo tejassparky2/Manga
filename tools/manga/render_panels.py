@@ -66,7 +66,7 @@ def main():
     jobs = []
     for page_no, i, panel, (x0, y0, x1, y1) in iter_panels(chapter):
         pid = panel_id(page_no, i)
-        if panel.get("kind", "art") != "art" or not wanted(page_no):
+        if panel.get("kind", "art") != "art" or panel.get("reuse") or not wanted(page_no):
             continue
         if redo and pid not in redo:
             continue
