@@ -164,7 +164,8 @@ pages:
   - kind: art
     shot: "WIDE — the class"
     art: "The class stands apart from one another, frightened."
-    gen: "multiple boys, multiple girls, gakuran, serafuku, scared, standing apart, white room, bright, wide shot, from above"
+    gen: "4boys, 3girls, gakuran, serafuku, scared, standing apart, white room, bright, from above"
+    negative_extra: "crowd, multiple floors"
     text:
     - {t: caption, who: REN, say: "Tokens can't vanish. Somebody always holds the fewest.", canon: true}
   - kind: art
