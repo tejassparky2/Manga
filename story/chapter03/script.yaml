@@ -25,6 +25,10 @@ characters:
   SAKI: "1girl, black hair, short hair, hair over one eye, quiet, serafuku"
   MOMO: "no humans, white mouse, chibi, big round ears, black eyes, bow tie, bell, mascot"
 
+character_negatives:
+  MOMO: "multiple mice, 2others"
+negative_extra: "rubble, ruins, sky"
+
 pages:
 
 # ---------------------------------------------------------------- PART 4

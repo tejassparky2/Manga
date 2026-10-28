@@ -63,6 +63,17 @@ def main():
     wanted = page_filter(a.pages)
     redo = set(filter(None, a.redo.split(",")))
 
+    # Extra negative tags: per panel, per page, per chapter, and per character
+    # (e.g. Momo panels must never show several mice).
+    page_neg = {pg["page"]: pg.get("negative_extra", "") for pg in chapter["pages"]}
+    char_neg = chapter.get("character_negatives", {})
+
+    def negatives_for(page_no, panel):
+        parts = [panel.get("negative_extra"), page_neg.get(page_no), chapter.get("negative_extra")]
+        parts += [neg for name, neg in char_neg.items() if "{" + name + "}" in panel["gen"]]
+        extra = ", ".join(x for x in parts if x)
+        return f"{extra}, {NEGATIVE}" if extra else NEGATIVE
+
     jobs = []
     for page_no, i, panel, (x0, y0, x1, y1) in iter_panels(chapter):
         pid = panel_id(page_no, i)
@@ -72,17 +83,16 @@ def main():
             continue
         if (out / f"{pid}.png").exists() and pid not in redo:
             continue
-        jobs.append((pid, page_no * 100 + i, panel, bucket_for(x1 - x0, y1 - y0)))
+        jobs.append((pid, page_no * 100 + i, panel, bucket_for(x1 - x0, y1 - y0), negatives_for(page_no, panel)))
 
     print(f"{len(jobs)} panels to render", flush=True)
     if not jobs:
         return
     pipe = None if a.remote else load_pipeline()
-    for n, (pid, seed, panel, (w, h)) in enumerate(jobs, start=1):
+    for n, (pid, seed, panel, (w, h), negative) in enumerate(jobs, start=1):
         seed = a.seed if a.seed is not None else panel.get("seed", seed)
         prompt = expand(panel["gen"], chapter["characters"])
         t = time.time()
-        negative = f"{panel['negative_extra']}, {NEGATIVE}" if panel.get("negative_extra") else NEGATIVE
         if a.remote:
             img = remote_generate(a.remote, a.token, prompt, negative, w, h, a.steps, seed)
         else:
