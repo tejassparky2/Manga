@@ -249,7 +249,9 @@ pages:
   - kind: art
     shot: "MEDIUM — one page"
     art: "Kota carefully tears out a single page, the notebook kept shut."
-    gen: "{KOTA}, tearing paper, notebook, looking down, careful, upper body, white room, bright"
+    gen: "{KOTA}, tearing out single page, small notebook held closed, careful, looking down, upper body, white room, bright"
+    negative_extra: "flying paper, scattered papers, many papers, book"
+    seed: 40902
     text:
     - {t: sfx, say: "RIIP", at: [0.75, 0.2]}
   - kind: art
@@ -257,6 +259,7 @@ pages:
     art: "Ren kneels on the white floor, drawing on the page."
     gen: "{REN}, kneeling, drawing on paper, pencil, paper on floor, from above, white floor, white room, bright"
     negative_extra: "desk, table, book"
+    retouch: "Render w3 e9cf89d drew a face on the page; tools/manga/retouch.py repaints it with the A-E locker diagram."
 
 - page: 10
   rows: [[1, [1]], [1, [1]], [1, [1]]]
