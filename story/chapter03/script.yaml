@@ -370,11 +370,10 @@ pages:
     - {t: caption, who: REN, say: "One token made her a player again. The poorest one.", canon: true}
   - kind: art
     shot: "WIDE — empty hands"
-    art: "The class, hands empty, horrified."
-    gen: "multiple boys, multiple girls, gakuran, serafuku, horrified, empty hands, showing palms, white room, white background, bright"
-    negative_extra: "corridor, window, table, paintings"
-    sketch: sketches/p14_2.png
-    strength: 0.85
+    art: "The class's empty hands: several open palms held out, not one token among them."
+    gen: "multiple hands, open palms, empty hands, palms up, hand focus, close-up, outstretched hands, white background"
+    negative_extra: "coin, holding, box, ring"
+    seed: 31420
     text:
     - {t: caption, who: REN, say: "None of us had a single token left to stop it.", canon: true}
   - kind: art
