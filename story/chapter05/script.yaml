@@ -417,7 +417,7 @@ pages:
     negative_extra: "book, holding, hands, paper"
     seed: 51313
     text:
-    - {t: speech, who: REN, say: "I found mine in nine. A loop of nine leaves ten lockers. No room for a loop longer than ten.", canon: true}
+    - {t: speech, who: REN, say: "I found mine in nine. A loop of nine leaves ten lockers. No room for a loop longer than ten.", canon: true, at: [0.42, 0.8], tail: [0.56, 0.42]}
   - kind: board
     shot: "SCREEN — up to the ninth"
     art: "The board: rows 2 to 9 lit, every one a nine or a ten."
