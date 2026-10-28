@@ -154,13 +154,22 @@ The labels follow the bible: **CONFIRMED CANON** · **UNRESOLVED** · **PROPOSAL
 - **Tokens:** drawn as coins (PROPOSAL). Their physical form was not established.
 
 ### Visual details the art had to choose (PROPOSAL — NOT CANON)
-The bible fixes what is in each scene, not how it looks. To draw Chapters 1–3 consistently, the art settles these details. All are proposals, and any of them can be changed on request.
+The bible fixes what is in each scene, not how it looks. To draw Chapters 1–5 consistently, the art settles these details. All are proposals, and any of them can be changed on request.
 - **The metal door (Ch1):** the bible says "large metal door" and Aoi judges it purpose-built. It is drawn as a huge riveted steel double door with a centre seam, set in the chamber's back wall.
 - **The chamber (Ch1–2):** a bare concrete room. The door is on the left of the back wall and the dark screen on the right. All 20 students fit on the floor with room to spare.
 - **The key (Ch1–2):** an old-fashioned metal key with a ring bow and a toothed bit. It sits on a pedestal inside a glass case under a single spotlight. The bible says only that the key is behind a glass barrier.
 - **The token containers (Ch1):** empty transparent cylinders standing on the floor on either side of the glass case. The bible says the key is surrounded by them, but not what they look like.
 - **Momo's entrance (Ch1):** a small hatch slides open in the wall below the screen.
 - **Ch3 page 14:** "None of us had a single token left to stop it" is drawn as the class's empty hands reaching in, not as a wide shot of the class.
+- **The locker room (Ch4–5):** twenty grey metal lockers with vent slits and a name plate each, standing shoulder to shoulder in a ring under one light. The painted line is a white circle on the concrete inside the ring. The waiting and finished rooms are drawn as the white room from Chapter 3.
+- **Saki's locker (Ch4–5):** "sealed shut" is drawn as tape across the door. In Ch5 (Part 12, "two lockers dark now") Saki's and Gō's lockers are drawn darkened.
+- **The board (Ch4–5):** a dark screen headed FIND YOURSELF with columns #, NAME, OPENED, RESULT; NOT FOUND in red. The unnamed students' names are drawn out of focus (their names are not canon), and which of them shows 9 and which 10 is arbitrary (canon: "nines and tens").
+- **Cards and offers (Ch5):** each card is a plain white card with one name in capitals. Momo's private offer appears on a small screen with a simple Momo icon.
+- **The token taker (Ch4 p2):** only a hand in a black sleeve and a small notebook are shown. Ch5 page 16 shows the coin in the open notebook from the same angle, so the reveal rhymes with the theft.
+- **Ren's working (Ch4):** the A–E locker example and the loop diagrams are drawn on lined notebook paper (Kota's page).
+- **Gō's turn (Ch5 page 9):** wordless. Gō goes in, sees his tenth locker without his name, swaps two blank cards (which names is not shown), and the panel goes black, as Saki's death did in Chapter 3. Haruto's swap is never shown.
+- **Momo in Ch5:** Part 11 puts Momo "on every screen"; the art also shows Momo on a screen for "Momo paid him..." (page 18) and its closing line (page 20).
+- **Haruto's flashback (Ch5 page 19):** the Chapter 1 panel of his "sustainable business model" line is reused.
 
 ---
 
