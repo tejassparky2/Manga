@@ -482,7 +482,7 @@ pages:
     gen: "2boys, from behind, gakuran, hands on door, pushing door, large metal door, industrial, rivets, concrete wall, dim lighting, wide shot"
     negative_extra: "wooden door, window, 1girl, long hair"
     sketch: sketches/p16_4.png
-    strength: 0.65
+    strength: 0.8
     text:
     - {t: sfx, say: "GONG!!"}
     - {t: speech, who: RIKU, say: "Open, damn it!"}
