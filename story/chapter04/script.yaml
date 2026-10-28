@@ -159,7 +159,7 @@ pages:
     art: "Momo's face, a flat black stare under the smile."
     gen: "{MOMO}, mouse ears, close-up, smile, shaded face, black eyes, white room"
     text:
-    - {t: speech, who: MOMO, say: "And Momo set them up special. Everyone's connected!", canon: true}
+    - {t: speech, who: MOMO, say: "And Momo set them up special. Everyone's connected!", canon: true, at: [0.16, 0.3], tail: [0.4, 0.62]}
     clue: "'Everyone's connected' — the arrangement is one loop, said in plain sight."
   - kind: rules
     shot: "SCREEN — the rules"
