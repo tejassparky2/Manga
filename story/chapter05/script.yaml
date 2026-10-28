@@ -599,6 +599,7 @@ pages:
     negative_extra: "crowd, balls"
     sketch: sketches/p20_2.png
     strength: 0.65
+    retouch: "Local render (seed 2002, strength 0.65): the lone figure's bob (Aoi's silhouette) repainted as Ren's short messy hair (retouch.py)."
     text:
     - {t: caption, who: REN, say: "I didn't know anyone in this room anymore.", canon: true}
   - kind: art
